@@ -8,5 +8,8 @@
 #include "nanotekspice.hpp"
 
 int main(int argc, const char *argv[], const char *envp[]) {
-    return 0
+    (void)argc;
+    (void)argv;
+    (void)envp;
+    return 0;
 }
