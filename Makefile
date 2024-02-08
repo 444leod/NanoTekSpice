@@ -7,17 +7,20 @@
 
 NAME		=	nanotekspice
 
-SRC			=	./src/main.cpp							\
+SRC			=	src/main.cpp							\
+				src/NanoTekSpice.cpp					\
 
 OBJ			=	$(SRC:.cpp=.o)
 
 TESTS_NAME	=	unit_tests
 
-TESTS_SRC	=	$(filter-out ./src/main.cpp, $(SRC))
+TESTS_SRC	=	$(filter-out src/main.cpp, $(SRC)) tests/parsing.cpp
+
+TESTS_OBJ   =   $(TESTS_SRC:.cpp=.o)
 
 CC			=	g++
 
-CPPFLAGS	=	-std=c++20 -W -Wall -Wextra -Werror -Wpedantic -I./include/
+CPPFLAGS	=	-std=c++20 -W -Wall -Wextra -Wpedantic -I./include/
 
 DEBUGFLAGS = -g
 
@@ -36,8 +39,9 @@ debug:
 run:	all
 	./$(NAME) -d $(D)
 
-tests_run:	fclean
-#to complete
+tests_run:	fclean $(TESTS_OBJ)
+	$(CC) $(TESTS_OBJ) $(CPPFLAGS) -o $(TESTS_NAME)
+	./$(TESTS_NAME)
 
 $(TESTS_NAME):
 	@$(CC) -o $(TESTS_NAME) $(TESTS_SRC) $(CPPFLAGS) $(TESTS_FLAGS)
