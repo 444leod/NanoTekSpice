@@ -5,7 +5,19 @@
 ** NanoTekSpice.hpp
 */
 
-#ifndef NANOTEKSPICE_HPP_
-  #define NANOTEKSPICE_HPP_
+#pragma once
 
-#endif /* !NANOTEKSPICE_HPP_ */
+    #include <iostream>
+    #include <memory>
+    #include <vector>
+    #include <unordered_map>
+    #include <map>
+    #include <fstream>
+    #include <string>
+    #include <sstream>
+
+    namespace nts {
+        class IComponent;
+        class NanoTekSpice;
+    }
+
