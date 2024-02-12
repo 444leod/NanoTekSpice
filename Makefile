@@ -7,8 +7,34 @@
 
 NAME		=	nanotekspice
 
-SRC			=	src/main.cpp							\
-				src/NanoTekSpice.cpp					\
+SRC_MAIN =  ./src/main.cpp \
+			./src/NanoTekSpice.cpp
+
+SRC_COMPONENTS = ./src/GatesComponents/My4011.cpp \
+	./src/GatesComponents/My4030.cpp \
+	./src/GatesComponents/GatesComponent.cpp \
+	./src/GatesComponents/My4001.cpp \
+	./src/GatesComponents/My4071.cpp \
+	./src/GatesComponents/My4081.cpp \
+	./src/GatesComponents/My4069.cpp \
+	./src/SpecialComponents/True.cpp \
+	./src/SpecialComponents/False.cpp \
+	./src/SpecialComponents/Output.cpp \
+	./src/SpecialComponents/SpecialComponent.cpp \
+	./src/SpecialComponents/Clock.cpp \
+	./src/SpecialComponents/Input.cpp \
+	./src/ElementatyComponents/And.cpp \
+	./src/ElementatyComponents/Xor.cpp \
+	./src/ElementatyComponents/Not.cpp \
+	./src/ElementatyComponents/Or.cpp \
+	./src/ElementatyComponents/ElementaryComponent.cpp
+
+SRC_COMMANDS = ./src/Commands/Display.cpp \
+	./src/Commands/Simulate.cpp \
+	./src/Commands/ACommand.cpp \
+	./src/Commands/Exit.cpp
+
+SRC			=	${SRC_MAIN} ${SRC_COMPONENTS} ${SRC_COMMANDS}
 
 OBJ			=	$(SRC:.cpp=.o)
 

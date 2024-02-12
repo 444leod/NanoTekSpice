@@ -10,6 +10,12 @@
 #include "nanotekspice.hpp"
 
 namespace nts {
+    enum Tristate {
+        Undefined = (-true),
+        True = true,
+        False = false
+    };
+
     class NanoTekSpice {
         public:
             void run(int argc, const char *argv[]);
