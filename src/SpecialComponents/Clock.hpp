@@ -7,9 +7,9 @@
 
 #pragma once
 
-#include "./SpecialComponent.hpp"
+#include "./ASpecialComponent.hpp"
 
-class Clock : public SpecialComponent {
+class Clock : public ASpecialComponent {
     public:
         Clock();
         ~Clock();

@@ -7,9 +7,9 @@
 
 #pragma once
 
-#include "./SpecialComponent.hpp"
+#include "./ASpecialComponent.hpp"
 
-class False : public SpecialComponent {
+class False : public ASpecialComponent {
     public:
         False();
         ~False();

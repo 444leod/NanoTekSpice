@@ -7,9 +7,9 @@
 
 #pragma once
 
-#include "./SpecialComponent.hpp"
+#include "./ASpecialComponent.hpp"
 
-class Input : public SpecialComponent {
+class Input : public ASpecialComponent {
     public:
         Input();
         ~Input();
