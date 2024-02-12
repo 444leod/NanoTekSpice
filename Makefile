@@ -40,7 +40,7 @@ OBJ			=	$(SRC:.cpp=.o)
 
 TESTS_NAME	=	unit_tests
 
-TESTS_SRC	=	$(filter-out src/main.cpp, $(SRC)) tests/parsing.cpp
+TESTS_SRC	=	$(filter-out ./src/main.cpp, $(SRC)) tests/parsing.cpp
 
 TESTS_OBJ   =   $(TESTS_SRC:.cpp=.o)
 
