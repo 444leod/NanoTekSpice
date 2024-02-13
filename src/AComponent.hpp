@@ -12,21 +12,20 @@
 #include "Pin.hpp"
 #include <map>
 
-class AComponent: nts::IComponent {
-    public:
-        virtual ~AComponent() = default;
-        AComponent() = default;
-        virtual void simulate(std::size_t tick) = 0;
-        virtual nts::Tristate compute(std::size_t pin) = 0;
-        void setLink(
-            std::size_t pin,
-            nts::IComponent &other,
-            std::size_t otherPin) = 0;
-        virtual void dump() const = 0;
-        virtual void setPinValue(std::size_t pin, nts::Tristate value) = 0;
-        virtual nts::Tristate getPinValue(std::size_t pin) const = 0;
+namespace nts {
+    class AComponent: public nts::IComponent {
+        public:
+            virtual void simulate(std::size_t tick);
+            virtual nts::Tristate compute(std::size_t pin);
+            virtual void setLink(
+                std::size_t pin,
+                nts::IComponent &other,
+                std::size_t otherPin);
+            virtual void dump() const;
+            virtual void setPinValue(std::size_t pin, nts::Tristate value);
+            virtual nts::Tristate getPinValue(std::size_t pin) const;
 
-    protected:
-        std::unordered_map<std::size_t, nts::Pin> _pins;
-
+        protected:
+            std::unordered_map<std::size_t, nts::IComponent> _pins;
+    };
 };
