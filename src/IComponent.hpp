@@ -8,15 +8,10 @@
 #pragma once
 
 #include "nanotekspice.hpp"
+#include "Pin.hpp"
 
 namespace nts
 {
-    enum Tristate {
-        Undefined = (-true),
-        True = true,
-        False = false
-    };
-
     class IComponent {
         public:
             virtual ~IComponent() = default;

@@ -10,7 +10,9 @@ NAME		=	nanotekspice
 SRC_MAIN =  ./src/main.cpp \
 			./src/NanoTekSpice.cpp
 
-SRC_COMPONENTS = ./src/GatesComponents/My4011.cpp \
+SRC_COMPONENTS = ./src/AComponent.cpp \
+	./src/Pin.cpp \
+	./src/GatesComponents/My4011.cpp \
 	./src/GatesComponents/AGatesComponent.cpp \
 	./src/GatesComponents/My4030.cpp \
 	./src/GatesComponents/My4001.cpp \
