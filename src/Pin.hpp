@@ -7,20 +7,34 @@
 
 #pragma once
 
-namespace nts {
-    enum Tristate {
-        Undefined = (-true),
-        True = true,
-        False = false
-    };
+#include "nanotekspice.hpp"
 
+namespace nts {
+
+    enum PinType {
+        INPUT,
+        OUTPUT,
+    };
+    class AssignmentError : public std::exception {
+        public:
+            AssignmentError(std::string const &message) : _message(message) {};
+            const char *what() const noexcept override { return _message.c_str(); };
+        private:
+            std::string _message;
+    };
     class Pin {
         public:
-            Pin(nts::Tristate value);
-            void setValue(nts::Tristate value);
-            nts::Tristate getValue() const;
+            Pin(nts::PinType type, nts::Tristate state = nts::Tristate::Undefined, bool isLocked = false);
+            ~Pin() = default;
+            void setState(nts::Tristate state);
+            nts::Tristate getState() const;
+            nts::PinType getType() const;
 
+        protected:
         private:
-            nts::Tristate _value;
+            nts::Tristate _state;
+            nts::PinType _type;
+            bool _isLocked = false;
     };
-};
+}
+

@@ -7,17 +7,27 @@
 
 #include "Pin.hpp"
 
-nts::Pin::Pin(nts::Tristate value)
+nts::Pin::Pin(nts::PinType type, nts::Tristate state, bool isLocked)
 {
-    _value = value;
+    _state = state;
+    _type = type;
+    _isLocked = isLocked;
 }
 
-void nts::Pin::setValue(nts::Tristate value)
+void nts::Pin::setState(nts::Tristate state)
 {
-    _value = value;
+    if (!_isLocked)
+        _state = state;
+    else
+        throw nts::AssignmentError("Pin is locked");
 }
 
-nts::Tristate nts::Pin::getValue() const
+nts::Tristate nts::Pin::getState() const
 {
-    return _value;
+    return _state;
+}
+
+nts::PinType nts::Pin::getType() const
+{
+    return _type;
 }
