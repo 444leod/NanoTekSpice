@@ -7,11 +7,11 @@
 
 #pragma once
 
-#include "./ASpecialComponent.hpp"
+#include "./SpecialComponent.hpp"
 
-class Clock : public ASpecialComponent {
+class Clock : public SpecialComponent {
     public:
-        Clock();
+        Clock(std::string name);
         ~Clock();
 
     protected:
