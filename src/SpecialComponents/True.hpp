@@ -7,13 +7,19 @@
 
 #pragma once
 
-#include "./ASpecialComponent.hpp"
+#include "./SpecialComponent.hpp"
 
-class True : public ASpecialComponent {
-    public:
-        True();
-        ~True();
+namespace nts {
+    namespace components {
+        class True : public SpecialComponent {
+            public:
+                True(std::string name);
+                ~True();
 
-    protected:
-    private:
-};
+            protected:
+            private:
+        };
+    }
+}
+
+
