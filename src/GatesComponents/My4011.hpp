@@ -7,9 +7,9 @@
 
 #pragma once
 
-#include "./AGatesComponent.hpp"
+#include "./GatesComponent.hpp"
 
-class My4011 : public AGatesComponent {
+class My4011 : public GatesComponent {
     public:
         My4011();
         ~My4011();

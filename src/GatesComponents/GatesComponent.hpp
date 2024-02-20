@@ -2,17 +2,17 @@
 ** EPITECH PROJECT, 2024
 ** NanoTekSpice
 ** File description:
-** AGatesComponent
+** GatesComponent
 */
 
 #pragma once
 
 #include "../IComponent.hpp"
 
-class AGatesComponent : public nts::IComponent {
+class GatesComponent : public nts::IComponent {
     public:
-        AGatesComponent();
-        ~AGatesComponent();
+        GatesComponent();
+        ~GatesComponent();
 
     protected:
     private:
