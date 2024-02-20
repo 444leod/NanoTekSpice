@@ -9,23 +9,23 @@
 
 #include "nanotekspice.hpp"
 #include "IComponent.hpp"
-#include "Pin.hpp"
 #include <map>
 
 namespace nts {
     class AComponent: public nts::IComponent {
         public:
-            virtual void simulate(std::size_t tick);
-            virtual nts::Tristate compute(std::size_t pin);
-            virtual void setLink(
-                std::size_t pin,
-                nts::IComponent &other,
-                std::size_t otherPin);
-            virtual void dump() const;
+            AComponent(std::string name = "AComponent");
+            ~AComponent();
+            virtual void simulate();
             virtual void setPinValue(std::size_t pin, nts::Tristate value);
             virtual nts::Tristate getPinValue(std::size_t pin) const;
+            virtual std::string getName() const;
+            virtual std::shared_ptr<nts::Pin> getPin(std::size_t pin);
+            virtual void setLink(std::size_t pin, std::shared_ptr<IComponent> other, std::size_t otherPin);
+            virtual void forceSetLink(std::shared_ptr<nts::Pin> pin, std::size_t pinIndex);
+            virtual bool isInput() const;
 
         protected:
-            std::unordered_map<std::size_t, nts::IComponent> _pins;
+            std::string _name = "AComponent";
     };
 };

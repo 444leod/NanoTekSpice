@@ -6,8 +6,8 @@
 */
 
 #include "NanoTekSpice.hpp"
-
-#include <string.h>
+#include "./SpecialComponents/Input.hpp"
+#include "./SpecialComponents/Output.hpp"
 
 /**
  * @brief main NanoTekSpice run function
@@ -18,18 +18,19 @@
  * @param argc - number of arguments
  * @param argv - arguments
 */
-void nts::NanoTekSpice::run(int argc, const char *argv[])
+int nts::NanoTekSpice::run(int argc, const char *argv[])
 {
     try {
         this->parseArgs(argc, argv);
+        return this->shell();
     } catch (const nts::NanoTekSpice::ParsingError &e) {
         std::cerr << "Something went wrong with arguments: " << std::endl;
         std::cerr << e.what() << std::endl;
-        exit(84);
+        return 84;
     } catch (const nts::NanoTekSpice::HelpFlag &e) {
-        exit(0);
+        return 0;
     }
-    exit(0);
+    return 0;
 }
 
 /**
@@ -57,8 +58,8 @@ void nts::NanoTekSpice::parseArgs(int argc, const char *argv[])
         std::cout << "\tfilename.nts: file describing the circuit" << std::endl;
         throw nts::NanoTekSpice::HelpFlag();
     }
-    const char *extension = strstr(argv[1], ".nts");
-    if (extension == NULL || std::string(extension) != ".nts")
+    std::string s = argv[1];
+    if (s.ends_with(".nts") == false)
         throw nts::NanoTekSpice::ParsingError("Invalid file extension");
 
     this->parseFile(argv[1]);
@@ -95,8 +96,7 @@ void nts::NanoTekSpice::parseFile(const std::string &filename)
             continue;
         }
 
-        this->handler = _handlers[state];
-        (this->*handler)(line, lineCount);
+        _handlers[state](line, lineCount);
     }
 
     file.close();
@@ -115,15 +115,18 @@ void nts::NanoTekSpice::parseFile(const std::string &filename)
 void nts::NanoTekSpice::handleChipset(std::string &chipset, int lineCount)
 {
     std::stringstream ss(chipset);
-    std::string token;
-    std::vector<std::string> tokens;
+    std::string token = "";
+    std::vector<std::string> tokens = {};
     while (ss >> token)
         tokens.push_back(token);
     if (tokens.size() != 2)
         throw nts::NanoTekSpice::ParsingError("Invalid line: line " + std::to_string(lineCount));
 
-    //handle chipset here
-    // std::cout << "Chipset: " << tokens[0] << " " << tokens[1] << std::endl;
+    for (auto &component : _components) {
+        if (component->getName() == tokens[1])
+            throw nts::NanoTekSpice::ParsingError("Component already exists: " + tokens[1]);
+    }
+    this->IComponentFactory(tokens[0], tokens[1]);
 }
 
 /**
@@ -146,8 +149,7 @@ void nts::NanoTekSpice::handleLink(std::string &link, int lineCount)
     if (tokens.size() != 2)
         throw nts::NanoTekSpice::ParsingError("Invalid line: line " + std::to_string(lineCount));
 
-    //handle link here
-    // std::cout << "Link: " << tokens[0] << " " << tokens[1] << std::endl;
+    _links.push_back({tokens[0], tokens[1]});
 }
 
 /**
@@ -162,4 +164,192 @@ void nts::NanoTekSpice::handleNone(std::string &line, int lineCount)
 {
     (void)line;
     (void)lineCount;
+}
+
+int nts::NanoTekSpice::shell()
+{
+    std::string input;
+    std::stringstream ss("");
+
+    for (auto &link : _links) {
+        std::shared_ptr<IComponent> component1;
+        std::shared_ptr<IComponent> component2;
+        std::string name1 = link.first.substr(0, link.first.find(':'));
+        std::string name2 = link.second.substr(0, link.second.find(':'));
+
+        int pin1 = std::stoi(link.first.substr(link.first.find(':') + 1));
+        int pin2 = std::stoi(link.second.substr(link.second.find(':') + 1));
+
+        for (auto &component : _components) {
+            if (component->getName() == name1)
+                component1 = component;
+            if (component->getName() == name2)
+                component2 = component;
+        }
+        if (component1 == nullptr || component2 == nullptr)
+            throw nts::NanoTekSpice::ParsingError("Invalid link: " + link.first + " " + link.second);
+        component1->setLink(pin1, component2, pin2);
+    }
+
+    // input1->setLink(1, output1, 1);
+    // input2->setLink(1, output2, 1);
+    // clock1->setLink(1, clock_output, 1);
+    // input1->setPinValue(1, nts::Tristate::True);
+    // input2->setPinValue(1, nts::Tristate::False);
+
+    while (1) {
+        if (isatty(0))
+            std::cout << "> ";
+        if (!std::getline(std::cin, input))
+            break;
+        ss << input;
+        ss >> input;
+        if (_commands.find(input) != _commands.end())
+            _commands.at(input)();
+        else {
+            try {
+                assign(input, ss);
+            } catch (const nts::NanoTekSpice::ParsingError &e) {
+                std::cerr << "Something went wrong with the command: " << std::endl;
+                std::cerr << e.what() << std::endl;
+            }
+        }
+    }
+    return 0;
+}
+
+void nts::NanoTekSpice::exit()
+{
+    std::exit(0);
+}
+
+void nts::NanoTekSpice::display()
+{
+    nts::Tristate pinValue;
+
+    std::cout << "tick: " << _tick << std::endl;
+    std::cout << "input(s):" << std::endl;
+    for (auto &input : _inputs) {
+        pinValue = input->getPinValue(1);
+        std::cout << "\t" << input->getName() << "(" << input << "): ";
+        if (pinValue == nts::Tristate::Undefined)
+            std::cout << "U" << std::endl;
+        else
+            std::cout << pinValue << std::endl;
+    }
+    std::cout << "output(s):" << std::endl;
+    for (auto &output : _outputs) {
+        pinValue = output->getPinValue(1);
+        std::cout << "\t" << output->getName() << "(" << output << "): ";
+        if (pinValue == nts::Tristate::Undefined)
+            std::cout << "U" << std::endl;
+        else
+            std::cout << pinValue << std::endl;
+    }
+}
+
+void updateComponentValue(std::vector<std::pair<std::string, std::string>> assignements, std::vector<std::shared_ptr<nts::IComponent>> components)
+{
+    for (auto &assignement : assignements) {
+        for (auto &component : components) {
+            if (component->getName() == assignement.first) {
+                if (!component->isInput())
+                    throw nts::NanoTekSpice::ParsingError("Invalid component type: " + assignement.first);
+                switch (assignement.second[0]) {
+                    case '0':
+                        component->setPinValue(1, nts::Tristate::False);
+                        break;
+                    case '1':
+                        component->setPinValue(1, nts::Tristate::True);
+                        break;
+                    case 'U':
+                        component->setPinValue(1, nts::Tristate::Undefined);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+        std::cout << "Assigning " << assignement.second << " to " << assignement.first << std::endl;
+    }
+}
+
+void updateClocks(std::vector<std::shared_ptr<nts::IComponent>> clocks)
+{
+    for (auto &clock : clocks) {
+        if (clock->getPinValue(1) == nts::Tristate::Undefined)
+            continue;
+        clock->setPinValue(1, clock->getPinValue(1) == nts::Tristate::True ? nts::Tristate::False : nts::Tristate::True);
+    }
+}
+
+void nts::NanoTekSpice::simulate()
+{
+    _tick++;
+    updateClocks(_clocks);
+    updateComponentValue(_assignements, _components);
+    _assignements = {};
+    for (auto &component : _components) {
+        component->simulate();
+    }
+}
+
+void nts::NanoTekSpice::loop()
+{
+    while (1) {
+        nts::NanoTekSpice::simulate();
+        nts::NanoTekSpice::display();
+    }
+}
+
+void nts::NanoTekSpice::assign(const std::string &input, std::stringstream &ss)
+{
+    std::string nextWord;
+    ss >> nextWord;
+
+    if (nextWord != "")
+        throw nts::NanoTekSpice::ParsingError("Invalid command");
+
+    if (input.find('=') == std::string::npos)
+        throw nts::NanoTekSpice::ParsingError("Invalid command");
+
+    std::string left = input.substr(0, input.find('='));
+    std::string right = input.substr(input.find('=') + 1);
+
+    if (left.empty() || right.empty())
+        throw nts::NanoTekSpice::ParsingError("Invalid command");
+    if (right != "0" && right != "1" && right != "U")
+        throw nts::NanoTekSpice::ParsingError("Invalid component value: " + right);
+    for (auto &component : _components) {
+        if (component->getName() == left) {
+            _assignements.push_back({left, right});
+            std::cout << "Assigning..." << std::endl;
+            return;
+        }
+    }
+    throw nts::NanoTekSpice::ParsingError("Invalid component name: " + left);
+}
+
+
+std::shared_ptr<nts::IComponent> nts::NanoTekSpice::IComponentFactory(std::string componentType, std::string name)
+{
+    std::shared_ptr<nts::IComponent> component;
+
+    if (componentType == "input") {
+        component = std::make_unique<Input>(name);
+        _inputs.push_back(component);
+    } else if (componentType == "output") {
+        component = std::make_unique<Output>(name);
+        _outputs.push_back(component);
+    } else if (componentType == "clock") {
+        component = std::make_unique<Clock>(name);
+        _clocks.push_back(component);
+    } else {
+        if (_componentFactory.find(componentType) == _componentFactory.end())
+            throw nts::NanoTekSpice::ParsingError("Invalid component type: " + componentType);
+        component = _componentFactory[componentType](name);
+    }
+    _components.push_back(component);
+
+    return component;
 }
