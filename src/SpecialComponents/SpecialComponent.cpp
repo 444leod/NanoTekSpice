@@ -7,7 +7,7 @@
 
 #include "SpecialComponent.hpp"
 
-SpecialComponent::SpecialComponent()
+SpecialComponent::SpecialComponent(std::string name) : AComponent(name)
 {
 }
 

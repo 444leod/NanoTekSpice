@@ -8,7 +8,9 @@
 NAME		=	nanotekspice
 
 SRC_MAIN =  ./src/main.cpp \
-			./src/NanoTekSpice.cpp
+			./src/NanoTekSpice.cpp \
+			./src/AComponent.cpp \
+			./src/Pin.cpp
 
 SRC_COMPONENTS = ./src/GatesComponents/My4011.cpp \
 	./src/GatesComponents/My4030.cpp \
@@ -23,11 +25,11 @@ SRC_COMPONENTS = ./src/GatesComponents/My4011.cpp \
 	./src/SpecialComponents/SpecialComponent.cpp \
 	./src/SpecialComponents/Clock.cpp \
 	./src/SpecialComponents/Input.cpp \
-	./src/ElementatyComponents/And.cpp \
-	./src/ElementatyComponents/Xor.cpp \
-	./src/ElementatyComponents/Not.cpp \
-	./src/ElementatyComponents/Or.cpp \
-	./src/ElementatyComponents/ElementaryComponent.cpp
+	# ./src/ElementatyComponents/And.cpp \
+	# ./src/ElementatyComponents/Xor.cpp \
+	# ./src/ElementatyComponents/Not.cpp \
+	# ./src/ElementatyComponents/Or.cpp \
+	# ./src/ElementatyComponents/ElementaryComponent.cpp
 
 SRC_COMMANDS = ./src/Commands/Display.cpp \
 	./src/Commands/Simulate.cpp \

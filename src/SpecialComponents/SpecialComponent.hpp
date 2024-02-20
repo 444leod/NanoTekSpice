@@ -7,11 +7,11 @@
 
 #pragma once
 
-#include "../IComponent.hpp"
+#include "../AComponent.hpp"
 
-class SpecialComponent : public nts::IComponent {
+class SpecialComponent : public nts::AComponent {
     public:
-        SpecialComponent();
+        SpecialComponent(std::string name);
         ~SpecialComponent();
 
     protected:

@@ -2,17 +2,17 @@
 ** EPITECH PROJECT, 2024
 ** NanoTekSpice
 ** File description:
-** ElementaryComponent
+** AElementaryComponent
 */
 
 #pragma once
 
 #include "../IComponent.hpp"
 
-class ElementaryComponent : public nts::IComponent {
+class AElementaryComponent : public nts::IComponent {
     public:
-        ElementaryComponent();
-        ~ElementaryComponent();
+        AElementaryComponent();
+        ~AElementaryComponent();
 
     protected:
     private:

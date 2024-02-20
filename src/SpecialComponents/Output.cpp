@@ -7,8 +7,11 @@
 
 #include "Output.hpp"
 
-Output::Output()
+Output::Output(std::string name) : SpecialComponent(name)
 {
+    _pins = {
+            {1, NULL}
+        };
 }
 
 Output::~Output()
