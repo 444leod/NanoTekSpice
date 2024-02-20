@@ -7,11 +7,11 @@
 
 #pragma once
 
-#include "./ASpecialComponent.hpp"
+#include "./SpecialComponent.hpp"
 
-class Output : public ASpecialComponent {
+class Output : public SpecialComponent {
     public:
-        Output();
+        Output(std::string name);
         ~Output();
 
     protected:
