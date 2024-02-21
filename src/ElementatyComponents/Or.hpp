@@ -7,12 +7,13 @@
 
 #pragma once
 
-#include "./AElementaryComponent.hpp"
+#include "./ElementaryComponent.hpp"
 
-class Or : public AElementaryComponent {
+class Or : public ElementaryComponent {
     public:
-        Or();
+        Or(std::string name);
         ~Or();
+        void simulate() override;
 
     protected:
     private:
