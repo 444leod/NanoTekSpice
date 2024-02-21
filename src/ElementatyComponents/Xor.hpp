@@ -7,12 +7,13 @@
 
 #pragma once
 
-#include "./AElementaryComponent.hpp"
+#include "./ElementaryComponent.hpp"
 
-class Xor : public AElementaryComponent {
+class Xor : public ElementaryComponent {
     public:
-        Xor();
+        Xor(std::string name);
         ~Xor();
+        void simulate() override;
 
     protected:
     private:
