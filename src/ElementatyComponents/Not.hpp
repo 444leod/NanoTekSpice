@@ -7,12 +7,13 @@
 
 #pragma once
 
-#include "./AElementaryComponent.hpp"
+#include "./ElementaryComponent.hpp"
 
-class Not : public AElementaryComponent {
+class Not : public ElementaryComponent {
     public:
-        Not();
+        Not(std::string name);
         ~Not();
+        void simulate() override;
 
     protected:
     private:
