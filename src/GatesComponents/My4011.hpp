@@ -11,8 +11,9 @@
 
 class My4011 : public GatesComponent {
     public:
-        My4011();
+        My4011(std::string name);
         ~My4011();
+        void simulate() override;
 
     protected:
     private:
