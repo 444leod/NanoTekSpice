@@ -7,12 +7,13 @@
 
 #pragma once
 
-#include "./AElementaryComponent.hpp"
+#include "./ElementaryComponent.hpp"
 
-class And : public AElementaryComponent {
+class And : public ElementaryComponent {
     public:
-        And();
+        And(std::string name);
         ~And();
+        void simulate() override;
 
     protected:
     private:
