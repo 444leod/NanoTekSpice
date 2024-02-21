@@ -7,13 +7,15 @@
 
 #pragma once
 
-#include "../IComponent.hpp"
+#include "../AComponent.hpp"
 
-class GatesComponent : public nts::IComponent {
+class GatesComponent : public nts::AComponent {
     public:
-        GatesComponent();
+        GatesComponent(std::string name);
         ~GatesComponent();
+        void simulate() override;
 
     protected:
+        std::vector<std::shared_ptr<nts::IComponent>> _subComponents = {};
     private:
 };
