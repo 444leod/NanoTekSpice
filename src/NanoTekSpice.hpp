@@ -20,11 +20,11 @@
 #include "./ElementatyComponents/Xor.hpp"
 #include "./ElementatyComponents/Not.hpp"
 #include "./GatesComponents/My4001.hpp"
-// #include "./GatesComponents/My4011.hpp"
-// #include "./GatesComponents/My4030.hpp"
-// #include "./GatesComponents/My4069.hpp"
-// #include "./GatesComponents/My4071.hpp"
-// #include "./GatesComponents/My4081.hpp"
+#include "./GatesComponents/My4011.hpp"
+#include "./GatesComponents/My4030.hpp"
+#include "./GatesComponents/My4069.hpp"
+#include "./GatesComponents/My4071.hpp"
+#include "./GatesComponents/My4081.hpp"
 
 namespace nts {
 
@@ -82,11 +82,11 @@ namespace nts {
                 {"xor", [](std::string name) { return std::make_shared<Xor>(name); }},
                 {"not", [](std::string name) { return std::make_shared<Not>(name); }},
                 {"4001", [](std::string name) { return std::make_shared<My4001>(name); }},
-                // {"4011", [](std::string name) { return std::make_shared<My4011>(name); }},
-                // {"4030", [](std::string name) { return std::make_shared<My4030>(name); }},
-                // {"4069", [](std::string name) { return std::make_shared<My4069>(name); }},
-                // {"4071", [](std::string name) { return std::make_shared<My4071>(name); }},
-                // {"4081", [](std::string name) { return std::make_shared<My4081>(name); }},
+                {"4011", [](std::string name) { return std::make_shared<My4011>(name); }},
+                {"4030", [](std::string name) { return std::make_shared<My4030>(name); }},
+                {"4069", [](std::string name) { return std::make_shared<My4069>(name); }},
+                {"4071", [](std::string name) { return std::make_shared<My4071>(name); }},
+                {"4081", [](std::string name) { return std::make_shared<My4081>(name); }},
             };
 
             void exit();

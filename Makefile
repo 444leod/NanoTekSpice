@@ -31,11 +31,6 @@ SRC_COMPONENTS = ./src/GatesComponents/My4011.cpp \
 	./src/ElementatyComponents/Or.cpp \
 	./src/ElementatyComponents/ElementaryComponent.cpp
 
-SRC_COMMANDS = ./src/Commands/Display.cpp \
-	./src/Commands/Simulate.cpp \
-	./src/Commands/ACommand.cpp \
-	./src/Commands/Exit.cpp
-
 SRC			=	${SRC_MAIN} ${SRC_COMPONENTS} ${SRC_COMMANDS}
 
 OBJ			=	$(SRC:.cpp=.o)

@@ -231,7 +231,7 @@ void nts::NanoTekSpice::display()
     std::cout << "input(s):" << std::endl;
     for (auto &input : _inputs) {
         pinValue = input->getPinValue(1);
-        std::cout << "\t" << input->getName() << "(" << input << "): ";
+        std::cout << "\t" << input->getName() << ": ";
         if (pinValue == nts::Tristate::Undefined)
             std::cout << "U" << std::endl;
         else
@@ -240,7 +240,7 @@ void nts::NanoTekSpice::display()
     std::cout << "output(s):" << std::endl;
     for (auto &output : _outputs) {
         pinValue = output->getPinValue(1);
-        std::cout << "\t" << output->getName() << "(" << output << "): ";
+        std::cout << "\t" << output->getName() << ": ";
         if (pinValue == nts::Tristate::Undefined)
             std::cout << "U" << std::endl;
         else
@@ -270,7 +270,6 @@ void updateComponentValue(std::vector<std::pair<std::string, std::string>> assig
                 }
             }
         }
-        std::cout << "Assigning " << assignement.second << " to " << assignement.first << std::endl;
     }
 }
 
@@ -323,7 +322,6 @@ void nts::NanoTekSpice::assign(const std::string &input, std::stringstream &ss)
     for (auto &component : _components) {
         if (component->getName() == left) {
             _assignements.push_back({left, right});
-            std::cout << "Assigning..." << std::endl;
             return;
         }
     }
