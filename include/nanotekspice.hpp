@@ -17,6 +17,7 @@
     #include <sstream>
     #include <algorithm>
     #include <functional>
+    #include <csignal>
 
     namespace nts {
         class IComponent;
