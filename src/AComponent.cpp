@@ -47,8 +47,9 @@ nts::Tristate nts::AComponent::getPinValue(size_t pin) const
 std::shared_ptr<nts::Pin> nts::AComponent::getPin(size_t pin)
 {
     if (_pins.find(pin) == _pins.end())
-        throw std::out_of_range("Pin not found");
-    return _pins.at(pin);
+        throw nts::IComponent::LinkException("Pin not found");
+
+    return _pins[pin];
 }
 
 void nts::AComponent::setLink(size_t pin, std::shared_ptr<IComponent> other, size_t otherPin)
@@ -56,16 +57,19 @@ void nts::AComponent::setLink(size_t pin, std::shared_ptr<IComponent> other, siz
     if (_pins.find(pin) == _pins.end())
         throw nts::IComponent::LinkException("Pin not found ( linking pin " + std::to_string(pin) + "from " + _name + " to " + other->getName() + " pin " + std::to_string(otherPin));
 
-    std::shared_ptr<Pin> pin1 = _pins.at(pin);
+    std::shared_ptr<Pin> pin1 = _pins[pin];
     std::shared_ptr<Pin> pin2 = other->getPin(otherPin);
 
     if ((pin1 == NULL && pin2 == NULL))
         throw nts::IComponent::LinkException("Both pins are input pins (linking pin " + std::to_string(pin) + " from " + _name + " to " + other->getName() + " pin " + std::to_string(otherPin) + ")");
 
+    if ((pin1 && pin1->isIgnored()) || (pin2 && pin2->isIgnored()))
+        throw nts::IComponent::LinkException("One of the pins is ignored (linking pin " + std::to_string(pin) + " from " + _name + " to " + other->getName() + " pin " + std::to_string(otherPin) + ")");
+
     if (pin1 == NULL) {
-        _pins.at(pin) = pin2;
+        _pins[pin] = pin2;
     }else if (pin2 == NULL) {
-        other->forceSetLink(_pins.at(pin), otherPin);
+        other->forceSetLink(_pins[pin], otherPin);
     }
 }
 
