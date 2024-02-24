@@ -198,6 +198,7 @@ int nts::NanoTekSpice::shell()
     // input2->setPinValue(1, nts::Tristate::False);
 
     while (1) {
+        std::cout << "> ";
         if (!std::getline(std::cin, input))
             break;
         ss << input;
@@ -230,6 +231,14 @@ void nts::NanoTekSpice::display()
     for (auto &input : _inputs) {
         pinValue = input->getPinValue(1);
         std::cout << "  " << input->getName() << ": ";
+        if (pinValue == nts::Tristate::Undefined)
+            std::cout << "U" << std::endl;
+        else
+            std::cout << pinValue << std::endl;
+    }
+    for (auto &clock : _clocks) {
+        pinValue = clock->getPinValue(1);
+        std::cout << "  " << clock->getName() << ": ";
         if (pinValue == nts::Tristate::Undefined)
             std::cout << "U" << std::endl;
         else
