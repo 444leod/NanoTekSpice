@@ -304,12 +304,18 @@ void nts::NanoTekSpice::simulate()
     }
 }
 
+bool running = true;
+
 void nts::NanoTekSpice::loop()
 {
-    while (1) {
+    running = true;
+    signal(SIGINT, [](int sig) { running = false; });
+
+    while (running) {
         nts::NanoTekSpice::simulate();
         nts::NanoTekSpice::display();
     }
+    signal(SIGINT, SIG_DFL);
 }
 
 void nts::NanoTekSpice::assign(const std::string &input, std::stringstream &ss)
