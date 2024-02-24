@@ -92,7 +92,8 @@ void nts::NanoTekSpice::parseFile(const std::string &filename)
 
     while (std::getline(file, line)) {
         lineCount++;
-        if (line[0] == '#' || line.empty())
+        line = line.substr(0, line.find('#'));
+        if (line.empty())
             continue;
 
         if (_states.find(line) != _states.end()) {
@@ -167,7 +168,7 @@ void nts::NanoTekSpice::handleLink(std::string &link, int lineCount)
 void nts::NanoTekSpice::handleNone(std::string &line, int lineCount)
 {
     (void)line;
-    (void)lineCount;
+    throw nts::NanoTekSpice::ParsingError("Invalid line: line " + std::to_string(lineCount));
 }
 
 int nts::NanoTekSpice::shell()
@@ -194,12 +195,6 @@ int nts::NanoTekSpice::shell()
             throw nts::NanoTekSpice::ParsingError("Invalid link: " + link.first + " " + link.second);
         component1->setLink(pin1, component2, pin2);
     }
-
-    // input1->setLink(1, output1, 1);
-    // input2->setLink(1, output2, 1);
-    // clock1->setLink(1, clock_output, 1);
-    // input1->setPinValue(1, nts::Tristate::True);
-    // input2->setPinValue(1, nts::Tristate::False);
 
     while (1) {
         std::cout << "> ";

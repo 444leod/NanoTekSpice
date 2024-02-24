@@ -7,9 +7,12 @@
 
 #include "AComponent.hpp"
 
+int nts::AComponent::nextId = 0;
+
 nts::AComponent::AComponent(std::string name)
 {
     _name = name;
+    _id = nextId++;
 }
 
 nts::AComponent::~AComponent()
@@ -54,6 +57,8 @@ std::shared_ptr<nts::Pin> nts::AComponent::getPin(size_t pin)
 
 void nts::AComponent::setLink(size_t pin, std::shared_ptr<IComponent> other, size_t otherPin)
 {
+    if (_id == other->getId())
+        throw nts::IComponent::LinkException("Cannot link a component to itself");
     if (_pins.find(pin) == _pins.end())
         throw nts::IComponent::LinkException("Pin not found ( linking pin " + std::to_string(pin) + "from " + _name + " to " + other->getName() + " pin " + std::to_string(otherPin));
 
@@ -68,8 +73,10 @@ void nts::AComponent::setLink(size_t pin, std::shared_ptr<IComponent> other, siz
 
     if (pin1 == NULL) {
         _pins[pin] = pin2;
-    }else if (pin2 == NULL) {
+    } else if (pin2 == NULL) {
         other->forceSetLink(_pins[pin], otherPin);
+    } else {
+        throw nts::IComponent::LinkException("Pins are outputs (linking pin " + std::to_string(pin) + " from " + _name + " to " + other->getName() + " pin " + std::to_string(otherPin) + ")");
     }
 }
 
@@ -81,4 +88,9 @@ void nts::AComponent::forceSetLink(std::shared_ptr<nts::Pin> pin, std::size_t pi
 bool nts::AComponent::isInput() const
 {
     return _isInput;
+}
+
+int nts::AComponent::getId() const
+{
+    return _id;
 }
