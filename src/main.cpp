@@ -19,6 +19,5 @@
 int main(int argc, const char *argv[]) {
     nts::NanoTekSpice nts;
 
-    nts.run(argc, argv);
-    return 0;
+    return nts.run(argc, argv);
 }
