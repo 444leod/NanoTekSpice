@@ -22,6 +22,7 @@ namespace nts {
             virtual void setLink(std::size_t pin, std::shared_ptr<IComponent> other, std::size_t otherPin) = 0;
             virtual void forceSetLink(std::shared_ptr<Pin> pin, std::size_t pinIndex) = 0;
             virtual bool isInput() const = 0;
+            virtual int getId() const = 0;
             class LinkException : public std::exception {
                 public:
                     LinkException(std::string const &message) : _message(message) {}
