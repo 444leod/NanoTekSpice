@@ -29,6 +29,10 @@ int nts::NanoTekSpice::run(int argc, const char *argv[])
         return 84;
     } catch (const nts::NanoTekSpice::HelpFlag &e) {
         return 0;
+    } catch (const std::exception &e) {
+        std::cerr << "Something went wrong: " << std::endl;
+        std::cerr << e.what() << std::endl;
+        return 84;
     }
     return 0;
 }
