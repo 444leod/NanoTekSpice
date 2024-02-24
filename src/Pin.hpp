@@ -24,17 +24,20 @@ namespace nts {
     };
     class Pin {
         public:
-            Pin(nts::PinType type, nts::Tristate state = nts::Tristate::Undefined, bool isLocked = false);
+            Pin(nts::PinType type, nts::Tristate state = nts::Tristate::Undefined, bool isLocked = false, bool isIgnored = false);
             ~Pin() = default;
             void setState(nts::Tristate state);
             nts::Tristate getState() const;
             nts::PinType getType() const;
+            bool isLocked() const;
+            bool isIgnored() const;
 
         protected:
         private:
             nts::Tristate _state;
             nts::PinType _type;
             bool _isLocked = false;
+            bool _isIgnored = false;
     };
 }
 

@@ -16,14 +16,14 @@ GatesComponent::GatesComponent(std::string name) : AComponent(name)
         {4, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined)},
         {5, NULL},
         {6, NULL},
-        {7, NULL},
+        {7, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined, false, true)},
         {8, NULL},
         {9, NULL},
         {10, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined)},
         {11, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined)},
         {12, NULL},
         {13, NULL},
-        {14, NULL}
+        {14,  std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined, false, true)}
     };
 }
 
