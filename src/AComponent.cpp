@@ -60,7 +60,7 @@ void nts::AComponent::setLink(size_t pin, std::shared_ptr<IComponent> other, siz
     std::shared_ptr<Pin> pin2 = other->getPin(otherPin);
 
     if ((pin1 == NULL && pin2 == NULL))
-        throw nts::IComponent::LinkException("Both pins are input pins ( linking pin " + std::to_string(pin) + "from " + _name + " to " + other->getName() + " pin " + std::to_string(otherPin));
+        throw nts::IComponent::LinkException("Both pins are input pins (linking pin " + std::to_string(pin) + " from " + _name + " to " + other->getName() + " pin " + std::to_string(otherPin) + ")");
 
     if (pin1 == NULL) {
         _pins.at(pin) = pin2;
