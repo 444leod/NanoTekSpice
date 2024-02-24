@@ -10,6 +10,22 @@
 
 My4069::My4069(std::string name) : GatesComponent(name)
 {
+    _pins = {
+        {1, NULL},
+        {2, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined)},
+        {3, NULL},
+        {4, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined)},
+        {5, NULL},
+        {6, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined)},
+        {7, NULL},
+        {8, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined)},
+        {9, NULL},
+        {10, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined)},
+        {11, NULL},
+        {12, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined)},
+        {13, NULL},
+        {14, NULL}
+    };
      _subComponents = {
         std::make_shared<Not>("Not1"),
         std::make_shared<Not>("Not2"),

@@ -25,11 +25,6 @@ My4030::~My4030()
 
 void My4030::simulate()
 {
-    _subComponents[4]->forceSetLink(_pins[3], 2);
-    _subComponents[5]->forceSetLink(_pins[4], 2);
-    _subComponents[6]->forceSetLink(_pins[10], 2);
-    _subComponents[7]->forceSetLink(_pins[11], 2);
-
     _subComponents[0]->forceSetLink(_pins[1], 1);
     _subComponents[0]->forceSetLink(_pins[2], 2);
     _subComponents[0]->forceSetLink(_pins[3], 3);
