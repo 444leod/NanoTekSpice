@@ -9,6 +9,9 @@ NAME		=	nanotekspice
 
 SRC_MAIN =  ./src/main.cpp \
 			./src/NanoTekSpice.cpp \
+			./src/Parser.cpp \
+			./src/Shell.cpp \
+			./src/IComponentFactory.cpp \
 			./src/AComponent.cpp \
 			./src/Pin.cpp
 
@@ -36,6 +39,8 @@ SRC			=	${SRC_MAIN} ${SRC_COMPONENTS} ${SRC_COMMANDS}
 OBJ			=	$(SRC:.cpp=.o)
 
 TESTS_NAME	=	unit_tests
+
+PYTHON_TESTER = ./tests/tester.py
 
 TESTS_SRC	=	$(filter-out ./src/main.cpp, $(SRC)) tests/parsing.cpp
 
@@ -65,6 +70,9 @@ run:	all
 tests_run:	fclean $(TESTS_OBJ)
 	$(CC) $(TESTS_OBJ) $(CPPFLAGS) -o $(TESTS_NAME)
 	./$(TESTS_NAME)
+	make re
+	$(PYTHON_TESTER)
+
 
 $(TESTS_NAME):
 	@$(CC) -o $(TESTS_NAME) $(TESTS_SRC) $(CPPFLAGS) $(TESTS_FLAGS)
