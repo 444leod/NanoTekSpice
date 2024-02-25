@@ -40,6 +40,8 @@ OBJ			=	$(SRC:.cpp=.o)
 
 TESTS_NAME	=	unit_tests
 
+PYTHON_TESTER = ./tests/tester.py
+
 TESTS_SRC	=	$(filter-out ./src/main.cpp, $(SRC)) tests/parsing.cpp
 
 TESTS_OBJ   =   $(TESTS_SRC:.cpp=.o)
@@ -68,6 +70,9 @@ run:	all
 tests_run:	fclean $(TESTS_OBJ)
 	$(CC) $(TESTS_OBJ) $(CPPFLAGS) -o $(TESTS_NAME)
 	./$(TESTS_NAME)
+	make re
+	$(PYTHON_TESTER)
+
 
 $(TESTS_NAME):
 	@$(CC) -o $(TESTS_NAME) $(TESTS_SRC) $(CPPFLAGS) $(TESTS_FLAGS)

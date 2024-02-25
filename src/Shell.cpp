@@ -114,7 +114,7 @@ bool running = true;
 void nts::Shell::loop()
 {
     running = true;
-    signal(SIGINT, [](int sig) { running = false; });
+    signal(SIGINT, [](int sig) { (void)sig; running = false; });
 
     while (running) {
         nts::Shell::simulate();
