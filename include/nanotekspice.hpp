@@ -22,6 +22,7 @@
     namespace nts {
         class IComponent;
         class NanoTekSpice;
+        class Parser;
         class Pin;
         enum Tristate {
             Undefined = (-true),

@@ -9,6 +9,9 @@ NAME		=	nanotekspice
 
 SRC_MAIN =  ./src/main.cpp \
 			./src/NanoTekSpice.cpp \
+			./src/Parser.cpp \
+			./src/Shell.cpp \
+			./src/IComponentFactory.cpp \
 			./src/AComponent.cpp \
 			./src/Pin.cpp
 
