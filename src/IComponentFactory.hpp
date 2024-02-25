@@ -26,6 +26,7 @@
 #include "./GatesComponents/My4069.hpp"
 #include "./GatesComponents/My4071.hpp"
 #include "./GatesComponents/My4081.hpp"
+#include "./AdvancedComponents/Logger.hpp"
 
 namespace nts {
     class IComponentFactory {
@@ -38,6 +39,9 @@ namespace nts {
                 std::vector<std::shared_ptr<nts::IComponent>> &clocks);
         private:
             std::map<std::string, std::function<std::shared_ptr<IComponent>(std::string)>> _componentFactory = {
+                {"input", [](std::string name) { return std::make_shared<Input>(name); }},
+                {"output", [](std::string name) { return std::make_shared<Output>(name); }},
+                {"clock", [](std::string name) { return std::make_shared<Clock>(name); }},
                 {"true", [](std::string name) { return std::make_shared<nts::components::True>(name); }},
                 {"false", [](std::string name) { return std::make_shared<nts::components::False>(name); }},
                 {"and", [](std::string name) { return std::make_shared<And>(name); }},
@@ -50,6 +54,7 @@ namespace nts {
                 {"4069", [](std::string name) { return std::make_shared<My4069>(name); }},
                 {"4071", [](std::string name) { return std::make_shared<My4071>(name); }},
                 {"4081", [](std::string name) { return std::make_shared<My4081>(name); }},
+                {"logger", [](std::string name) { return std::make_shared<Logger>(name); }},
             };
     };
 }
