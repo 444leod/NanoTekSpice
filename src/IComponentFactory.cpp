@@ -19,20 +19,16 @@ std::shared_ptr<IComponent> IComponentFactory::createComponent(
 {
     std::shared_ptr<nts::IComponent> component;
 
-    if (componentType == "input") {
-        component = std::make_unique<Input>(name);
+    if (_componentFactory.find(componentType) == _componentFactory.end())
+        throw nts::Parser::ParsingError("Invalid component type: " + componentType);
+    component = _componentFactory[componentType](name);
+
+    if (componentType == "input")
         inputs.push_back(component);
-    } else if (componentType == "output") {
-        component = std::make_unique<Output>(name);
+    else if (componentType == "output")
         outputs.push_back(component);
-    } else if (componentType == "clock") {
-        component = std::make_unique<Clock>(name);
+    else if (componentType == "clock")
         clocks.push_back(component);
-    } else {
-        if (_componentFactory.find(componentType) == _componentFactory.end())
-            throw nts::Parser::ParsingError("Invalid component type: " + componentType);
-        component = _componentFactory[componentType](name);
-    }
 
     return component;
 }
