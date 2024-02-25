@@ -5,8 +5,12 @@ invalids = "tests/invalids/"
 import os
 import subprocess
 import signal
-from colorama import Fore, Style
 from time import time
+
+# ANSI escape codes for colors
+RED = "\033[31m"
+GREEN = "\033[32m"
+RESET = "\033[0m"
 
 def get_files_names():
     files = os.listdir(invalids)
@@ -23,16 +27,16 @@ for file in files:
                 break
             if time() - start_time > 1:
                 process.send_signal(signal.SIGINT)
-                print(Fore.RED + "Test failed due to timeout when testing " + file + Style.RESET_ALL)
+                print(RED + "Test failed due to timeout when testing " + file + RESET)
                 break
         out, err = process.communicate()
         out = out.decode("utf-8")
         err = err.decode("utf-8")
         if process.returncode == 84 and err:
-            print(Fore.GREEN + "Test passed" + Style.RESET_ALL)
+            print(GREEN + "Test passed" + RESET)
         else:
-            print(Fore.RED + "Test failed" + Style.RESET_ALL)
+            print(RED + "Test failed" + RESET)
             exit(1)
     except Exception as e:
-        print(Fore.RED + "Test failed due to error: " + str(e) + Style.RESET_ALL)
+        print(RED + "Test failed due to error: " + str(e) + RESET)
     print("")
