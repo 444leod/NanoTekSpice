@@ -42,5 +42,11 @@ namespace nts {
             std::vector<std::shared_ptr<nts::IComponent>> _inputs = {};
             std::vector<std::shared_ptr<nts::IComponent>> _outputs = {};
             std::vector<std::shared_ptr<nts::IComponent>> _clocks = {};
+
+            std::map<nts::Tristate, std::string> _statesToString = {
+                {nts::Tristate::Undefined, "U"},
+                {nts::Tristate::False, "0"},
+                {nts::Tristate::True, "1"}
+            };
     };
 }

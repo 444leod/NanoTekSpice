@@ -51,30 +51,16 @@ void nts::Shell::display()
 
     std::cout << "tick: " << _tick << std::endl;
     std::cout << "input(s):" << std::endl;
-    for (auto &input : _inputs) {
-        pinValue = input->getPinValue(1);
-        std::cout << "  " << input->getName() << ": ";
-        if (pinValue == nts::Tristate::Undefined)
-            std::cout << "U" << std::endl;
-        else
-            std::cout << pinValue << std::endl;
-    }
-    for (auto &clock : _clocks) {
-        pinValue = clock->getPinValue(1);
-        std::cout << "  " << clock->getName() << ": ";
-        if (pinValue == nts::Tristate::Undefined)
-            std::cout << "U" << std::endl;
-        else
-            std::cout << pinValue << std::endl;
+    for (auto &component : _components) {
+        if (!component->isInput())
+            continue;
+        pinValue = component->getPinValue(1);
+        std::cout << "  " << component->getName() << ": " << _statesToString[pinValue] << std::endl;
     }
     std::cout << "output(s):" << std::endl;
     for (auto &output : _outputs) {
         pinValue = output->getPinValue(1);
-        std::cout << "  " << output->getName() << ": ";
-        if (pinValue == nts::Tristate::Undefined)
-            std::cout << "U" << std::endl;
-        else
-            std::cout << pinValue << std::endl;
+        std::cout << "  " << output->getName() << ": " << _statesToString[pinValue] << std::endl;
     }
 }
 

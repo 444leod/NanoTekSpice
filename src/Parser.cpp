@@ -36,7 +36,7 @@ void nts::Parser::parseArgs(int argc, const char *argv[])
     if (s.ends_with(".nts") == false)
         throw nts::Parser::ParsingError("Invalid file extension");
 
-    this->parseFile(argv[1]);
+    parseFile(argv[1]);
 }
 
 /**
@@ -70,7 +70,6 @@ void nts::Parser::parseFile(const std::string &filename)
             continue;
         }
 
-        std::cout << "Binding chipsets" << std::endl;
         _handlers[state](line, lineCount);
     }
 

@@ -20,7 +20,7 @@
 */
 int nts::NanoTekSpice::run(int argc, const char *argv[])
 {
-    std::unique_ptr<nts::Parser> parser;
+    std::unique_ptr<nts::Parser> parser = std::make_unique<nts::Parser>();
     try {
         parser->parseArgs(argc, argv);
         _links = parser->getLinks();
