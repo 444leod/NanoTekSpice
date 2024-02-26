@@ -54,7 +54,7 @@ std::array<int, 8> Logger::getBitsFromPins() {
 void Logger::writeChar(char c) {
     std::ofstream file;
 
-    file.open("log.txt", std::ios::app);
+    file.open("log.bin", std::ios::app);
     file << c;
 }
 
