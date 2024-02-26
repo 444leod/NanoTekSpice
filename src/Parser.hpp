@@ -47,6 +47,7 @@ namespace nts {
                 {".chipsets:", nts::Parser::fileState::CHIPSETS},
                 {".links:", nts::Parser::fileState::LINKS}
             };
+            std::vector<fileState> _fileStates = {};
             std::map<nts::Parser::fileState, std::function<void(std::string &, int)>> _handlers = {
                 {nts::Parser::fileState::NONE,      [&](std::string &chipset, int lineCount) { handleNone(chipset, lineCount); }},
                 {nts::Parser::fileState::CHIPSETS,  [&](std::string &chipset, int lineCount) { handleChipset(chipset, lineCount); }},
