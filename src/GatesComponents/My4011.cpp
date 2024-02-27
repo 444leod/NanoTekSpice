@@ -46,4 +46,7 @@ void My4011::simulate()
     _subComponents[3]->forceSetLink(_pins[12], 1);
     _subComponents[3]->forceSetLink(_pins[13], 2);
     _subComponents[7]->forceSetLink(_subComponents[3]->getPin(3), 1);
+
+    for (auto &subComponent : _subComponents)
+        subComponent->simulate();
 }

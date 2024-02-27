@@ -27,6 +27,7 @@
 #include "./GatesComponents/My4071.hpp"
 #include "./GatesComponents/My4081.hpp"
 #include "./AdvancedComponents/Logger.hpp"
+#include "./AdvancedComponents/My4013.hpp"
 #include "./AdvancedComponents/My4008.hpp"
 
 namespace nts {
@@ -56,6 +57,7 @@ namespace nts {
                 {"4071", [](std::string name) { return std::make_shared<My4071>(name); }},
                 {"4081", [](std::string name) { return std::make_shared<My4081>(name); }},
                 {"logger", [](std::string name) { return std::make_shared<Logger>(name); }},
+                {"4013", [](std::string name) { return std::make_shared<My4013>(name); }},
                 {"4008", [](std::string name) { return std::make_shared<My4008>(name); }}
             };
     };
