@@ -17,4 +17,5 @@ class My4512 : public nts::AComponent {
 
     protected:
     private:
+        void adrressInputs();
 };
