@@ -32,6 +32,10 @@
 #include "./AdvancedComponents/My4512.hpp"
 
 namespace nts {
+    /**
+     * @brief IComponentFactory class
+     * @details This class is used to create components
+    */
     class IComponentFactory {
         public:
             std::shared_ptr<IComponent> createComponent(
