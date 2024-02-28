@@ -37,6 +37,8 @@ void nts::Parser::parseArgs(int argc, const char *argv[])
         throw nts::Parser::ParsingError("Invalid file extension");
 
     parseFile(argv[1]);
+    if (_chipsets.empty())
+        throw nts::Parser::ParsingError("No chipset found");
 }
 
 /**
@@ -66,6 +68,11 @@ void nts::Parser::parseFile(const std::string &filename)
         if (line.empty())
             continue;
         if (_states.contains(line)) {
+            for (auto &fileState : _fileStates) {
+                if (fileState == _states[line])
+                    throw nts::Parser::ParsingError("Invalid line: line " + std::to_string(lineCount));
+            }
+            _fileStates.push_back(_states[line]);
             state = _states[line];
             continue;
         }
