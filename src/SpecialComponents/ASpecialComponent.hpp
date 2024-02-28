@@ -9,6 +9,10 @@
 
 #pragma once
 
+/**
+ * @brief ASpecialComponent class
+ * @details This class is the abstract class for all special components
+*/
 class ASpecialComponent: public nts::IComponent{
     public:
         ASpecialComponent();
