@@ -11,6 +11,10 @@
 
 namespace nts {
     namespace components {
+        /**
+         * @brief False class
+         * @details This component is always false
+        */
         class False : public SpecialComponent {
             public:
                 False(std::string name);

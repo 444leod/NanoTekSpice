@@ -9,6 +9,11 @@
 
 using nts::components::False;
 
+/**
+ * @brief Create a False object
+ * @details This class is used to create a False component with a given name
+ * @param name - name of the component
+*/
 False::False(std::string name) : SpecialComponent(name)
 {
     _pins = {
