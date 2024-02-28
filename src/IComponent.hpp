@@ -11,6 +11,10 @@
 #include "Pin.hpp"
 
 namespace nts {
+    /**
+     * @brief IComponent class
+     * @details This class is the interface for all components
+    */
     class IComponent {
         public:
             virtual ~IComponent() = default;
@@ -23,6 +27,10 @@ namespace nts {
             virtual void forceSetLink(std::shared_ptr<Pin> pin, std::size_t pinIndex) = 0;
             virtual bool isInput() const = 0;
             virtual int getId() const = 0;
+            /**
+             * @brief Exception class for link error
+             * @details This class is used to throw an exception when a link error occured
+            */
             class LinkException : public std::exception {
                 public:
                     LinkException(std::string const &message) : _message(message) {}
