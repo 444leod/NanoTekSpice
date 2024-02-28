@@ -15,12 +15,18 @@ nts::Pin::Pin(nts::PinType type, nts::Tristate state, bool isLocked, bool isIgno
     _isIgnored = isIgnored;
 }
 
+
+/**
+ * @brief Set the state of the pin
+ * @details This function is used to set the state of the pin
+ * @throws AssignmentError if the pin is locked
+*/
 void nts::Pin::setState(nts::Tristate state)
 {
     if (!_isLocked)
         _state = state;
     else
-        throw nts::AssignmentError("Pin is locked");
+        throw nts::Pin::AssignmentError("Pin is locked");
 }
 
 nts::Tristate nts::Pin::getState() const
