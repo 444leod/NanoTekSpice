@@ -17,6 +17,7 @@
  *
  * @param argc - number of arguments
  * @param argv - arguments
+ * @return 84 if an error occured, 0 otherwise
 */
 int nts::NanoTekSpice::run(int argc, const char *argv[])
 {
@@ -46,6 +47,11 @@ int nts::NanoTekSpice::run(int argc, const char *argv[])
     return 0;
 }
 
+/**
+ * @brief bind the chipsets
+ * @details This function bind the chipsets and the links
+ * It creates the components and bind them together
+*/
 void nts::NanoTekSpice::bindChipsets()
 {
     std::unique_ptr<nts::IComponentFactory> factory = std::make_unique<nts::IComponentFactory>();

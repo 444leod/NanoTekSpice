@@ -14,7 +14,10 @@
 #include "IComponentFactory.hpp"
 
 namespace nts {
-
+    /**
+     * @brief NanoTekSpice class
+     * @details This class is the main class of the program
+    */
     class NanoTekSpice {
         public:
             int run(int argc, const char *argv[]);
