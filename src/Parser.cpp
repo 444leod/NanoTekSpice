@@ -147,11 +147,23 @@ void nts::Parser::handleNone(std::string &line, int lineCount)
     throw nts::Parser::ParsingError("Invalid line: line " + std::to_string(lineCount));
 }
 
+/**
+ * @brief Get the links
+ * @details This function return the links
+ *
+ * @return the links
+*/
 std::vector<std::pair<std::string, std::string>> nts::Parser::getLinks() const
 {
     return _links;
 }
 
+/**
+ * @brief Get the chipsets
+ * @details This function return the chipsets
+ *
+ * @return the chipsets
+*/
 std::vector<std::pair<std::string, std::string>> nts::Parser::getChipsets() const
 {
     return _chipsets;
