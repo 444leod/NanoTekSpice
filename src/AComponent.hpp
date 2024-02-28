@@ -12,6 +12,10 @@
 #include <map>
 
 namespace nts {
+    /**
+     * @brief AComponent class
+     * @details This class is the abstract class for all components
+    */
     class AComponent: public nts::IComponent {
         public:
             AComponent(std::string name = "AComponent");
