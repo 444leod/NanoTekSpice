@@ -15,10 +15,10 @@ Or::~Or()
 {
 }
 
-void Or::simulate()
+void Or::subSimulate(std::string currentName)
 {
-    nts::Tristate a = getPin(1) ? getPin(1)->getState() : UNDEFINED;
-    nts::Tristate b = getPin(2) ? getPin(2)->getState() : UNDEFINED;
+    nts::Tristate a = _pins[1] ? _pins[1]->getState() : UNDEFINED;
+    nts::Tristate b = _pins[2] ? _pins[2]->getState() : UNDEFINED;
 
     switch (a) {
         case TRUE:

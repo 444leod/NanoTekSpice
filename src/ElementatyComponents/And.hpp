@@ -13,7 +13,7 @@ class And : public ElementaryComponent {
     public:
         And(std::string name);
         ~And();
-        void simulate() override;
+        void subSimulate(std::string currentName) override;
 
     protected:
     private:

@@ -15,7 +15,7 @@ Xor::~Xor()
 {
 }
 
-void Xor::simulate()
+void Xor::subSimulate(std::string currentName)
 {
     nts::Tristate a = getPin(1) ? getPin(1)->getState() : UNDEFINED;
     nts::Tristate b = getPin(2) ? getPin(2)->getState() : UNDEFINED;

@@ -10,8 +10,8 @@
 Not::Not(std::string name) : ElementaryComponent(name)
 {
     _pins = {
-        {1, NULL},
-        {2, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined)}
+        {1, CREATE_INPUT},
+        {2, CREATE_OUTPUT}
     };
 }
 
@@ -19,12 +19,14 @@ Not::~Not()
 {
 }
 
-void Not::simulate()
+void Not::subSimulate(std::string currentName)
 {
-    std::shared_ptr<nts::Pin> pin1 = getPin(1);
-    if (pin1 == NULL || pin1->getState() == nts::Tristate::Undefined) {
+    nts::Tristate output = _pins[1]->getState();
+    if (output == nts::Tristate::True) {
+        setPinValue(2, nts::Tristate::False);
+    } else if (output == nts::Tristate::False) {
+        setPinValue(2, nts::Tristate::True);
+    } else {
         setPinValue(2, nts::Tristate::Undefined);
-        return;
     }
-    setPinValue(2, pin1->getState() == nts::Tristate::True ? nts::Tristate::False : nts::Tristate::True);
 }

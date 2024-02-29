@@ -13,7 +13,7 @@ class Not : public ElementaryComponent {
     public:
         Not(std::string name);
         ~Not();
-        void simulate() override;
+        void subSimulate(std::string currentName) override;
 
     protected:
     private:
