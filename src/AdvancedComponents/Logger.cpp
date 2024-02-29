@@ -50,37 +50,29 @@ std::array<int, 8> Logger::getBitsFromPins() {
 void Logger::writeChar(char c) {
     std::ofstream file;
 
-    file.open("log.bin", std::ios::app);
+    file.open("log.bin", std::ios::in | std::ios::app);
+    if (!file.is_open())
+        return;
     file << c;
+    file.close();
 }
 
 bool Logger::isInhibitFalse() {
-    if (!_pins[10]) {
-        _isCorrectlySetUp = false;
-        return false;
-    }
     return _pins[10]->getState() == nts::Tristate::False;
 }
 
 void Logger::subSimulate(std::string currentName)
 {
     (void)currentName;
-    if (!_isCorrectlySetUp) return;
-    if (!_pins[9] || !_pins[10]) {
-        _isCorrectlySetUp = false;
-        return;
-    }
-    if (_pins[10]->getState() != nts::Tristate::False) {
-        _lastState = _pins[9]->getState();
-        return;
-    }
 
-    if (_lastState != nts::Tristate::False || _pins[9]->getState() != nts::Tristate::True) {
-        _lastState = _pins[9]->getState();
+    _lastState = _currentState;
+    _currentState = _pins[9]->getState();
+
+    nts::Tristate inhibit = _pins[10]->getState();
+
+    if (inhibit != nts::Tristate::False)
         return;
-    }
 
-    writeChar(getCharFromBits(getBitsFromPins()));
-
-    _lastState = _pins[9]->getState();
+    if (_lastState == nts::Tristate::False && _currentState == nts::Tristate::True)
+        writeChar(getCharFromBits(getBitsFromPins()));
 }

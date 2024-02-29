@@ -21,5 +21,5 @@ class Logger : public nts::AComponent {
         std::array<int, 8>getBitsFromPins();
         void writeChar(char c);
         nts::Tristate _lastState = nts::Tristate::Undefined;
-        bool _isCorrectlySetUp = true;
+        nts::Tristate _currentState = nts::Tristate::Undefined;
 };
