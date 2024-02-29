@@ -7,9 +7,9 @@
 
 #pragma once
 
-#include "./GatesComponent.hpp"
+#include "./AGatesComponent.hpp"
 
-class My4069 : public GatesComponent {
+class My4069 : public AGatesComponent {
     public:
         My4069(std::string name);
         void linkSubComponents() override;

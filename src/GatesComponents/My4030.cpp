@@ -9,7 +9,7 @@
 #include "../ElementatyComponents/Xor.hpp"
 
 
-My4030::My4030(std::string name) : GatesComponent(name)
+My4030::My4030(std::string name) : AGatesComponent(name)
 {
     _subComponents = {
         {"Xor1", std::make_shared<Xor>("Xor1")},

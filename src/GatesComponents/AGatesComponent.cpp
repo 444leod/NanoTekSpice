@@ -2,12 +2,12 @@
 ** EPITECH PROJECT, 2024
 ** NanoTekSpice
 ** File description:
-** GatesComponent
+** AGatesComponent
 */
 
-#include "GatesComponent.hpp"
+#include "AGatesComponent.hpp"
 
-GatesComponent::GatesComponent(std::string name) : AComponent(name)
+AGatesComponent::AGatesComponent(std::string name) : AComponent(name)
 {
     _pins = {
         {1, CREATE_INPUT},
@@ -27,7 +27,7 @@ GatesComponent::GatesComponent(std::string name) : AComponent(name)
     };
 }
 
-void GatesComponent::subSimulate(std::string currentName)
+void AGatesComponent::subSimulate(std::string currentName)
 {
     for (auto &subComponent : _subComponents) {
         subComponent.second->subSimulate(currentName);

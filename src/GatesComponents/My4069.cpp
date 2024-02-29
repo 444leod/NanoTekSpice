@@ -8,7 +8,7 @@
 #include "My4069.hpp"
 #include "../ElementatyComponents/Not.hpp"
 
-My4069::My4069(std::string name) : GatesComponent(name)
+My4069::My4069(std::string name) : AGatesComponent(name)
 {
     _pins = {
         {1, CREATE_INPUT},

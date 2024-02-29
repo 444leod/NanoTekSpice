@@ -17,7 +17,7 @@ SRC_MAIN =  ./src/main.cpp \
 
 SRC_COMPONENTS = ./src/GatesComponents/My4011.cpp \
 	./src/GatesComponents/My4030.cpp \
-	./src/GatesComponents/GatesComponent.cpp \
+	./src/GatesComponents/AGatesComponent.cpp \
 	./src/GatesComponents/My4001.cpp \
 	./src/GatesComponents/My4071.cpp \
 	./src/GatesComponents/My4081.cpp \

@@ -10,7 +10,7 @@
 #include "../ElementatyComponents/Not.hpp"
 
 
-My4001::My4001(std::string name) : GatesComponent(name)
+My4001::My4001(std::string name) : AGatesComponent(name)
 {
     _subComponents = {
         {"Or1", std::make_shared<Or>("Or1")},

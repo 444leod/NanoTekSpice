@@ -9,7 +9,7 @@
 #include "../ElementatyComponents/And.hpp"
 #include "../ElementatyComponents/Not.hpp"
 
-My4011::My4011(std::string name) : GatesComponent(name)
+My4011::My4011(std::string name) : AGatesComponent(name)
 {
     _subComponents = {
         {"And1", std::make_shared<And>("And1")},

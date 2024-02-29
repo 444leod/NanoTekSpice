@@ -8,7 +8,7 @@
 #include "My4071.hpp"
 #include "../ElementatyComponents/Or.hpp"
 
-My4071::My4071(std::string name) : GatesComponent(name)
+My4071::My4071(std::string name) : AGatesComponent(name)
 {
     _subComponents = {
         {"Or1", std::make_shared<Or>("Or1")},
