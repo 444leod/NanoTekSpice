@@ -8,6 +8,10 @@
 #include "My4071.hpp"
 #include "../ElementatyComponents/Or.hpp"
 
+/**
+ * @brief My4071 class constructor
+ * @details Details the subcomponents of the 4069 component
+*/
 My4071::My4071(std::string name) : AGatesComponent(name)
 {
     _subComponents = {
@@ -18,6 +22,9 @@ My4071::My4071(std::string name) : AGatesComponent(name)
     };
 }
 
+/**
+ * @brief Links the subcomponents of the 4071 component
+*/
 void My4071::linkSubComponents()
 {
     _subComponents["Or1"]->getPin(1)->setLink(_pins[1]);
