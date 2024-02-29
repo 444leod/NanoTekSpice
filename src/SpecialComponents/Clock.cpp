@@ -10,7 +10,7 @@
 Clock::Clock(std::string name) : SpecialComponent(name)
 {
     _pins = {
-            {1, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined)}
+            {1, CREATE_OUTPUT}
         };
     _isInput = true;
 }
