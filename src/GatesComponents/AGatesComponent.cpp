@@ -7,6 +7,10 @@
 
 #include "AGatesComponent.hpp"
 
+/**
+ * @brief Constructor of AGatesComponent
+ * 
+*/
 AGatesComponent::AGatesComponent(std::string name) : AComponent(name)
 {
     _pins = {
@@ -23,7 +27,7 @@ AGatesComponent::AGatesComponent(std::string name) : AComponent(name)
         {11, CREATE_OUTPUT},
         {12, CREATE_INPUT},
         {13, CREATE_INPUT},
-        {14,  CREATE_IGNORED}
+        {14, CREATE_IGNORED}
     };
 }
 

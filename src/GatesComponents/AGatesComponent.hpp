@@ -9,6 +9,10 @@
 
 #include "../AComponent.hpp"
 
+/**
+ * @brief AGatesComponent class
+ * @details Represents the abstract class for gate components
+*/
 class AGatesComponent : public nts::AComponent {
     public:
         AGatesComponent(std::string name);
