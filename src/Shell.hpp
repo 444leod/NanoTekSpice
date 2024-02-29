@@ -17,7 +17,8 @@ namespace nts {
                 std::shared_ptr<nts::IComponent>> components,
                 std::vector<std::shared_ptr<nts::IComponent>> inputs,
                 std::vector<std::shared_ptr<nts::IComponent>> outputs,
-                std::vector<std::shared_ptr<nts::IComponent>> clocks);
+                std::vector<std::shared_ptr<nts::IComponent>> clocks,
+                std::vector<std::shared_ptr<nts::IComponent>> loggers);
             ~Shell() = default;
             class ParsingError : public std::exception {
                 public:
@@ -47,6 +48,7 @@ namespace nts {
             std::vector<std::shared_ptr<nts::IComponent>> _inputs = {};
             std::vector<std::shared_ptr<nts::IComponent>> _outputs = {};
             std::vector<std::shared_ptr<nts::IComponent>> _clocks = {};
+            std::vector<std::shared_ptr<nts::IComponent>> _loggers = {};
 
             std::map<nts::Tristate, std::string> _statesToString = {
                 {nts::Tristate::Undefined, "U"},

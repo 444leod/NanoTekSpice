@@ -11,12 +11,14 @@ nts::Shell::Shell(
     std::vector<std::shared_ptr<nts::IComponent>> components,
     std::vector<std::shared_ptr<nts::IComponent>> inputs,
     std::vector<std::shared_ptr<nts::IComponent>> outputs,
-    std::vector<std::shared_ptr<nts::IComponent>> clocks
+    std::vector<std::shared_ptr<nts::IComponent>> clocks,
+    std::vector<std::shared_ptr<nts::IComponent>> loggers
 ){
     _components = components;
     _inputs = inputs;
     _outputs = outputs;
     _clocks = clocks;
+    _loggers = loggers;
 }
 
 int nts::Shell::run()
@@ -113,6 +115,9 @@ void nts::Shell::simulate()
     _assignements.clear();
     for (auto &output : _outputs) {
         output->simulate(output->getName());
+    }
+    for (auto &logger : _loggers) {
+        logger->simulate(logger->getName());
     }
     for (auto &component : _components) {
         component->dump();

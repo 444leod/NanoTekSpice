@@ -30,6 +30,7 @@ namespace nts {
             std::vector<std::shared_ptr<nts::IComponent>> _inputs = {};
             std::vector<std::shared_ptr<nts::IComponent>> _outputs = {};
             std::vector<std::shared_ptr<nts::IComponent>> _clocks = {};
+            std::vector<std::shared_ptr<nts::IComponent>> _loggers = {};
 
         };
 }

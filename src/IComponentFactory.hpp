@@ -41,7 +41,8 @@ namespace nts {
                 const std::string &name,
                 std::vector<std::shared_ptr<nts::IComponent>> &inputs,
                 std::vector<std::shared_ptr<nts::IComponent>> &outputs,
-                std::vector<std::shared_ptr<nts::IComponent>> &clocks);
+                std::vector<std::shared_ptr<nts::IComponent>> &clocks,
+                std::vector<std::shared_ptr<nts::IComponent>> &loggers);
         private:
             std::map<std::string, std::function<std::shared_ptr<IComponent>(std::string)>> _componentFactory = {
                 {"input", [](std::string name) { return std::make_shared<Input>(name); }},
