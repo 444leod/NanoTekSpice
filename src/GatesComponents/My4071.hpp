@@ -12,7 +12,6 @@
 class My4071 : public GatesComponent {
     public:
         My4071(std::string name);
-        ~My4071();
         void linkSubComponents() override;
 
     protected:

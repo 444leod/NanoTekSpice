@@ -12,7 +12,6 @@
 class GatesComponent : public nts::AComponent {
     public:
         GatesComponent(std::string name);
-        ~GatesComponent();
         void subSimulate(std::string currentName) override;
 
     protected:

@@ -18,10 +18,6 @@ My4071::My4071(std::string name) : GatesComponent(name)
     };
 }
 
-My4071::~My4071()
-{
-}
-
 void My4071::linkSubComponents()
 {
     _subComponents["Or1"]->getPin(1)->setLink(_pins[1]);

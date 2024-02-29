@@ -36,10 +36,6 @@ My4069::My4069(std::string name) : GatesComponent(name)
     };
 }
 
-My4069::~My4069()
-{
-}
-
 void My4069::linkSubComponents()
 {
     _subComponents["Not1"]->getPin(1)->setLink(_pins[1]);

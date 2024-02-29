@@ -21,7 +21,7 @@ namespace nts {
             virtual std::string getName() const = 0;
             virtual std::shared_ptr<Pin> getPin(std::size_t pin) = 0;
             virtual void setLink(std::size_t pin, std::shared_ptr<IComponent> other, std::size_t otherPin) = 0;
-            virtual void setLinkForce(std::size_t pin, std::shared_ptr<IComponent> other, std::size_t otherPin) = 0;
+            // virtual void setLinkForce(std::size_t pin, std::shared_ptr<IComponent> other, std::size_t otherPin) = 0;
             virtual void forceSetLink(std::shared_ptr<Pin> pin, std::size_t pinIndex) = 0;
             virtual bool isInput() const = 0;
             virtual int getId() const = 0;

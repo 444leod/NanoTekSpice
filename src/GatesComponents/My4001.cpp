@@ -24,10 +24,6 @@ My4001::My4001(std::string name) : GatesComponent(name)
     };
 }
 
-My4001::~My4001()
-{
-}
-
 void My4001::linkSubComponents()
 {
     _subComponents["Or1"]->setLink(3, _subComponents["Not1"], 1);

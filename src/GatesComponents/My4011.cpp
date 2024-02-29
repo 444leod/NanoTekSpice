@@ -23,10 +23,6 @@ My4011::My4011(std::string name) : GatesComponent(name)
     };
 }
 
-My4011::~My4011()
-{
-}
-
 void My4011::linkSubComponents()
 {
     _subComponents["And1"]->setLink(3, _subComponents["Not1"], 1);

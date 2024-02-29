@@ -13,7 +13,3 @@ Output::Output(std::string name) : SpecialComponent(name)
             {1, CREATE_INPUT},
         };
 }
-
-Output::~Output()
-{
-}

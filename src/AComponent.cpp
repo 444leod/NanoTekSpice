@@ -91,10 +91,10 @@ void nts::AComponent::setLink(size_t pin, std::shared_ptr<IComponent> other, siz
     }
 }
 
-void nts::AComponent::setLinkForce(size_t pin, std::shared_ptr<IComponent> other, size_t otherPin)
-{
-    _pins[pin] = other->getPin(otherPin);
-}
+// void nts::AComponent::setLinkForce(size_t pin, std::shared_ptr<IComponent> other, size_t otherPin)
+// {
+//     _pins[pin] = other->getPin(otherPin);
+// }
 
 void nts::AComponent::forceSetLink(std::shared_ptr<nts::Pin> pin, std::size_t pinIndex)
 {

@@ -14,7 +14,3 @@ Clock::Clock(std::string name) : SpecialComponent(name)
         };
     _isInput = true;
 }
-
-Clock::~Clock()
-{
-}

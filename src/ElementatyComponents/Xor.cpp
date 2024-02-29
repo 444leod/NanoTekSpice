@@ -11,10 +11,6 @@ Xor::Xor(std::string name) : ElementaryComponent(name)
 {
 }
 
-Xor::~Xor()
-{
-}
-
 void Xor::subSimulate(std::string currentName)
 {
     (void)currentName;

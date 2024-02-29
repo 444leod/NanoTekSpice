@@ -27,10 +27,6 @@ GatesComponent::GatesComponent(std::string name) : AComponent(name)
     };
 }
 
-GatesComponent::~GatesComponent()
-{
-}
-
 void GatesComponent::subSimulate(std::string currentName)
 {
     for (auto &subComponent : _subComponents) {

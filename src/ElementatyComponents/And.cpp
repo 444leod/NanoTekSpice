@@ -11,10 +11,6 @@ And::And(std::string name) : ElementaryComponent(name)
 {
 }
 
-And::~And()
-{
-}
-
 void And::subSimulate(std::string currentName)
 {
     (void)currentName;

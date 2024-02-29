@@ -23,10 +23,6 @@ Logger::Logger(std::string name) : AComponent(name)
     };
 }
 
-Logger::~Logger()
-{
-}
-
 char Logger::getCharFromBits(const std::array<int, 8>& bits) {
     char result = 0;
     for (int i = 0; i < 8; ++i) {

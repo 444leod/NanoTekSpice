@@ -15,7 +15,3 @@ True::True(std::string name) : SpecialComponent(name)
             {1, std::make_shared<nts::Pin>(this, nts::PinType::OUTPUT, nts::Tristate::True, true)}
         };
 }
-
-True::~True()
-{
-}

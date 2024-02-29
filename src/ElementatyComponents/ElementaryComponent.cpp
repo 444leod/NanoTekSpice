@@ -15,7 +15,3 @@ ElementaryComponent::ElementaryComponent(std::string name) : AComponent(name)
             {3, CREATE_OUTPUT}
         };
 }
-
-ElementaryComponent::~ElementaryComponent()
-{
-}

@@ -15,10 +15,6 @@ Not::Not(std::string name) : ElementaryComponent(name)
     };
 }
 
-Not::~Not()
-{
-}
-
 void Not::subSimulate(std::string currentName)
 {
     (void)currentName;

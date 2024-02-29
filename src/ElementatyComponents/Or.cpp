@@ -11,10 +11,6 @@ Or::Or(std::string name) : ElementaryComponent(name)
 {
 }
 
-Or::~Or()
-{
-}
-
 void Or::subSimulate(std::string currentName)
 {
     (void)currentName;

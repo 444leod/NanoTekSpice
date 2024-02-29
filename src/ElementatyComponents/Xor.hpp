@@ -12,7 +12,6 @@
 class Xor : public ElementaryComponent {
     public:
         Xor(std::string name);
-        ~Xor();
         void subSimulate(std::string currentName) override;
 
     protected:

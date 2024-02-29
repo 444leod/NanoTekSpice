@@ -12,7 +12,6 @@
 class Or : public ElementaryComponent {
     public:
         Or(std::string name);
-        ~Or();
         void subSimulate(std::string currentName) override;
 
     protected:

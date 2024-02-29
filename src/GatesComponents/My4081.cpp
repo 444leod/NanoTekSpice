@@ -18,10 +18,6 @@ My4081::My4081(std::string name) : GatesComponent(name)
     };
 }
 
-My4081::~My4081()
-{
-}
-
 void My4081::linkSubComponents()
 {
     _subComponents["And1"]->getPin(1)->setLink(_pins[1]);

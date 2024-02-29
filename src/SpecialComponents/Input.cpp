@@ -14,7 +14,3 @@ Input::Input(std::string name) : SpecialComponent(name)
         };
     _isInput = true;
 }
-
-Input::~Input()
-{
-}

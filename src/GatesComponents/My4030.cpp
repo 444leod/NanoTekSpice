@@ -19,10 +19,6 @@ My4030::My4030(std::string name) : GatesComponent(name)
     };
 }
 
-My4030::~My4030()
-{
-}
-
 void My4030::linkSubComponents()
 {
     _subComponents["Xor1"]->getPin(1)->setLink(_pins[1]);
