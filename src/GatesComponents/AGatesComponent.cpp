@@ -9,7 +9,8 @@
 
 /**
  * @brief Constructor of AGatesComponent
- * @details Used to initialize the pins of the component
+ * @details Used to initialize the pins of the component 
+ * as most of the gates have the same pins
 */
 AGatesComponent::AGatesComponent(std::string name) : AComponent(name)
 {
