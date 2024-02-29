@@ -9,6 +9,11 @@
 
 #include "./AElementaryComponent.hpp"
 
+/**
+ * @brief Xor class
+ * @details Basic XOR logic gate
+ * Gives true if only one input is true else false
+*/
 class Xor : public AElementaryComponent {
     public:
         Xor(std::string name);
