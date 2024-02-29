@@ -65,7 +65,6 @@ void nts::Parser::parseFile(const std::string &filename)
     int lineCount = 0;
 
     while (std::getline(file, line)) {
-        std::cout << line << std::endl;
         lineCount++;
         line = line.substr(0, line.find('#'));
         if (line.empty())
