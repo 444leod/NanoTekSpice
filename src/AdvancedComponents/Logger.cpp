@@ -10,16 +10,16 @@
 Logger::Logger(std::string name) : AComponent(name)
 {
     _pins = {
-        {1, NULL},
-        {2, NULL},
-        {3, NULL},
-        {4, NULL},
-        {5, NULL},
-        {6, NULL},
-        {7, NULL},
-        {8, NULL},
-        {9, NULL},
-        {10, NULL}
+        {1, CREATE_INPUT},
+        {2, CREATE_INPUT},
+        {3, CREATE_INPUT},
+        {4, CREATE_INPUT},
+        {5, CREATE_INPUT},
+        {6, CREATE_INPUT},
+        {7, CREATE_INPUT},
+        {8, CREATE_INPUT},
+        {9, CREATE_INPUT},
+        {10, CREATE_INPUT}
     };
 }
 
@@ -66,7 +66,7 @@ bool Logger::isInhibitFalse() {
     return _pins[10]->getState() == nts::Tristate::False;
 }
 
-void Logger::simulate()
+void Logger::subSimulate(std::string currentName)
 {
     if (!_isCorrectlySetUp) return;
     if (!_pins[9] || !_pins[10]) {

@@ -17,19 +17,19 @@ My4008::My4008(std::string name) : AComponent(name)
         {5, NULL},
         {6, NULL},
         {7, NULL},
-        {8, std::make_shared<nts::Pin>(nts::PinType::INPUT, nts::Tristate::Undefined, false, true)},
+        {8, std::make_shared<nts::Pin>(this, nts::PinType::INPUT, nts::Tristate::Undefined, false, true)},
         {9, NULL},
-        {10, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined)},
-        {11, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined)},
-        {12, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined)},
-        {13, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined)},
-        {14, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined)},
+        {10, CREATE_OUTPUT},
+        {11, CREATE_OUTPUT},
+        {12, CREATE_OUTPUT},
+        {13, CREATE_OUTPUT},
+        {14, CREATE_OUTPUT},
         {15, NULL},
-        {16, std::make_shared<nts::Pin>(nts::PinType::INPUT, nts::Tristate::Undefined, false, true)}
+        {16, std::make_shared<nts::Pin>(this, nts::PinType::INPUT, nts::Tristate::Undefined, false, true)}
     };
 }
 
-void My4008::simulate()
+void My4008::subSimulate(std::string currentName)
 {
     std::vector<std::pair<std::shared_ptr<nts::Pin>, std::shared_ptr<nts::Pin>>> pais = {
         {_pins[7], _pins[6]},
