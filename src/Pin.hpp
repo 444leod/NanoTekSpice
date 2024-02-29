@@ -11,12 +11,10 @@
 #include "IComponent.hpp"
 
 namespace nts {
-
     enum PinType {
         INPUT,
         OUTPUT,
     };
-
 
     /**
      * @brief Pin class

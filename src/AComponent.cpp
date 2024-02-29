@@ -21,6 +21,10 @@ std::string nts::AComponent::getName() const
     return _name;
 }
 
+/**
+ * @brief simulate the subcomponents and then the component itself
+ * @param currentName - the name of the current component
+*/
 void nts::AComponent::simulate(std::string currentName)
 {
     for (auto &alreadyTicked : _alreadyTickeds) {
@@ -83,6 +87,14 @@ std::shared_ptr<nts::Pin> nts::AComponent::getPin(size_t pin)
     return _pins[pin];
 }
 
+/**
+ * @brief Throw a link exception
+ * @throws nts::IComponent::LinkException - with the error message
+ * @param error - the error message
+ * @param pin - the pin
+ * @param otherName - the name of the other component
+ * @param otherPin - the other pin
+*/
 void nts::AComponent::throwLinkException(
     std::string error,
     size_t pin,
@@ -168,6 +180,9 @@ void nts::AComponent::linkSubComponents()
 {
 }
 
+/**
+ * @brief Empty the list of already ticked components
+*/
 void nts::AComponent::dump()
 {
     for (auto &subComponent : _subComponents) {
