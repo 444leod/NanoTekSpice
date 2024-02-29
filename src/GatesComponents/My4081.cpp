@@ -8,6 +8,10 @@
 #include "My4081.hpp"
 #include "../ElementatyComponents/And.hpp"
 
+/**
+ * @brief My4081 class constructor
+ * @details Details the subcomponents of the 4081 component
+*/
 My4081::My4081(std::string name) : AGatesComponent(name)
 {
     _subComponents = {
