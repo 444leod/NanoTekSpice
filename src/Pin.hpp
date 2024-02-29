@@ -25,7 +25,12 @@ namespace nts {
     };
     class Pin {
         public:
-            Pin(IComponent *component, nts::PinType type, nts::Tristate state = nts::Tristate::Undefined, bool isLocked = false, bool isIgnored = false);
+            Pin(
+                IComponent *component,
+                nts::PinType type,
+                nts::Tristate state = nts::Tristate::Undefined,
+                bool isLocked = false,
+                bool isIgnored = false);
             ~Pin() = default;
             void setState(nts::Tristate state);
             nts::Tristate getState() const;

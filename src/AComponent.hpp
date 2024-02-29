@@ -22,8 +22,15 @@ namespace nts {
             virtual nts::Tristate getPinValue(std::size_t pin) const;
             virtual std::string getName() const;
             virtual std::shared_ptr<nts::Pin> getPin(std::size_t pin);
-            virtual void setLink(std::size_t pin, std::shared_ptr<IComponent> other, std::size_t otherPin);
-            // virtual void setLinkForce(std::size_t pin, std::shared_ptr<IComponent> other, std::size_t otherPin);
+            virtual void throwLinkException(
+                std::string error,
+                std::size_t pin,
+                std::string otherName,
+                std::size_t otherPin) const final;
+            virtual void setLink(
+                std::size_t pin,
+                std::shared_ptr<IComponent> other,
+                std::size_t otherPin);
             virtual void forceSetLink(std::shared_ptr<nts::Pin> pin, std::size_t pinIndex);
             virtual bool isInput() const;
             virtual int getId() const;
