@@ -8,6 +8,10 @@
 #include "My4069.hpp"
 #include "../ElementatyComponents/Not.hpp"
 
+/**
+ * @brief My4069 class
+ * @details Details the subcomponents of the 4069 component while also overriding the _pins
+*/
 My4069::My4069(std::string name) : AGatesComponent(name)
 {
     _pins = {
@@ -36,6 +40,9 @@ My4069::My4069(std::string name) : AGatesComponent(name)
     };
 }
 
+/**
+ * @brief Links the subcomponents of the 4069 component
+*/
 void My4069::linkSubComponents()
 {
     _subComponents["Not1"]->getPin(1)->setLink(_pins[1]);
