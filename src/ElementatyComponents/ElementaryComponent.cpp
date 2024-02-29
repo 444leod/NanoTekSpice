@@ -10,12 +10,8 @@
 ElementaryComponent::ElementaryComponent(std::string name) : AComponent(name)
 {
      _pins = {
-            {1, NULL},
-            {2, NULL},
-            {3, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined)}
+            {1, CREATE_INPUT},
+            {2, CREATE_INPUT},
+            {3, CREATE_OUTPUT}
         };
-}
-
-ElementaryComponent::~ElementaryComponent()
-{
 }

@@ -1,0 +1,39 @@
+.chipsets:
+false false
+true true
+input undefined
+output true-true
+output false-true
+output true-false
+output false-false
+output true-undefined
+output false-undefined
+output undefined-undefined
+4071 or1
+4071 or2
+
+.links:
+or1:1 true:1
+or1:2 true:1
+or1:3 true-true:1
+or1:4: false-true:1
+or1:5 false:1
+or1:6 true:1
+or1:8 false:1
+or1:9 true:1
+or1:10 true-false:1
+or1:11 false-false:1
+or1:12 false:1
+or1:13 false:1
+or2:1 true:1
+or2:2 undefined:1
+or2:3 true-undefined:1
+or2:4 false-undefined:1
+or2:5 false:1
+or2:6 undefined:1
+or2:8 undefined:1
+or2:9 undefined:1
+or2:10 undefined-undefined:1
+
+
+

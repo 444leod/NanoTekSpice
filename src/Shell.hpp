@@ -37,17 +37,18 @@ namespace nts {
             void display();
             void simulate();
             void loop();
+            void sd();
             void assign(const std::string &s, std::stringstream &ss);
             const std::unordered_map<std::string, std::function<void()>> _commands = {
                 {"exit", [&]() { exit(); }},
                 {"display", [&]() { display(); }},
                 {"simulate", [&]() { simulate(); }},
                 {"loop", [&]() { loop(); }},
+                {"sd", [&]() { sd(); }}
             };
             std::vector<std::shared_ptr<nts::IComponent>> _components = {};
             std::vector<std::pair<std::string, std::string>> _assignements = {};
 
-            int _tick = 0;
             std::vector<std::shared_ptr<nts::IComponent>> _inputs = {};
             std::vector<std::shared_ptr<nts::IComponent>> _outputs = {};
             std::vector<std::shared_ptr<nts::IComponent>> _clocks = {};

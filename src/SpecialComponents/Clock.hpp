@@ -17,7 +17,6 @@
 class Clock : public SpecialComponent {
     public:
         Clock(std::string name);
-        ~Clock();
 
     protected:
     private:

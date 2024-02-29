@@ -8,6 +8,7 @@
 #pragma once
 
 #include "nanotekspice.hpp"
+#include "IComponent.hpp"
 
 namespace nts {
 
@@ -23,7 +24,12 @@ namespace nts {
     */
     class Pin {
         public:
-            Pin(nts::PinType type, nts::Tristate state = nts::Tristate::Undefined, bool isLocked = false, bool isIgnored = false);
+            Pin(
+                IComponent *component,
+                nts::PinType type,
+                nts::Tristate state = nts::Tristate::Undefined,
+                bool isLocked = false,
+                bool isIgnored = false);
             ~Pin() = default;
             /**
              * @brief Exception class for assignment error
@@ -39,8 +45,9 @@ namespace nts {
             void setState(nts::Tristate state);
             nts::Tristate getState() const;
             nts::PinType getType() const;
-            bool isLocked() const;
             bool isIgnored() const;
+            void setLink(std::shared_ptr<Pin> pin);
+            void simulate(std::string currentName);
 
         protected:
         private:
@@ -48,6 +55,8 @@ namespace nts {
             nts::PinType _type;
             bool _isLocked = false;
             bool _isIgnored = false;
+            nts::IComponent *_linkedComponent = nullptr;
+            std::shared_ptr<Pin> _linkedPin = nullptr;
     };
 }
 

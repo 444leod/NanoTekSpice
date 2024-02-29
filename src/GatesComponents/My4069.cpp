@@ -11,52 +11,49 @@
 My4069::My4069(std::string name) : GatesComponent(name)
 {
     _pins = {
-        {1, NULL},
-        {2, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined)},
-        {3, NULL},
-        {4, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined)},
-        {5, NULL},
-        {6, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined)},
-        {7, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined, false, true)},
-        {8, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined)},
-        {9, NULL},
-        {10, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined)},
-        {11, NULL},
-        {12, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined)},
-        {13, NULL},
-        {14, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined, false, true)},
+        {1, CREATE_INPUT},
+        {2, CREATE_OUTPUT},
+        {3, CREATE_INPUT},
+        {4, CREATE_OUTPUT},
+        {5, CREATE_INPUT},
+        {6, CREATE_OUTPUT},
+        {7, CREATE_IGNORED},
+        {8, CREATE_OUTPUT},
+        {9, CREATE_INPUT},
+        {10, CREATE_OUTPUT},
+        {11, CREATE_INPUT},
+        {12, CREATE_OUTPUT},
+        {13, CREATE_INPUT},
+        {14, CREATE_IGNORED},
     };
      _subComponents = {
-        std::make_shared<Not>("Not1"),
-        std::make_shared<Not>("Not2"),
-        std::make_shared<Not>("Not3"),
-        std::make_shared<Not>("Not4"),
-        std::make_shared<Not>("Not5"),
-        std::make_shared<Not>("Not6")
+        {"Not1", std::make_shared<Not>("Not1")},
+        {"Not2", std::make_shared<Not>("Not2")},
+        {"Not3", std::make_shared<Not>("Not3")},
+        {"Not4", std::make_shared<Not>("Not4")},
+        {"Not5", std::make_shared<Not>("Not5")},
+        {"Not6", std::make_shared<Not>("Not6")},
     };
 }
 
-My4069::~My4069()
+void My4069::linkSubComponents()
 {
-}
+    _subComponents["Not1"]->getPin(1)->setLink(_pins[1]);
+    _pins[2]->setLink(_subComponents["Not1"]->getPin(2));
 
-void My4069::simulate()
-{
-    _subComponents[0]->forceSetLink(_pins[1], 1);
-    _subComponents[0]->forceSetLink(_pins[2], 2);
-    _subComponents[1]->forceSetLink(_pins[3], 1);
-    _subComponents[1]->forceSetLink(_pins[4], 2);
-    _subComponents[2]->forceSetLink(_pins[5], 1);
-    _subComponents[2]->forceSetLink(_pins[6], 2);
-    _subComponents[3]->forceSetLink(_pins[8], 1);
-    _subComponents[3]->forceSetLink(_pins[9], 2);
-    _subComponents[4]->forceSetLink(_pins[10], 1);
-    _subComponents[4]->forceSetLink(_pins[11], 2);
-    _subComponents[5]->forceSetLink(_pins[12], 1);
-    _subComponents[5]->forceSetLink(_pins[13], 2);
+    _subComponents["Not2"]->getPin(1)->setLink(_pins[3]);
+    _pins[4]->setLink(_subComponents["Not2"]->getPin(2));
 
-    for (auto &subComponent : _subComponents) {
-        subComponent->simulate();
-    }
+    _subComponents["Not3"]->getPin(1)->setLink(_pins[5]);
+    _pins[6]->setLink(_subComponents["Not3"]->getPin(2));
+
+    _subComponents["Not4"]->getPin(1)->setLink(_pins[9]);
+    _pins[8]->setLink(_subComponents["Not4"]->getPin(2));
+
+    _subComponents["Not5"]->getPin(1)->setLink(_pins[11]);
+    _pins[10]->setLink(_subComponents["Not5"]->getPin(2));
+
+    _subComponents["Not6"]->getPin(1)->setLink(_pins[13]);
+    _pins[12]->setLink(_subComponents["Not6"]->getPin(2));
 }
 

@@ -1,0 +1,18 @@
+.chipsets:
+false false
+true true
+input undefined
+output out_true
+output out_false
+output out_undefined
+4069 not
+
+.links:
+not:1 false:1
+not:2 out_false:1
+not:3 true:1
+not:4 out_true:1
+not:5 undefined:1
+not:6 out_undefined:1
+
+

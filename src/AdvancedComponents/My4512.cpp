@@ -10,22 +10,22 @@
 My4512::My4512(std::string name) : AComponent(name)
 {
     _pins = {
-        {1, NULL},//x0
-        {2, NULL},//x1
-        {3, NULL},//x2
-        {4, NULL},//x3
-        {5, NULL},//x4
-        {6, NULL},//x5
-        {7, NULL},//x6
-        {8, std::make_shared<nts::Pin>(nts::PinType::INPUT, nts::Tristate::Undefined, false, true)},//VSS
-        {9, NULL},//x7
-        {10, NULL},//inhibit
-        {11, NULL},//adress input A
-        {12, NULL},//adress input B
-        {13, NULL},//adress input C
-        {14, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined)},//Z
-        {15, NULL},//OE
-        {16, std::make_shared<nts::Pin>(nts::PinType::INPUT, nts::Tristate::Undefined, false, true)}//VDD
+        {1, CREATE_INPUT},//x0
+        {2, CREATE_INPUT},//x1
+        {3, CREATE_INPUT},//x2
+        {4, CREATE_INPUT},//x3
+        {5, CREATE_INPUT},//x4
+        {6, CREATE_INPUT},//x5
+        {7, CREATE_INPUT},//x6
+        {8, CREATE_IGNORED},//VSS
+        {9, CREATE_INPUT},//x7
+        {10, CREATE_INPUT},//inhibit
+        {11, CREATE_INPUT},//adress input A
+        {12, CREATE_INPUT},//adress input B
+        {13, CREATE_INPUT},//adress input C
+        {14, CREATE_OUTPUT},//Z
+        {15, CREATE_INPUT},//OE
+        {16, CREATE_IGNORED}//VDD
     };
 }
 
@@ -69,11 +69,12 @@ void My4512::adrressInputs()
     if (c == nts::Tristate::True && b == nts::Tristate::True && a == nts::Tristate::True) {
         _pins[14]->setState(_pins[9]->getState());
         return;
-    }    
+    }
 }
 
-void My4512::simulate()
+void My4512::subSimulate(std::string currentName)
 {
+    (void)currentName;
     if (!_pins[10] || !_pins[15])
         return;
     if (_pins[15]->getState() == nts::Tristate::True) {

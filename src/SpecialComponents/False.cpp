@@ -17,10 +17,6 @@ using nts::components::False;
 False::False(std::string name) : SpecialComponent(name)
 {
     _pins = {
-            {1, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::False, true)}
+            {1, std::make_shared<nts::Pin>(this, nts::PinType::OUTPUT, nts::Tristate::False, true)}
         };
-}
-
-False::~False()
-{
 }
