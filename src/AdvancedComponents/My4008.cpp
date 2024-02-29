@@ -10,21 +10,21 @@
 My4008::My4008(std::string name) : AComponent(name)
 {
     _pins = {
-        {1, NULL},
-        {2, NULL},
-        {3, NULL},
-        {4, NULL},
-        {5, NULL},
-        {6, NULL},
-        {7, NULL},
+        {1, CREATE_INPUT},
+        {2, CREATE_INPUT},
+        {3, CREATE_INPUT},
+        {4, CREATE_INPUT},
+        {5, CREATE_INPUT},
+        {6, CREATE_INPUT},
+        {7, CREATE_INPUT},
         {8, std::make_shared<nts::Pin>(this, nts::PinType::INPUT, nts::Tristate::Undefined, false, true)},
-        {9, NULL},
+        {9, CREATE_INPUT},
         {10, CREATE_OUTPUT},
         {11, CREATE_OUTPUT},
         {12, CREATE_OUTPUT},
         {13, CREATE_OUTPUT},
         {14, CREATE_OUTPUT},
-        {15, NULL},
+        {15, CREATE_INPUT},
         {16, std::make_shared<nts::Pin>(this, nts::PinType::INPUT, nts::Tristate::Undefined, false, true)}
     };
 }
