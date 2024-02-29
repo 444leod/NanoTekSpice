@@ -11,34 +11,28 @@
 My4081::My4081(std::string name) : GatesComponent(name)
 {
     _subComponents = {
-        std::make_shared<And>("And1"),
-        std::make_shared<And>("And2"),
-        std::make_shared<And>("And3"),
-        std::make_shared<And>("And4"),
+        {"And1", std::make_shared<And>("And1")},
+        {"And2", std::make_shared<And>("And2")},
+        {"And3", std::make_shared<And>("And3")},
+        {"And4", std::make_shared<And>("And4")},
     };
 }
 
-My4081::~My4081()
+void My4081::linkSubComponents()
 {
-}
+    _subComponents["And1"]->getPin(1)->setLink(_pins[1]);
+    _subComponents["And1"]->getPin(2)->setLink(_pins[2]);
+    _pins[3]->setLink(_subComponents["And1"]->getPin(3));
 
-void My4081::simulate()
-{
+    _pins[4]->setLink(_subComponents["And2"]->getPin(3));
+    _subComponents["And2"]->getPin(1)->setLink(_pins[5]);
+    _subComponents["And2"]->getPin(2)->setLink(_pins[6]);
 
-    _subComponents[0]->forceSetLink(_pins[1], 1);
-    _subComponents[0]->forceSetLink(_pins[2], 2);
-    _subComponents[0]->forceSetLink(_pins[3], 3);
-    _subComponents[1]->forceSetLink(_pins[4], 3);
-    _subComponents[1]->forceSetLink(_pins[5], 1);
-    _subComponents[1]->forceSetLink(_pins[6], 2);
-    _subComponents[2]->forceSetLink(_pins[8], 1);
-    _subComponents[2]->forceSetLink(_pins[9], 2);
-    _subComponents[2]->forceSetLink(_pins[10], 3);
-    _subComponents[3]->forceSetLink(_pins[11], 3);
-    _subComponents[3]->forceSetLink(_pins[12], 1);
-    _subComponents[3]->forceSetLink(_pins[13], 2);
+    _subComponents["And3"]->getPin(1)->setLink(_pins[8]);
+    _subComponents["And3"]->getPin(2)->setLink(_pins[9]);
+    _pins[10]->setLink(_subComponents["And3"]->getPin(3));
 
-    for (auto &subComponent : _subComponents) {
-        subComponent->simulate();
-    }
+    _pins[11]->setLink(_subComponents["And4"]->getPin(3));
+    _subComponents["And4"]->getPin(1)->setLink(_pins[12]);
+    _subComponents["And4"]->getPin(2)->setLink(_pins[13]);
 }

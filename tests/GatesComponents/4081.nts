@@ -1,0 +1,39 @@
+.chipsets:
+false false
+true true
+input undefined
+output true-true
+output false-true
+output true-false
+output false-false
+output true-undefined
+output false-undefined
+output undefined-undefined
+4081 and1
+4081 and2
+
+.links:
+and1:1 true:1
+and1:2 true:1
+and1:3 true-true:1
+and1:4: false-true:1
+and1:5 false:1
+and1:6 true:1
+and1:8 false:1
+and1:9 true:1
+and1:10 true-false:1
+and1:11 false-false:1
+and1:12 false:1
+and1:13 false:1
+and2:1 true:1
+and2:2 undefined:1
+and2:3 true-undefined:1
+and2:4 false-undefined:1
+and2:5 false:1
+and2:6 undefined:1
+and2:8 undefined:1
+and2:9 undefined:1
+and2:10 undefined-undefined:1
+
+
+

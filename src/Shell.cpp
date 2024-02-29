@@ -20,6 +20,9 @@ int nts::Shell::run()
     std::string input;
     std::stringstream ss("");
 
+    for (auto &component : _components) {
+        component->linkSubComponents();
+    }
     while (1) {
         std::cout << "> ";
         if (!std::getline(std::cin, input))
@@ -49,7 +52,7 @@ void nts::Shell::display()
 {
     nts::Tristate pinValue;
 
-    std::cout << "tick: " << _tick << std::endl;
+    std::cout << "tick: " << nts::currentTick << std::endl;
     std::cout << "input(s):" << std::endl;
     for (auto &component : _components) {
         if (!component->isInput())
@@ -100,12 +103,15 @@ void updateClocks(std::vector<std::shared_ptr<nts::IComponent>> clocks)
 
 void nts::Shell::simulate()
 {
-    _tick++;
+    nts::currentTick++;
     updateClocks(_clocks);
     updateComponentValue(_assignements, _components);
-    _assignements = {};
+    _assignements.clear();
+    for (auto &output : _outputs) {
+        output->simulate(output->getName());
+    }
     for (auto &component : _components) {
-        component->simulate();
+        component->dump();
     }
 }
 
@@ -148,4 +154,10 @@ void nts::Shell::assign(const std::string &input, std::stringstream &ss)
         }
     }
     throw nts::Shell::ParsingError("Invalid component name: " + left);
+}
+
+void nts::Shell::sd()
+{
+    nts::Shell::simulate();
+    nts::Shell::display();
 }

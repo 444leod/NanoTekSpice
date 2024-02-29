@@ -12,8 +12,7 @@
 class My4008 : public nts::AComponent {
     public:
         My4008(std::string name);
-        ~My4008() = default;
-        void simulate() override;
+        void subSimulate(std::string currentName) override;
 
     protected:
     private:

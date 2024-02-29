@@ -12,7 +12,6 @@
 class SpecialComponent : public nts::AComponent {
     public:
         SpecialComponent(std::string name);
-        ~SpecialComponent();
 
     protected:
     private:

@@ -10,10 +10,6 @@
 Output::Output(std::string name) : SpecialComponent(name)
 {
     _pins = {
-            {1, NULL}
+            {1, CREATE_INPUT},
         };
-}
-
-Output::~Output()
-{
 }

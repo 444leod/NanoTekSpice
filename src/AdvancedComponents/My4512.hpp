@@ -12,8 +12,7 @@
 class My4512 : public nts::AComponent {
     public:
         My4512(std::string name);
-        ~My4512() = default;
-        void simulate() override;
+        void subSimulate(std::string currentName) override;
 
     protected:
     private:

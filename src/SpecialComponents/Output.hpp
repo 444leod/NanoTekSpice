@@ -12,7 +12,6 @@
 class Output : public SpecialComponent {
     public:
         Output(std::string name);
-        ~Output();
 
     protected:
     private:
