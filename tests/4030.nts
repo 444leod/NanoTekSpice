@@ -1,0 +1,39 @@
+.chipsets:
+false false
+true true
+input undefined
+output true-true
+output false-true
+output true-false
+output false-false
+output true-undefined
+output false-undefined
+output undefined-undefined
+4030 xor1
+4030 xor2
+
+.links:
+xor1:1 true:1
+xor1:2 true:1
+xor1:3 true-true:1
+xor1:4: false-true:1
+xor1:5 false:1
+xor1:6 true:1
+xor1:8 false:1
+xor1:9 true:1
+xor1:10 true-false:1
+xor1:11 false-false:1
+xor1:12 false:1
+xor1:13 false:1
+xor2:1 true:1
+xor2:2 undefined:1
+xor2:3 true-undefined:1
+xor2:4 false-undefined:1
+xor2:5 false:1
+xor2:6 undefined:1
+xor2:8 undefined:1
+xor2:9 undefined:1
+xor2:10 undefined-undefined:1
+
+
+
