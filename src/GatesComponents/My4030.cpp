@@ -12,10 +12,10 @@
 My4030::My4030(std::string name) : GatesComponent(name)
 {
     _subComponents = {
-        std::make_shared<Xor>("Xor1"),
-        std::make_shared<Xor>("Xor2"),
-        std::make_shared<Xor>("Xor3"),
-        std::make_shared<Xor>("Xor4"),
+        {"Xor1", std::make_shared<Xor>("Xor1")},
+        {"Xor2", std::make_shared<Xor>("Xor2")},
+        {"Xor3", std::make_shared<Xor>("Xor3")},
+        {"Xor4", std::make_shared<Xor>("Xor4")},
     };
 }
 
@@ -23,22 +23,21 @@ My4030::~My4030()
 {
 }
 
-void My4030::simulate()
+void My4030::linkSubComponents()
 {
-    _subComponents[0]->forceSetLink(_pins[1], 1);
-    _subComponents[0]->forceSetLink(_pins[2], 2);
-    _subComponents[0]->forceSetLink(_pins[3], 3);
-    _subComponents[1]->forceSetLink(_pins[5], 1);
-    _subComponents[1]->forceSetLink(_pins[6], 2);
-    _subComponents[1]->forceSetLink(_pins[4], 3);
-    _subComponents[2]->forceSetLink(_pins[8], 1);
-    _subComponents[2]->forceSetLink(_pins[9], 2);
-    _subComponents[2]->forceSetLink(_pins[10], 3);
-    _subComponents[3]->forceSetLink(_pins[12], 1);
-    _subComponents[3]->forceSetLink(_pins[13], 2);
-    _subComponents[3]->forceSetLink(_pins[11], 3);
+    _subComponents["Xor1"]->getPin(1)->setLink(_pins[1]);
+    _subComponents["Xor1"]->getPin(2)->setLink(_pins[2]);
+    _pins[3]->setLink(_subComponents["Xor1"]->getPin(3));
 
-    for (auto &subComponent : _subComponents) {
-        subComponent->simulate();
-    }
+    _pins[4]->setLink(_subComponents["Xor2"]->getPin(3));
+    _subComponents["Xor2"]->getPin(1)->setLink(_pins[5]);
+    _subComponents["Xor2"]->getPin(2)->setLink(_pins[6]);
+
+    _subComponents["Xor3"]->getPin(1)->setLink(_pins[8]);
+    _subComponents["Xor3"]->getPin(2)->setLink(_pins[9]);
+    _pins[10]->setLink(_subComponents["Xor3"]->getPin(3));
+
+    _pins[11]->setLink(_subComponents["Xor4"]->getPin(3));
+    _subComponents["Xor4"]->getPin(1)->setLink(_pins[12]);
+    _subComponents["Xor4"]->getPin(2)->setLink(_pins[13]);
 }

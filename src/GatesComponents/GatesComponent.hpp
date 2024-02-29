@@ -8,14 +8,14 @@
 #pragma once
 
 #include "../AComponent.hpp"
+#include "../ElementatyComponents/Wire.hpp"
 
 class GatesComponent : public nts::AComponent {
     public:
         GatesComponent(std::string name);
         ~GatesComponent();
-        void simulate() override;
+        void subSimulate(std::string currentName) override;
 
     protected:
-        std::vector<std::shared_ptr<nts::IComponent>> _subComponents = {};
     private:
 };

@@ -11,10 +11,10 @@
 My4071::My4071(std::string name) : GatesComponent(name)
 {
     _subComponents = {
-        std::make_shared<Or>("Or1"),
-        std::make_shared<Or>("Or2"),
-        std::make_shared<Or>("Or3"),
-        std::make_shared<Or>("Or4"),
+        {"Or1", std::make_shared<Or>("Or1")},
+        {"Or2", std::make_shared<Or>("Or2")},
+        {"Or3", std::make_shared<Or>("Or3")},
+        {"Or4", std::make_shared<Or>("Or4")},
     };
 }
 
@@ -22,22 +22,41 @@ My4071::~My4071()
 {
 }
 
-void My4071::simulate()
+void My4071::linkSubComponents()
 {
-    _subComponents[0]->forceSetLink(_pins[1], 1);
-    _subComponents[0]->forceSetLink(_pins[2], 2);
-    _subComponents[0]->forceSetLink(_pins[3], 3);
-    _subComponents[1]->forceSetLink(_pins[5], 1);
-    _subComponents[1]->forceSetLink(_pins[6], 2);
-    _subComponents[1]->forceSetLink(_pins[4], 3);
-    _subComponents[2]->forceSetLink(_pins[8], 1);
-    _subComponents[2]->forceSetLink(_pins[9], 2);
-    _subComponents[2]->forceSetLink(_pins[10], 3);
-    _subComponents[3]->forceSetLink(_pins[12], 1);
-    _subComponents[3]->forceSetLink(_pins[13], 2);
-    _subComponents[3]->forceSetLink(_pins[11], 3);
+    _subComponents["Or1"]->getPin(1)->setLink(_pins[1]);
+    _subComponents["Or1"]->getPin(2)->setLink(_pins[2]);
+    _pins[3]->setLink(_subComponents["Or1"]->getPin(3));
 
-    for (auto &subComponent : _subComponents) {
-        subComponent->simulate();
-    }
+    _pins[4]->setLink(_subComponents["Or2"]->getPin(3));
+    _subComponents["Or2"]->getPin(1)->setLink(_pins[5]);
+    _subComponents["Or2"]->getPin(2)->setLink(_pins[6]);
+
+    _subComponents["Or3"]->getPin(1)->setLink(_pins[8]);
+    _subComponents["Or3"]->getPin(2)->setLink(_pins[9]);
+    _pins[10]->setLink(_subComponents["Or3"]->getPin(3));
+
+    _pins[11]->setLink(_subComponents["Or4"]->getPin(3));
+    _subComponents["Or4"]->getPin(1)->setLink(_pins[12]);
+    _subComponents["Or4"]->getPin(2)->setLink(_pins[13]);
 }
+
+// void My4071::subSimulate(std::string currentName)
+// {
+//     _subComponents[0]->forceSetLink(_pins[1], 1);
+//     _subComponents[0]->forceSetLink(_pins[2], 2);
+//     _subComponents[0]->forceSetLink(_pins[3], 3);
+//     _subComponents[1]->forceSetLink(_pins[5], 1);
+//     _subComponents[1]->forceSetLink(_pins[6], 2);
+//     _subComponents[1]->forceSetLink(_pins[4], 3);
+//     _subComponents[2]->forceSetLink(_pins[8], 1);
+//     _subComponents[2]->forceSetLink(_pins[9], 2);
+//     _subComponents[2]->forceSetLink(_pins[10], 3);
+//     _subComponents[3]->forceSetLink(_pins[12], 1);
+//     _subComponents[3]->forceSetLink(_pins[13], 2);
+//     _subComponents[3]->forceSetLink(_pins[11], 3);
+
+//     for (auto &subComponent : _subComponents) {
+//         subComponent->subSimulate();
+//     }
+// }

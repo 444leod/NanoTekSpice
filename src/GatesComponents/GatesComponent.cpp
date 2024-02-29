@@ -10,20 +10,20 @@
 GatesComponent::GatesComponent(std::string name) : AComponent(name)
 {
     _pins = {
-        {1, NULL},
-        {2, NULL},
-        {3, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined)},
-        {4, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined)},
-        {5, NULL},
-        {6, NULL},
-        {7, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined, false, true)},
-        {8, NULL},
-        {9, NULL},
-        {10, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined)},
-        {11, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined)},
-        {12, NULL},
-        {13, NULL},
-        {14,  std::make_shared<nts::Pin>(nts::PinType::OUTPUT, nts::Tristate::Undefined, false, true)}
+        {1, CREATE_INPUT},
+        {2, CREATE_INPUT},
+        {3, CREATE_OUTPUT},
+        {4, CREATE_OUTPUT},
+        {5, CREATE_INPUT},
+        {6, CREATE_INPUT},
+        {7, CREATE_IGNORED},
+        {8, CREATE_INPUT},
+        {9, CREATE_INPUT},
+        {10, CREATE_OUTPUT},
+        {11, CREATE_OUTPUT},
+        {12, CREATE_INPUT},
+        {13, CREATE_INPUT},
+        {14,  CREATE_IGNORED}
     };
 }
 
@@ -31,9 +31,9 @@ GatesComponent::~GatesComponent()
 {
 }
 
-void GatesComponent::simulate()
+void GatesComponent::subSimulate(std::string currentName)
 {
     for (auto &subComponent : _subComponents) {
-        subComponent->simulate();
+        subComponent.second->subSimulate(currentName);
     }
 }
