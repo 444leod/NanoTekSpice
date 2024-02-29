@@ -7,8 +7,12 @@
 
 #include "Shell.hpp"
 
-nts::Shell::Shell(std::vector<std::shared_ptr<nts::IComponent>> components, std::vector<std::shared_ptr<nts::IComponent>> inputs, std::vector<std::shared_ptr<nts::IComponent>> outputs, std::vector<std::shared_ptr<nts::IComponent>> clocks)
-{
+nts::Shell::Shell(
+    std::vector<std::shared_ptr<nts::IComponent>> components,
+    std::vector<std::shared_ptr<nts::IComponent>> inputs,
+    std::vector<std::shared_ptr<nts::IComponent>> outputs,
+    std::vector<std::shared_ptr<nts::IComponent>> clocks
+){
     _components = components;
     _inputs = inputs;
     _outputs = outputs;

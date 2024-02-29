@@ -13,7 +13,11 @@
 namespace nts {
     class Shell {
         public:
-            Shell(std::vector<std::shared_ptr<nts::IComponent>> components, std::vector<std::shared_ptr<nts::IComponent>> inputs, std::vector<std::shared_ptr<nts::IComponent>> outputs, std::vector<std::shared_ptr<nts::IComponent>> clocks);
+            Shell(std::vector<
+                std::shared_ptr<nts::IComponent>> components,
+                std::vector<std::shared_ptr<nts::IComponent>> inputs,
+                std::vector<std::shared_ptr<nts::IComponent>> outputs,
+                std::vector<std::shared_ptr<nts::IComponent>> clocks);
             ~Shell() = default;
             class ParsingError : public std::exception {
                 public:
