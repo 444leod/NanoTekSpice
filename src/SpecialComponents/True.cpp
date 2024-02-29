@@ -12,7 +12,6 @@ using nts::components::True;
 /**
  * @brief Create a True object
  * @details This class is used to create a True component with a given name
- * @param name - name of the component
 */
 True::True(std::string name) : ASpecialComponent(name)
 {

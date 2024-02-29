@@ -10,7 +10,6 @@
 /**
  * @brief Clock class
  * @details This class is used to create a clock component with a given name
- * @param name - name of the component
 */
 Clock::Clock(std::string name) : ASpecialComponent(name)
 {

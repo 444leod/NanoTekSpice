@@ -9,7 +9,6 @@
 
 #include "./ASpecialComponent.hpp"
 
-
 /**
  * @brief Clock class
  * @details A clock component changes its state every tick

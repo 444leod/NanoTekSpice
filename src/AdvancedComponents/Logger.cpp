@@ -7,6 +7,10 @@
 
 #include "Logger.hpp"
 
+/**
+ * @brief Logger class constructor
+ * @details Has 10 input pins: 8 for the char, 1 for the clock and 1 for the inhibit
+*/
 Logger::Logger(std::string name) : AComponent(name)
 {
     _pins = {
@@ -23,6 +27,11 @@ Logger::Logger(std::string name) : AComponent(name)
     };
 }
 
+/**
+ * @brief Transforms the bits into a char
+ * @param bits The bits to transform using the bitwise OR operator
+ * @return The char
+*/
 char Logger::getCharFromBits(const std::array<int, 8>& bits) {
     char result = 0;
     for (int i = 0; i < 8; ++i) {
@@ -31,6 +40,11 @@ char Logger::getCharFromBits(const std::array<int, 8>& bits) {
     return result;
 }
 
+/**
+ * @brief Gets the bits from the pins
+ * @details If a pin is undefined, returns an empty char
+ * @return The bits
+*/
 std::array<int, 8> Logger::getBitsFromPins() {
     std::array<int, 8> bits = {0, 0, 0, 0, 0, 0, 0, 0};
     bool isEmptyChar = false;
@@ -47,6 +61,10 @@ std::array<int, 8> Logger::getBitsFromPins() {
     return bits;
 }
 
+/**
+ * @brief Writes a char to a log.bin file
+ * @param c The char to write
+*/
 void Logger::writeChar(char c) {
     std::ofstream file;
 
@@ -54,14 +72,11 @@ void Logger::writeChar(char c) {
     file << c;
 }
 
-bool Logger::isInhibitFalse() {
-    if (!_pins[10]) {
-        _isCorrectlySetUp = false;
-        return false;
-    }
-    return _pins[10]->getState() == nts::Tristate::False;
-}
-
+/**
+ * @brief Simulates the component starting from the subcomponents
+ * @details If the component is not correctly set up, returns
+ * @param currentName The name of the current component
+*/
 void Logger::subSimulate(std::string currentName)
 {
     (void)currentName;
