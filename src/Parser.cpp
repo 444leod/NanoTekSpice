@@ -54,6 +54,8 @@ void nts::Parser::parseArgs(int argc, const char *argv[])
 */
 void nts::Parser::parseFile(const std::string &filename)
 {
+    if (std::filesystem::is_regular_file(filename) == false)
+        throw nts::Parser::ParsingError("File is not valid");
     std::ifstream file(filename);
     if (!file.is_open())
         throw nts::Parser::ParsingError("File is not valid");
@@ -63,6 +65,7 @@ void nts::Parser::parseFile(const std::string &filename)
     int lineCount = 0;
 
     while (std::getline(file, line)) {
+        std::cout << line << std::endl;
         lineCount++;
         line = line.substr(0, line.find('#'));
         if (line.empty())
@@ -79,7 +82,6 @@ void nts::Parser::parseFile(const std::string &filename)
 
         _handlers[state](line, lineCount);
     }
-
     file.close();
 }
 

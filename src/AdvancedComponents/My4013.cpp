@@ -14,24 +14,25 @@ using nts::Tristate::Undefined;
 My4013::My4013(std::string name) : AComponent(name)
 {
     _pins = {
-        {1, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, Undefined)},
-        {2, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, Undefined)},
-        {3, NULL},
-        {4, NULL},
-        {5, NULL},
-        {6, NULL},
-        {7, NULL},
-        {8, NULL},
-        {9, NULL},
-        {10, NULL},
-        {11, NULL},
-        {12, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, Undefined)},
-        {13, std::make_shared<nts::Pin>(nts::PinType::OUTPUT, Undefined)},
+        {1, CREATE_OUTPUT},
+        {2, CREATE_OUTPUT},
+        {3, CREATE_INPUT},
+        {4, CREATE_INPUT},
+        {5, CREATE_INPUT},
+        {6, CREATE_INPUT},
+        {7, CREATE_INPUT},
+        {8, CREATE_INPUT},
+        {9, CREATE_INPUT},
+        {10, CREATE_INPUT},
+        {11, CREATE_INPUT},
+        {12, CREATE_OUTPUT},
+        {13, CREATE_OUTPUT},
     };
 }
 
-void My4013::simulate()
+void My4013::subSimulate(std::string currentName)
 {
+    (void)currentName;
     _datas =    { _pins[5], _pins[9]  };
     _sets =     { _pins[6], _pins[8]  };
     _resets =   { _pins[4], _pins[10] };
