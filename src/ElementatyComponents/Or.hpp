@@ -9,6 +9,11 @@
 
 #include "./AElementaryComponent.hpp"
 
+/**
+ * @brief Or class
+ * @details Basic OR logic gate
+ * Gives true if at least one input is true else false
+*/
 class Or : public AElementaryComponent {
     public:
         Or(std::string name);

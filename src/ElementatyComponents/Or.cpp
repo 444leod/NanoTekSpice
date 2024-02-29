@@ -11,6 +11,10 @@ Or::Or(std::string name) : AElementaryComponent(name)
 {
 }
 
+/**
+ * @brief Simulate the Or gate
+ * @details Handles the UNDEFINED state
+*/
 void Or::subSimulate(std::string currentName)
 {
     (void)currentName;
