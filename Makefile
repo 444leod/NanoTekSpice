@@ -32,7 +32,7 @@ SRC_COMPONENTS = ./src/GatesComponents/My4011.cpp \
 	./src/ElementatyComponents/Xor.cpp \
 	./src/ElementatyComponents/Not.cpp \
 	./src/ElementatyComponents/Or.cpp \
-	./src/ElementatyComponents/ElementaryComponent.cpp \
+	./src/ElementatyComponents/AElementaryComponent.cpp \
 	./src/AdvancedComponents/Logger.cpp \
 	./src/AdvancedComponents/My4008.cpp \
 	./src/AdvancedComponents/My4013.cpp \

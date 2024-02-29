@@ -7,9 +7,9 @@
 
 #pragma once
 
-#include "./ElementaryComponent.hpp"
+#include "./AElementaryComponent.hpp"
 
-class Xor : public ElementaryComponent {
+class Xor : public AElementaryComponent {
     public:
         Xor(std::string name);
         void subSimulate(std::string currentName) override;

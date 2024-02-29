@@ -7,7 +7,7 @@
 
 #include "Not.hpp"
 
-Not::Not(std::string name) : ElementaryComponent(name)
+Not::Not(std::string name) : AElementaryComponent(name)
 {
     _pins = {
         {1, CREATE_INPUT},

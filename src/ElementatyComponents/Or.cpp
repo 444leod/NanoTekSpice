@@ -7,7 +7,7 @@
 
 #include "Or.hpp"
 
-Or::Or(std::string name) : ElementaryComponent(name)
+Or::Or(std::string name) : AElementaryComponent(name)
 {
 }
 

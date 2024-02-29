@@ -7,9 +7,9 @@
 
 #pragma once
 
-#include "./ElementaryComponent.hpp"
+#include "./AElementaryComponent.hpp"
 
-class Or : public ElementaryComponent {
+class Or : public AElementaryComponent {
     public:
         Or(std::string name);
         void subSimulate(std::string currentName) override;

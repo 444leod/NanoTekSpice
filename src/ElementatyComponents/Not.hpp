@@ -7,9 +7,9 @@
 
 #pragma once
 
-#include "./ElementaryComponent.hpp"
+#include "./AElementaryComponent.hpp"
 
-class Not : public ElementaryComponent {
+class Not : public AElementaryComponent {
     public:
         Not(std::string name);
         void subSimulate(std::string currentName) override;

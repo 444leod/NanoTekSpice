@@ -7,7 +7,7 @@
 
 #include "And.hpp"
 
-And::And(std::string name) : ElementaryComponent(name)
+And::And(std::string name) : AElementaryComponent(name)
 {
 }
 

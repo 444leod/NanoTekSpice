@@ -2,16 +2,16 @@
 ** EPITECH PROJECT, 2024
 ** NanoTekSpice
 ** File description:
-** ElementaryComponent
+** AElementaryComponent
 */
 
 #pragma once
 
 #include "../AComponent.hpp"
 
-class ElementaryComponent : public nts::AComponent {
+class AElementaryComponent : public nts::AComponent {
     public:
-        ElementaryComponent(std::string name);
+        AElementaryComponent(std::string name);
 
     protected:
     private:
