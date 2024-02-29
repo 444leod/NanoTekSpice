@@ -8,6 +8,10 @@
 #include "My4030.hpp"
 #include "../ElementatyComponents/Xor.hpp"
 
+/**
+ * @brief My4030 class constructor
+ * @details Details the subcomponents of the 4030 component
+*/
 My4030::My4030(std::string name) : AGatesComponent(name)
 {
     _subComponents = {
@@ -18,6 +22,9 @@ My4030::My4030(std::string name) : AGatesComponent(name)
     };
 }
 
+/**
+ * @brief Links the subcomponents of the 4030 component
+*/
 void My4030::linkSubComponents()
 {
     _subComponents["Xor1"]->getPin(1)->setLink(_pins[1]);
