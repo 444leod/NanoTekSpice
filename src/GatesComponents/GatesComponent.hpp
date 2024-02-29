@@ -8,7 +8,6 @@
 #pragma once
 
 #include "../AComponent.hpp"
-#include "../ElementatyComponents/Wire.hpp"
 
 class GatesComponent : public nts::AComponent {
     public:
