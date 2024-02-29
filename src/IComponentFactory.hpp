@@ -29,6 +29,8 @@
 #include "./AdvancedComponents/Logger.hpp"
 #include "./AdvancedComponents/My4008.hpp"
 #include "./AdvancedComponents/My4013.hpp"
+#include "./AdvancedComponents/My4040.hpp"
+
 #include "./AdvancedComponents/My4512.hpp"
 
 namespace nts {
@@ -60,7 +62,8 @@ namespace nts {
                 {"logger", [](std::string name) { return std::make_shared<Logger>(name); }},
                 {"4008", [](std::string name) { return std::make_shared<My4008>(name); }},
                 {"4512", [](std::string name) { return std::make_shared<My4512>(name); }},
-                {"4013", [](std::string name) { return std::make_shared<My4013>(name); }}
+                {"4013", [](std::string name) { return std::make_shared<My4013>(name); }},
+                {"4040", [](std::string name) { return std::make_shared<My4040>(name); }}
             };
     };
 }
