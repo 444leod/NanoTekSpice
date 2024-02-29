@@ -14,21 +14,21 @@ using nts::Tristate::Undefined;
 My4040::My4040(std::string name) : AComponent(name)
 {
     _pins = {
-        {1, std::make_shared<nts::Pin>(this, nts::PinType::OUTPUT, False)},
-        {2, std::make_shared<nts::Pin>(this, nts::PinType::OUTPUT, False)},
-        {3, std::make_shared<nts::Pin>(this, nts::PinType::OUTPUT, False)},
-        {4, std::make_shared<nts::Pin>(this, nts::PinType::OUTPUT, False)},
-        {5, std::make_shared<nts::Pin>(this, nts::PinType::OUTPUT, False)},
-        {6, std::make_shared<nts::Pin>(this, nts::PinType::OUTPUT, False)},
-        {7, std::make_shared<nts::Pin>(this, nts::PinType::OUTPUT, False)},
+        {1, CREATE_OUTPUT},
+        {2, CREATE_OUTPUT},
+        {3, CREATE_OUTPUT},
+        {4, CREATE_OUTPUT},
+        {5, CREATE_OUTPUT},
+        {6, CREATE_OUTPUT},
+        {7, CREATE_OUTPUT},
         {8, CREATE_IGNORED},
-        {9, std::make_shared<nts::Pin>(this, nts::PinType::OUTPUT, False)},
+        {9, CREATE_OUTPUT},
         {10, CREATE_INPUT},
         {11, CREATE_INPUT},
-        {12, std::make_shared<nts::Pin>(this, nts::PinType::OUTPUT, False)},
-        {13, std::make_shared<nts::Pin>(this, nts::PinType::OUTPUT, False)},
-        {14, std::make_shared<nts::Pin>(this, nts::PinType::OUTPUT, False)},
-        {15, std::make_shared<nts::Pin>(this, nts::PinType::OUTPUT, False)},
+        {12, CREATE_OUTPUT},
+        {13, CREATE_OUTPUT},
+        {14, CREATE_OUTPUT},
+        {15, CREATE_OUTPUT},
         {16, CREATE_IGNORED}
     };
     std::fill(_counter.begin(), _counter.end(), False);
