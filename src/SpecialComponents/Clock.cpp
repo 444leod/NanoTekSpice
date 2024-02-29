@@ -8,8 +8,8 @@
 #include "Clock.hpp"
 
 /**
- * @brief Clock class
- * @details This class is used to create a clock component with a given name
+ * @brief Clock class constructor
+ * @details Defines the pin as an output pin
 */
 Clock::Clock(std::string name) : ASpecialComponent(name)
 {

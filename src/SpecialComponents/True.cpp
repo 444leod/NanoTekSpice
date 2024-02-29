@@ -10,8 +10,8 @@
 using nts::components::True;
 
 /**
- * @brief Create a True object
- * @details This class is used to create a True component with a given name
+ * @brief True class constructor
+ * @details Defines the pin as an output pin
 */
 True::True(std::string name) : ASpecialComponent(name)
 {

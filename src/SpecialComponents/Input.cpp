@@ -7,6 +7,10 @@
 
 #include "Input.hpp"
 
+/**
+ * @brief Input class constructor
+ * @details Defines the pin as an output pin
+*/
 Input::Input(std::string name) : ASpecialComponent(name)
 {
     _pins = {

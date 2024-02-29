@@ -10,8 +10,8 @@
 using nts::components::False;
 
 /**
- * @brief Create a False object
- * @details This class is used to create a False component with a given name
+ * @brief False class constructor
+ * @details Defines the pin as an output pin
 */
 False::False(std::string name) : ASpecialComponent(name)
 {
