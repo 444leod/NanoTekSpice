@@ -9,6 +9,10 @@
 
 #include "./AElementaryComponent.hpp"
 
+/**
+ * @brief And class
+ * @details Basic AND logic gate
+*/
 class And : public AElementaryComponent {
     public:
         And(std::string name);
