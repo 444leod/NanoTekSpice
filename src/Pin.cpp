@@ -43,6 +43,8 @@ bool nts::Pin::isIgnored() const
 
 void nts::Pin::setLink(std::shared_ptr<Pin> pin)
 {
+    if (_linkedPin != nullptr)
+        throw nts::AssignmentError("Pin is already linked");
     _linkedPin = pin;
 }
 
