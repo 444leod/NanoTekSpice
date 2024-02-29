@@ -17,6 +17,8 @@ Or::~Or()
 
 void Or::subSimulate(std::string currentName)
 {
+    (void)currentName;
+
     nts::Tristate a = _pins[1] ? _pins[1]->getState() : UNDEFINED;
     nts::Tristate b = _pins[2] ? _pins[2]->getState() : UNDEFINED;
 

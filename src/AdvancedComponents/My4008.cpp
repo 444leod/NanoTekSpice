@@ -31,6 +31,7 @@ My4008::My4008(std::string name) : AComponent(name)
 
 void My4008::subSimulate(std::string currentName)
 {
+    (void)currentName;
     std::vector<std::pair<std::shared_ptr<nts::Pin>, std::shared_ptr<nts::Pin>>> pais = {
         {_pins[7], _pins[6]},
         {_pins[5], _pins[4]},

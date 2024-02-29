@@ -40,23 +40,3 @@ void My4071::linkSubComponents()
     _subComponents["Or4"]->getPin(1)->setLink(_pins[12]);
     _subComponents["Or4"]->getPin(2)->setLink(_pins[13]);
 }
-
-// void My4071::subSimulate(std::string currentName)
-// {
-//     _subComponents[0]->forceSetLink(_pins[1], 1);
-//     _subComponents[0]->forceSetLink(_pins[2], 2);
-//     _subComponents[0]->forceSetLink(_pins[3], 3);
-//     _subComponents[1]->forceSetLink(_pins[5], 1);
-//     _subComponents[1]->forceSetLink(_pins[6], 2);
-//     _subComponents[1]->forceSetLink(_pins[4], 3);
-//     _subComponents[2]->forceSetLink(_pins[8], 1);
-//     _subComponents[2]->forceSetLink(_pins[9], 2);
-//     _subComponents[2]->forceSetLink(_pins[10], 3);
-//     _subComponents[3]->forceSetLink(_pins[12], 1);
-//     _subComponents[3]->forceSetLink(_pins[13], 2);
-//     _subComponents[3]->forceSetLink(_pins[11], 3);
-
-//     for (auto &subComponent : _subComponents) {
-//         subComponent->subSimulate();
-//     }
-// }

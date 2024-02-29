@@ -68,6 +68,7 @@ bool Logger::isInhibitFalse() {
 
 void Logger::subSimulate(std::string currentName)
 {
+    (void)currentName;
     if (!_isCorrectlySetUp) return;
     if (!_pins[9] || !_pins[10]) {
         _isCorrectlySetUp = false;

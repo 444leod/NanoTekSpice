@@ -21,7 +21,10 @@ Not::~Not()
 
 void Not::subSimulate(std::string currentName)
 {
+    (void)currentName;
+
     nts::Tristate output = _pins[1]->getState();
+
     if (output == nts::Tristate::True) {
         setPinValue(2, nts::Tristate::False);
     } else if (output == nts::Tristate::False) {
