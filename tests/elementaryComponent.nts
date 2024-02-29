@@ -1,0 +1,70 @@
+# Basic AND logic gate
+#
+# in_1  -1-+---\
+#          | &  |-3- out
+# in_2  -2-+---/
+
+.chipsets:
+input undefined_1
+input undefined_2
+true true1
+true true2
+false false1
+false false2
+output out1
+output out2
+output out3
+output out4
+output out5
+output out6
+output out7
+output out8
+output out9
+xor case1
+xor case2
+xor case3
+xor case4
+xor case5
+xor case6
+xor case7
+xor case8
+xor case9
+
+.links:
+case1:1 false1:1
+case1:2 false2:1
+case1:3 out1:1
+
+case2:1 false1:1
+case2:2 true2:1
+case2:3 out2:1
+
+case3:1 false1:1
+case3:2 undefined_2:1
+case3:3 out3:1
+
+case4:1 true1:1
+case4:2 false2:1
+case4:3 out4:1
+
+case5:1 true1:1
+case5:2 true2:1
+case5:3 out5:1
+
+case6:1 true1:1
+case6:2 undefined_2:1
+case6:3 out6:1
+
+case7:1 undefined_1:1
+case7:2 false2:1
+case7:3 out7:1
+
+case8:1 undefined_1:1
+case8:2 true2:1
+case8:3 out8:1
+
+case9:1 undefined_1:1
+case9:2 undefined_2:1
+case9:3 out9:1
+
+
