@@ -7,14 +7,14 @@
 
 #pragma once
 
-#include "./SpecialComponent.hpp"
+#include "./ASpecialComponent.hpp"
 
 
 /**
  * @brief Clock class
  * @details This class is used to create a clock component
 */
-class Clock : public SpecialComponent {
+class Clock : public ASpecialComponent {
     public:
         Clock(std::string name);
 

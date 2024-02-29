@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include "./SpecialComponent.hpp"
+#include "./ASpecialComponent.hpp"
 
 namespace nts {
     namespace components {
@@ -15,7 +15,7 @@ namespace nts {
          * @brief True class
          * @details This component is always true
         */
-        class True : public SpecialComponent {
+        class True : public ASpecialComponent {
             public:
                 True(std::string name);
 

@@ -14,7 +14,7 @@ using nts::components::False;
  * @details This class is used to create a False component with a given name
  * @param name - name of the component
 */
-False::False(std::string name) : SpecialComponent(name)
+False::False(std::string name) : ASpecialComponent(name)
 {
     _pins = {
             {1, std::make_shared<nts::Pin>(this, nts::PinType::OUTPUT, nts::Tristate::False, true)}

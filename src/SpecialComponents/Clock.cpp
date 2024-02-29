@@ -12,7 +12,7 @@
  * @details This class is used to create a clock component with a given name
  * @param name - name of the component
 */
-Clock::Clock(std::string name) : SpecialComponent(name)
+Clock::Clock(std::string name) : ASpecialComponent(name)
 {
     _pins = {
             {1, CREATE_OUTPUT}

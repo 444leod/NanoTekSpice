@@ -14,7 +14,7 @@ using nts::components::True;
  * @details This class is used to create a True component with a given name
  * @param name - name of the component
 */
-True::True(std::string name) : SpecialComponent(name)
+True::True(std::string name) : ASpecialComponent(name)
 {
     _pins = {
             {1, std::make_shared<nts::Pin>(this, nts::PinType::OUTPUT, nts::Tristate::True, true)}

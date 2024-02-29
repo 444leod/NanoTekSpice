@@ -25,7 +25,7 @@ SRC_COMPONENTS = ./src/GatesComponents/My4011.cpp \
 	./src/SpecialComponents/True.cpp \
 	./src/SpecialComponents/False.cpp \
 	./src/SpecialComponents/Output.cpp \
-	./src/SpecialComponents/SpecialComponent.cpp \
+	./src/SpecialComponents/ASpecialComponent.cpp \
 	./src/SpecialComponents/Clock.cpp \
 	./src/SpecialComponents/Input.cpp \
 	./src/ElementatyComponents/And.cpp \
@@ -74,7 +74,6 @@ run:	all
 tests_run:	fclean $(TESTS_OBJ)
 	$(CC) $(TESTS_OBJ) $(CPPFLAGS) -o $(TESTS_NAME)
 	./$(TESTS_NAME)
-	make re
 	$(PYTHON_TESTER)
 
 
