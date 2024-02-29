@@ -9,7 +9,10 @@
 #include "../ElementatyComponents/Or.hpp"
 #include "../ElementatyComponents/Not.hpp"
 
-
+/**
+ * @brief My4001 class constructor
+ * @details Details the subcomponents of the 4001 component
+*/
 My4001::My4001(std::string name) : AGatesComponent(name)
 {
     _subComponents = {
@@ -24,6 +27,9 @@ My4001::My4001(std::string name) : AGatesComponent(name)
     };
 }
 
+/**
+ * @brief Links the subcomponents of the 4001 component
+*/
 void My4001::linkSubComponents()
 {
     _subComponents["Or1"]->setLink(3, _subComponents["Not1"], 1);

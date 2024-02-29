@@ -11,7 +11,7 @@
 
 /**
  * @brief Input class
- * @details Represents an input component
+ * @details Serves as an input
 */
 class Input : public ASpecialComponent {
     public:

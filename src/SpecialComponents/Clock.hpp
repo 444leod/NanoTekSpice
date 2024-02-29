@@ -12,7 +12,7 @@
 
 /**
  * @brief Clock class
- * @details This class is used to create a clock component
+ * @details A clock component changes its state every tick
 */
 class Clock : public ASpecialComponent {
     public:

@@ -11,7 +11,7 @@
 
 /**
  * @brief Output class
- * @details Represents an output component
+ * @details Serves as an output
 */
 class Output : public ASpecialComponent {
     public:
