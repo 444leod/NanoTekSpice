@@ -12,6 +12,7 @@
 /**
  * @brief And class
  * @details Basic AND logic gate
+ * Gives true if all inputs are true else false
 */
 class And : public AElementaryComponent {
     public:

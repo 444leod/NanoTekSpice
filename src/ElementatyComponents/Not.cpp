@@ -7,6 +7,10 @@
 
 #include "Not.hpp"
 
+/**
+ * @brief Not class constructor
+ * @details Redefines the pins as it only needs 2 pins
+*/
 Not::Not(std::string name) : AElementaryComponent(name)
 {
     _pins = {
@@ -15,6 +19,10 @@ Not::Not(std::string name) : AElementaryComponent(name)
     };
 }
 
+/**
+ * @brief Simulate the Not gate
+ * @details Handles the UNDEFINED state
+*/
 void Not::subSimulate(std::string currentName)
 {
     (void)currentName;
