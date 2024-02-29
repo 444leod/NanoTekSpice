@@ -19,7 +19,12 @@
     #include <functional>
     #include <csignal>
 
+    #define CREATE_INPUT std::make_shared<nts::Pin>(this, nts::PinType::INPUT, nts::Tristate::Undefined)
+    #define CREATE_OUTPUT std::make_shared<nts::Pin>(this, nts::PinType::OUTPUT, nts::Tristate::Undefined)
+    #define CREATE_IGNORED std::make_shared<nts::Pin>(this, nts::PinType::OUTPUT, nts::Tristate::Undefined, false, true)
+
     namespace nts {
+        inline int currentTick = 0;
         class IComponent;
         class NanoTekSpice;
         class Parser;
