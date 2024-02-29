@@ -16,21 +16,21 @@ using nts::PinType::INPUT;
 My4017::My4017(std::string name) : AComponent(name)
 {
     _pins = {
-        {1, std::make_shared<nts::Pin>(this, OUTPUT, False)},
-        {2, std::make_shared<nts::Pin>(this, OUTPUT, False)},
-        {3, std::make_shared<nts::Pin>(this, OUTPUT, True)},
-        {4, std::make_shared<nts::Pin>(this, OUTPUT, False)},
-        {5, std::make_shared<nts::Pin>(this, OUTPUT, False)},
-        {6, std::make_shared<nts::Pin>(this, OUTPUT, False)},
-        {7, std::make_shared<nts::Pin>(this, OUTPUT, False)},
-        {8, std::make_shared<nts::Pin>(this, OUTPUT, False)},
-        {9, std::make_shared<nts::Pin>(this, OUTPUT, False)},
-        {10, std::make_shared<nts::Pin>(this, OUTPUT, False)},
-        {11, std::make_shared<nts::Pin>(this, OUTPUT, False)},
-        {12, std::make_shared<nts::Pin>(this, OUTPUT, True)},
-        {13, NULL},
-        {14, NULL},
-        {15, NULL},
+        {1, CREATE_OUTPUT},
+        {2, CREATE_OUTPUT},
+        {3, CREATE_OUTPUT},
+        {4, CREATE_OUTPUT},
+        {5, CREATE_OUTPUT},
+        {6, CREATE_OUTPUT},
+        {7, CREATE_OUTPUT},
+        {8, CREATE_OUTPUT},
+        {9, CREATE_OUTPUT},
+        {10, CREATE_OUTPUT},
+        {11, CREATE_OUTPUT},
+        {12, CREATE_OUTPUT},
+        {13, CREATE_INPUT},
+        {14, CREATE_INPUT},
+        {15, CREATE_INPUT},
     };
 }
 
