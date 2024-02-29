@@ -9,6 +9,10 @@
 #include "../ElementatyComponents/And.hpp"
 #include "../ElementatyComponents/Not.hpp"
 
+/**
+ * @brief My4011 class constructor
+ * @details Details the subcomponents of the 4011 component
+*/
 My4011::My4011(std::string name) : AGatesComponent(name)
 {
     _subComponents = {
@@ -23,6 +27,9 @@ My4011::My4011(std::string name) : AGatesComponent(name)
     };
 }
 
+/**
+ * @brief Links the subcomponents of the 4011 component
+*/
 void My4011::linkSubComponents()
 {
     _subComponents["And1"]->setLink(3, _subComponents["Not1"], 1);

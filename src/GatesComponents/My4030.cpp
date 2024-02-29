@@ -8,7 +8,6 @@
 #include "My4030.hpp"
 #include "../ElementatyComponents/Xor.hpp"
 
-
 My4030::My4030(std::string name) : AGatesComponent(name)
 {
     _subComponents = {
