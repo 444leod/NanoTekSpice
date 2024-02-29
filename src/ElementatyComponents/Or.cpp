@@ -11,14 +11,12 @@ Or::Or(std::string name) : ElementaryComponent(name)
 {
 }
 
-Or::~Or()
+void Or::subSimulate(std::string currentName)
 {
-}
+    (void)currentName;
 
-void Or::simulate()
-{
-    nts::Tristate a = getPin(1) ? getPin(1)->getState() : UNDEFINED;
-    nts::Tristate b = getPin(2) ? getPin(2)->getState() : UNDEFINED;
+    nts::Tristate a = _pins[1] ? _pins[1]->getState() : UNDEFINED;
+    nts::Tristate b = _pins[2] ? _pins[2]->getState() : UNDEFINED;
 
     switch (a) {
         case TRUE:

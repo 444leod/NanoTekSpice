@@ -14,7 +14,6 @@ namespace nts {
         class False : public SpecialComponent {
             public:
                 False(std::string name);
-                ~False();
 
             protected:
             private:

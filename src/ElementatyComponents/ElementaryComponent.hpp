@@ -12,7 +12,6 @@
 class ElementaryComponent : public nts::AComponent {
     public:
         ElementaryComponent(std::string name);
-        ~ElementaryComponent();
 
     protected:
     private:

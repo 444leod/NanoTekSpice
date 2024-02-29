@@ -1,0 +1,39 @@
+.chipsets:
+false false
+true true
+input undefined
+output true-true
+output false-true
+output true-false
+output false-false
+output true-undefined
+output false-undefined
+output undefined-undefined
+4011 nand1
+4011 nand2
+
+.links:
+nand1:1 true:1
+nand1:2 true:1
+nand1:3 true-true:1
+nand1:4: false-true:1
+nand1:5 false:1
+nand1:6 true:1
+nand1:8 false:1
+nand1:9 true:1
+nand1:10 true-false:1
+nand1:11 false-false:1
+nand1:12 false:1
+nand1:13 false:1
+nand2:1 true:1
+nand2:2 undefined:1
+nand2:3 true-undefined:1
+nand2:4 false-undefined:1
+nand2:5 false:1
+nand2:6 undefined:1
+nand2:8 undefined:1
+nand2:9 undefined:1
+nand2:10 undefined-undefined:1
+
+
+

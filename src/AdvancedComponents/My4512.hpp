@@ -2,18 +2,19 @@
 ** EPITECH PROJECT, 2024
 ** NanoTekSpice
 ** File description:
-** Not
+** My4512
 */
 
 #pragma once
 
-#include "./ElementaryComponent.hpp"
+#include "../AComponent.hpp"
 
-class Not : public ElementaryComponent {
+class My4512 : public nts::AComponent {
     public:
-        Not(std::string name);
+        My4512(std::string name);
         void subSimulate(std::string currentName) override;
 
     protected:
     private:
+        void adrressInputs();
 };

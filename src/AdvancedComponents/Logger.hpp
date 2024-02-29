@@ -12,8 +12,7 @@
 class Logger : public nts::AComponent {
     public:
         Logger(std::string name);
-        ~Logger();
-        void simulate() override;
+        void subSimulate(std::string currentName) override;
 
     protected:
     private:

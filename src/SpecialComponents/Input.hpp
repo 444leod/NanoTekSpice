@@ -12,7 +12,6 @@
 class Input : public SpecialComponent {
     public:
         Input(std::string name);
-        ~Input();
 
     protected:
     private:

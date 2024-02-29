@@ -1,0 +1,14 @@
+.chipsets:
+input set
+input reset
+output q
+output qbar
+4001 nor
+
+.links:
+reset:1 nor:1
+nor:4 nor:2
+nor:3 nor:5
+set:1 nor:6
+q:1 nor:3
+qbar:1 nor:4

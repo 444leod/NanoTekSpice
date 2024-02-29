@@ -10,7 +10,3 @@
 SpecialComponent::SpecialComponent(std::string name) : AComponent(name)
 {
 }
-
-SpecialComponent::~SpecialComponent()
-{
-}
