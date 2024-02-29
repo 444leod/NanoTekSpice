@@ -11,7 +11,7 @@
 
 /**
  * @brief ASpecialComponent class
- * 
+ * @details Represents the abstract class for special components
 */
 class ASpecialComponent : public nts::AComponent {
     public:
