@@ -88,8 +88,7 @@ void nts::Shell::display()
  * @throws ParsingError - if the component type is invalid
 */
 void updateComponentValue(
-    std::vector<std::pair<std::string,
-    std::string>> assignements,
+    std::vector<std::pair<std::string, std::string>> assignements,
     std::vector<std::shared_ptr<nts::IComponent>> components
 ){
     for (auto &assignement : assignements) {
