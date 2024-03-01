@@ -75,10 +75,7 @@ void My4040::convertToPins()
         _pins[9], _pins[7], _pins[6], _pins[5], _pins[3], _pins[2], _pins[4],
         _pins[13], _pins[12], _pins[14], _pins[15], _pins[1]
     };
-    for (int i = 0; i < 12; i++) {
-        _counter[i] = (_value & (1 << i)) ? True : False;
-    }
-    for (int i = 0; i < 12; i++) {
-        _outputPins[i]->setState(_counter[i]);
+    for (std::size_t i = 0; i < _outputPins.size(); ++i) {
+        _outputPins[i]->setState((_value & (1 << i)) ? nts::Tristate::True : nts::Tristate::False);
     }
 }
