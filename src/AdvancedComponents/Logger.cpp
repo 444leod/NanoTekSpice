@@ -29,8 +29,7 @@ Logger::Logger(std::string name) : AComponent(name)
 }
 
 /**
- * @brief Transforms the bits into a char
- * @param bits The bits to transform using the bitwise OR operator
+ * @brief Gets the char from the input pins
  * @return The char
 */
 char Logger::getCharFromPins() {
@@ -45,27 +44,6 @@ char Logger::getCharFromPins() {
             result += std::pow(2, i);
     }
     return result;
-}
-
-/**
- * @brief Gets the bits from the pins
- * @details If a pin is undefined, returns an empty char
- * @return The bits
-*/
-std::array<int, 8> Logger::getBitsFromPins() {
-    std::array<int, 8> bits = {0, 0, 0, 0, 0, 0, 0, 0};
-    bool isEmptyChar = false;
-
-    for (int i = 0; i < 8; i++) {
-        if (!_pins[i + 1] || _pins[i + 1]->getState() == nts::Tristate::Undefined) {
-            isEmptyChar = true;
-            break;
-        }
-        bits[i] = _pins[i + 1]->getState() == nts::Tristate::True ? 1 : 0;
-    }
-    if (isEmptyChar)
-        return {0, 0, 0, 0, 0, 0, 0, 0};
-    return bits;
 }
 
 /**
