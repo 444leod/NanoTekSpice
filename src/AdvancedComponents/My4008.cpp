@@ -7,6 +7,10 @@
 
 #include "My4008.hpp"
 
+/**
+ * @brief My4008 class constructor
+ * @details Has 16 pins: 8 inputs, 4 outputs, 1 carry in and 1 carry out
+*/
 My4008::My4008(std::string name) : AComponent(name)
 {
     _pins = {
@@ -29,6 +33,10 @@ My4008::My4008(std::string name) : AComponent(name)
     };
 }
 
+/**
+ * @brief Simulates the component starting from the subcomponents
+ * @param currentName The name of the current component
+*/
 void My4008::subSimulate(std::string currentName)
 {
     (void)currentName;

@@ -13,6 +13,11 @@ using nts::Tristate::Undefined;
 using nts::PinType::OUTPUT;
 using nts::PinType::INPUT;
 
+/**
+ * @brief My4017 class constructor
+ * @details Has 15 pins: 10 output pins, 3 input pins (2 clock pins),
+ * 1 output from the most significant flip-flop, 1 overriding asynchronous master reset input (MR)
+*/
 My4017::My4017(std::string name) : AComponent(name)
 {
     _pins = {
@@ -34,6 +39,11 @@ My4017::My4017(std::string name) : AComponent(name)
     };
 }
 
+/**
+ * @brief Simulates the component starting from the subcomponents
+ * @details If the component is not correctly set up, returns
+ * @param currentName The name of the current component
+*/
 void My4017::subSimulate(std::string currentName)
 {
     (void)currentName;
@@ -66,6 +76,10 @@ void My4017::subSimulate(std::string currentName)
     _pins[12]->setState(_currentOutput >= 5 ? False : True);
 }
 
+/**
+ * @brief Resets the component
+ * @details Sets the current output to 0 and sets the output pins to False
+*/
 void My4017::handleReset()
 {
     _currentOutput = 0;

@@ -9,6 +9,10 @@
 
 #include "../AComponent.hpp"
 
+/**
+ * @brief My4017 class
+ * @details The 4017 is a decade counter
+*/
 class My4017 : public nts::AComponent {
     public:
         My4017(std::string name);

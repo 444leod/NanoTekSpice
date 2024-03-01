@@ -9,6 +9,10 @@
 
 #include "../AComponent.hpp"
 
+/**
+ * @brief Logger class
+ * @details The Logger class is used to log the output of a circuit to a file
+*/
 class Logger : public nts::AComponent {
     public:
         Logger(std::string name);

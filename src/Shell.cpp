@@ -21,6 +21,11 @@ nts::Shell::Shell(
     _loggers = loggers;
 }
 
+/**
+ * @brief Run the shell
+ * @details This function is used to run the shell and handles the commands
+ * @return 0
+*/
 int nts::Shell::run()
 {
     std::string input;
@@ -49,11 +54,18 @@ int nts::Shell::run()
     return 0;
 }
 
+/**
+ * @brief Exit the shell
+*/
 void nts::Shell::exit()
 {
     std::exit(0);
 }
 
+/**
+ * @brief Display the components
+ * @details This function display the components and their values
+*/
 void nts::Shell::display()
 {
     nts::Tristate pinValue;
@@ -73,8 +85,14 @@ void nts::Shell::display()
     }
 }
 
-void updateComponentValue(std::vector<std::pair<std::string, std::string>> assignements, std::vector<std::shared_ptr<nts::IComponent>> components)
-{
+/**
+ * @brief Update the component value
+ * @throws ParsingError - if the component type is invalid
+*/
+void updateComponentValue(
+    std::vector<std::pair<std::string, std::string>> assignements,
+    std::vector<std::shared_ptr<nts::IComponent>> components
+){
     for (auto &assignement : assignements) {
         for (auto &component : components) {
             if (component->getName() == assignement.first) {
@@ -98,6 +116,9 @@ void updateComponentValue(std::vector<std::pair<std::string, std::string>> assig
     }
 }
 
+/**
+ * @brief Update the clocks
+*/
 void updateClocks(std::vector<std::shared_ptr<nts::IComponent>> clocks)
 {
     for (auto &clock : clocks) {
@@ -107,6 +128,11 @@ void updateClocks(std::vector<std::shared_ptr<nts::IComponent>> clocks)
     }
 }
 
+/**
+ * @brief Simulate the components
+ * @details First update the clocks and then the component value
+ * @throws ParsingError - if the command is invalid
+*/
 void nts::Shell::simulate()
 {
     nts::currentTick++;
@@ -126,6 +152,11 @@ void nts::Shell::simulate()
 
 bool running = true;
 
+/**
+ * @brief Loop the simulation
+ * @details Does simulate and display in a loop until the user presses Ctrl+C
+ * @throws ParsingError - if the command is invalid
+*/
 void nts::Shell::loop()
 {
     running = true;
@@ -138,6 +169,10 @@ void nts::Shell::loop()
     signal(SIGINT, SIG_DFL);
 }
 
+/**
+ * @brief Assign a value to a component
+ * @throws ParsingError - if the command is invalid
+*/
 void nts::Shell::assign(const std::string &input, std::stringstream &ss)
 {
     std::string nextWord;

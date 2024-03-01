@@ -11,18 +11,16 @@
 #include "IComponent.hpp"
 
 namespace nts {
-
     enum PinType {
         INPUT,
         OUTPUT,
     };
-    class AssignmentError : public std::exception {
-        public:
-            AssignmentError(std::string const &message) : _message(message) {};
-            const char *what() const noexcept override { return _message.c_str(); };
-        private:
-            std::string _message;
-    };
+
+    /**
+     * @brief Pin class
+     * @details This class is used to store the state of a pin, it's type and if it's locked or ignored
+     * Also store previous pin if its an output, and is able to simulate previous pins.
+    */
     class Pin {
         public:
             Pin(
@@ -32,6 +30,17 @@ namespace nts {
                 bool isLocked = false,
                 bool isIgnored = false);
             ~Pin() = default;
+            /**
+             * @brief Exception class for assignment error
+             * @details This class is used to throw an exception when an assignment error occured
+            */
+            class AssignmentError : public std::exception {
+                public:
+                    AssignmentError(std::string const &message) : _message(message) {};
+                    const char *what() const noexcept override { return _message.c_str(); };
+                private:
+                    std::string _message;
+            };
             void setState(nts::Tristate state);
             nts::Tristate getState() const;
             nts::PinType getType() const;

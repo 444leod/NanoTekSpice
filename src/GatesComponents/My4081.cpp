@@ -8,7 +8,11 @@
 #include "My4081.hpp"
 #include "../ElementatyComponents/And.hpp"
 
-My4081::My4081(std::string name) : GatesComponent(name)
+/**
+ * @brief My4081 class constructor
+ * @details Implements the subcomponents of the 4081 component
+*/
+My4081::My4081(std::string name) : AGatesComponent(name)
 {
     _subComponents = {
         {"And1", std::make_shared<And>("And1")},

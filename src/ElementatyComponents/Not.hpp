@@ -7,9 +7,14 @@
 
 #pragma once
 
-#include "./ElementaryComponent.hpp"
+#include "./AElementaryComponent.hpp"
 
-class Not : public ElementaryComponent {
+/**
+ * @brief Not class
+ * @details Basic NOT logic gate
+ * Gives the opposite of the input
+*/
+class Not : public AElementaryComponent {
     public:
         Not(std::string name);
         void subSimulate(std::string currentName) override;

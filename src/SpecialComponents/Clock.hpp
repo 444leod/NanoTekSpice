@@ -7,9 +7,13 @@
 
 #pragma once
 
-#include "./SpecialComponent.hpp"
+#include "./ASpecialComponent.hpp"
 
-class Clock : public SpecialComponent {
+/**
+ * @brief Clock class
+ * @details A clock component changes its state every tick
+*/
+class Clock : public ASpecialComponent {
     public:
         Clock(std::string name);
 

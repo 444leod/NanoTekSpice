@@ -7,9 +7,13 @@
 
 #pragma once
 
-#include "./SpecialComponent.hpp"
+#include "./ASpecialComponent.hpp"
 
-class Input : public SpecialComponent {
+/**
+ * @brief Input class
+ * @details Serves as an input
+*/
+class Input : public ASpecialComponent {
     public:
         Input(std::string name);
 

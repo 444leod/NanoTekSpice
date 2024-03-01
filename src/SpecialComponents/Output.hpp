@@ -7,9 +7,13 @@
 
 #pragma once
 
-#include "./SpecialComponent.hpp"
+#include "./ASpecialComponent.hpp"
 
-class Output : public SpecialComponent {
+/**
+ * @brief Output class
+ * @details Serves as an output
+*/
+class Output : public ASpecialComponent {
     public:
         Output(std::string name);
 

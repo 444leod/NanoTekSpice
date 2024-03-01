@@ -7,10 +7,14 @@
 
 #include "Xor.hpp"
 
-Xor::Xor(std::string name) : ElementaryComponent(name)
+Xor::Xor(std::string name) : AElementaryComponent(name)
 {
 }
 
+/**
+ * @brief Simulate the Xor gate
+ * @details Handles the UNDEFINED state
+*/
 void Xor::subSimulate(std::string currentName)
 {
     (void)currentName;

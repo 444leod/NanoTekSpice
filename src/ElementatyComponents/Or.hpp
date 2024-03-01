@@ -7,9 +7,14 @@
 
 #pragma once
 
-#include "./ElementaryComponent.hpp"
+#include "./AElementaryComponent.hpp"
 
-class Or : public ElementaryComponent {
+/**
+ * @brief Or class
+ * @details Basic OR logic gate
+ * Gives true if at least one input is true else false
+*/
+class Or : public AElementaryComponent {
     public:
         Or(std::string name);
         void subSimulate(std::string currentName) override;

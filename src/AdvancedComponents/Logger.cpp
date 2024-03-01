@@ -8,6 +8,10 @@
 #include "Logger.hpp"
 #include <cmath>
 
+/**
+ * @brief Logger class constructor
+ * @details Has 10 input pins: 8 for the char, 1 for the clock and 1 for the inhibit
+*/
 Logger::Logger(std::string name) : AComponent(name)
 {
     _pins = {
@@ -24,6 +28,10 @@ Logger::Logger(std::string name) : AComponent(name)
     };
 }
 
+/**
+ * @brief Gets the char from the input pins
+ * @return The char
+*/
 char Logger::getCharFromPins() {
     char result = 0;
     nts::Tristate state;
@@ -38,6 +46,10 @@ char Logger::getCharFromPins() {
     return result;
 }
 
+/**
+ * @brief Writes a char to a log.bin file
+ * @param c The char to write
+*/
 void Logger::writeChar(char c) {
     std::ofstream file;
 
@@ -50,6 +62,11 @@ void Logger::writeChar(char c) {
     file.close();
 }
 
+/**
+ * @brief Simulates the component starting from the subcomponents
+ * @details If the component is not correctly set up, returns
+ * @param currentName The name of the current component
+*/
 void Logger::subSimulate(std::string currentName)
 {
     (void)currentName;
