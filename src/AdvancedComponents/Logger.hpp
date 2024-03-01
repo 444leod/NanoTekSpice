@@ -20,8 +20,7 @@ class Logger : public nts::AComponent {
 
     protected:
     private:
-        char getCharFromBits(const std::array<int, 8>& bits);
-        std::array<int, 8>getBitsFromPins();
+        char getCharFromPins();
         void writeChar(char c);
         nts::Tristate _lastState = nts::Tristate::Undefined;
         nts::Tristate _currentState = nts::Tristate::Undefined;

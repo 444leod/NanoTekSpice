@@ -31,7 +31,8 @@ int nts::NanoTekSpice::run(int argc, const char *argv[])
             _components,
             _inputs,
             _outputs,
-            _clocks);
+            _clocks,
+            _loggers);
         return shell->run();
     } catch (const nts::Parser::ParsingError &e) {
         std::cerr << "Parsing error: " << std::endl;
@@ -64,7 +65,8 @@ void nts::NanoTekSpice::bindChipsets()
             chipset.second,
             _inputs,
             _outputs,
-            _clocks)
+            _clocks,
+            _loggers)
         );
     }
     for (auto &link : _links) {

@@ -27,8 +27,9 @@ std::shared_ptr<IComponent> IComponentFactory::createComponent(
     const std::string &name,
     std::vector<std::shared_ptr<nts::IComponent>> &inputs,
     std::vector<std::shared_ptr<nts::IComponent>> &outputs,
-    std::vector<std::shared_ptr<nts::IComponent>> &clocks
-){
+    std::vector<std::shared_ptr<nts::IComponent>> &clocks,
+    std::vector<std::shared_ptr<nts::IComponent>> &loggers)
+{
     std::shared_ptr<nts::IComponent> component;
 
     if (_componentFactory.find(componentType) == _componentFactory.end())
@@ -42,7 +43,7 @@ std::shared_ptr<IComponent> IComponentFactory::createComponent(
     else if (componentType == "clock")
         clocks.push_back(component);
     else if (componentType == "logger")
-        outputs.push_back(component);
+        loggers.push_back(component);
 
     return component;
 }

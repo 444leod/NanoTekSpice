@@ -6,6 +6,7 @@
 */
 
 #include "Logger.hpp"
+#include <cmath>
 
 /**
  * @brief Logger class constructor
@@ -32,10 +33,16 @@ Logger::Logger(std::string name) : AComponent(name)
  * @param bits The bits to transform using the bitwise OR operator
  * @return The char
 */
-char Logger::getCharFromBits(const std::array<int, 8>& bits) {
+char Logger::getCharFromPins() {
     char result = 0;
+    nts::Tristate state;
+
     for (int i = 0; i < 8; ++i) {
-        result |= bits[i] << (7 - i);
+        state = _pins[i + 1]->getState();
+        if (state == nts::Tristate::Undefined)
+            return -1;
+        if (state == nts::Tristate::True)
+            result += std::pow(2, i);
     }
     return result;
 }
@@ -68,6 +75,8 @@ std::array<int, 8> Logger::getBitsFromPins() {
 void Logger::writeChar(char c) {
     std::ofstream file;
 
+    if (c == -1)
+        return;
     file.open("log.bin", std::ios::in | std::ios::app);
     if (!file.is_open())
         return;
@@ -93,5 +102,5 @@ void Logger::subSimulate(std::string currentName)
         return;
 
     if (_lastState == nts::Tristate::False && _currentState == nts::Tristate::True)
-        writeChar(getCharFromBits(getBitsFromPins()));
+        writeChar(getCharFromPins());
 }
