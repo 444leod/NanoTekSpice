@@ -10,7 +10,7 @@
 
 /**
  * @brief My4030 class constructor
- * @details Details the subcomponents of the 4030 component
+ * @details Implements the subcomponents of the 4030 component
 */
 My4030::My4030(std::string name) : AGatesComponent(name)
 {

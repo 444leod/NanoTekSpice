@@ -10,7 +10,7 @@
 
 /**
  * @brief My4071 class constructor
- * @details Details the subcomponents of the 4071 component
+ * @details Implements the subcomponents of the 4071 component
 */
 My4071::My4071(std::string name) : AGatesComponent(name)
 {

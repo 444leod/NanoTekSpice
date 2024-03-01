@@ -22,7 +22,7 @@ std::string nts::AComponent::getName() const
 }
 
 /**
- * @brief simulate the subcomponents and then the component itself
+ * @brief simulate the precious before simulating itself
  * @param currentName - the name of the current component
 */
 void nts::AComponent::simulate(std::string currentName)

@@ -11,7 +11,7 @@
 
 /**
  * @brief My4001 class constructor
- * @details Details the subcomponents of the 4001 component
+ * @details Implements the subcomponents of the 4001 component
 */
 My4001::My4001(std::string name) : AGatesComponent(name)
 {
@@ -29,6 +29,8 @@ My4001::My4001(std::string name) : AGatesComponent(name)
 
 /**
  * @brief Links the subcomponents of the 4001 component
+ * @details as 4001 is composed of already working subcomponents,
+ * redirect pins to subcomponents.
 */
 void My4001::linkSubComponents()
 {

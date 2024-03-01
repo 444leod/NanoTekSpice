@@ -32,6 +32,10 @@ AGatesComponent::AGatesComponent(std::string name) : AComponent(name)
     };
 }
 
+/**
+ * @brief Simulates the component starting from the subcomponents
+ * @param currentName The name of the current component
+*/
 void AGatesComponent::subSimulate(std::string currentName)
 {
     for (auto &subComponent : _subComponents) {

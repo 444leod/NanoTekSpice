@@ -15,7 +15,8 @@ using nts::PinType::INPUT;
 
 /**
  * @brief My4017 class constructor
- * @details Has 15 pins: 10 output pins, 3 input pins and 2 clock pins
+ * @details Has 15 pins: 10 output pins, 3 input pins (2 clock pins),
+ * 1 output from the most significant flip-flop, 1 overriding asynchronous master reset input (MR)
 */
 My4017::My4017(std::string name) : AComponent(name)
 {

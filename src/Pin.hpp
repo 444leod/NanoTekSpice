@@ -19,6 +19,7 @@ namespace nts {
     /**
      * @brief Pin class
      * @details This class is used to store the state of a pin, it's type and if it's locked or ignored
+     * Also store previous pin if its an output, and is able to simulate previous pins.
     */
     class Pin {
         public:

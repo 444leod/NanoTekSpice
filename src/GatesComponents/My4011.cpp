@@ -11,7 +11,7 @@
 
 /**
  * @brief My4011 class constructor
- * @details Details the subcomponents of the 4011 component
+ * @details Implements the subcomponents of the 4011 component
 */
 My4011::My4011(std::string name) : AGatesComponent(name)
 {
