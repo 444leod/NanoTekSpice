@@ -75,10 +75,6 @@ void Logger::writeChar(char c) {
     file.close();
 }
 
-bool Logger::isInhibitFalse() {
-    return _pins[10]->getState() == nts::Tristate::False;
-}
-
 /**
  * @brief Simulates the component starting from the subcomponents
  * @details If the component is not correctly set up, returns
