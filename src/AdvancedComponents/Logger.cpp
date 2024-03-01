@@ -6,6 +6,7 @@
 */
 
 #include "Logger.hpp"
+#include <cmath>
 
 Logger::Logger(std::string name) : AComponent(name)
 {
@@ -23,33 +24,25 @@ Logger::Logger(std::string name) : AComponent(name)
     };
 }
 
-char Logger::getCharFromBits(const std::array<int, 8>& bits) {
+char Logger::getCharFromPins() {
     char result = 0;
+    nts::Tristate state;
+
     for (int i = 0; i < 8; ++i) {
-        result |= bits[i] << (7 - i);
+        state = _pins[i + 1]->getState();
+        if (state == nts::Tristate::Undefined)
+            return -1;
+        if (state == nts::Tristate::True)
+            result += std::pow(2, i);
     }
     return result;
-}
-
-std::array<int, 8> Logger::getBitsFromPins() {
-    std::array<int, 8> bits = {0, 0, 0, 0, 0, 0, 0, 0};
-    bool isEmptyChar = false;
-
-    for (int i = 0; i < 8; i++) {
-        if (!_pins[i + 1] || _pins[i + 1]->getState() == nts::Tristate::Undefined) {
-            isEmptyChar = true;
-            break;
-        }
-        bits[i] = _pins[i + 1]->getState() == nts::Tristate::True ? 1 : 0;
-    }
-    if (isEmptyChar)
-        return {0, 0, 0, 0, 0, 0, 0, 0};
-    return bits;
 }
 
 void Logger::writeChar(char c) {
     std::ofstream file;
 
+    if (c == -1)
+        return;
     file.open("log.bin", std::ios::in | std::ios::app);
     if (!file.is_open())
         return;
@@ -74,5 +67,5 @@ void Logger::subSimulate(std::string currentName)
         return;
 
     if (_lastState == nts::Tristate::False && _currentState == nts::Tristate::True)
-        writeChar(getCharFromBits(getBitsFromPins()));
+        writeChar(getCharFromPins());
 }
