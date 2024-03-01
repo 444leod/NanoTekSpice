@@ -9,6 +9,10 @@
 
 #include "../AComponent.hpp"
 
+/**
+ * @brief My4008 class
+ * @details The 4008 is a 4-bit adder
+*/
 class My4008 : public nts::AComponent {
     public:
         My4008(std::string name);
