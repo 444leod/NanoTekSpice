@@ -16,7 +16,6 @@ class Logger : public nts::AComponent {
 
     protected:
     private:
-        bool isInhibitFalse();
         char getCharFromPins();
         void writeChar(char c);
         nts::Tristate _lastState = nts::Tristate::Undefined;

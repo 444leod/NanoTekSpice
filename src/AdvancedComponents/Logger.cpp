@@ -50,10 +50,6 @@ void Logger::writeChar(char c) {
     file.close();
 }
 
-bool Logger::isInhibitFalse() {
-    return _pins[10]->getState() == nts::Tristate::False;
-}
-
 void Logger::subSimulate(std::string currentName)
 {
     (void)currentName;
