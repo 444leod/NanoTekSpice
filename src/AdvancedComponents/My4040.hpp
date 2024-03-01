@@ -9,6 +9,10 @@
 
 #include "../AComponent.hpp"
 
+/**
+ * @brief My4040 class
+ * @details The 4040 is a 12-bit counter
+*/
 class My4040 : public nts::AComponent {
     public:
         My4040(std::string name);

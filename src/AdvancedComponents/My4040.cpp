@@ -11,6 +11,10 @@ using nts::Tristate::False;
 using nts::Tristate::True;
 using nts::Tristate::Undefined;
 
+/**
+ * @brief My4040 class constructor
+ * @details Has 16 pins: 2 inputs, 12 outputs and 2 ignored
+*/
 My4040::My4040(std::string name) : AComponent(name)
 {
     _pins = {
@@ -48,6 +52,10 @@ My4040::My4040(std::string name) : AComponent(name)
     */
 }
 
+/**
+ * @brief Simulates the component starting from the subcomponents
+ * @param currentName The name of the current component
+*/
 void My4040::subSimulate(std::string currentName)
 {
     (void)currentName;
@@ -69,6 +77,10 @@ void My4040::subSimulate(std::string currentName)
     convertToPins();
 }
 
+/**
+ * @brief Converts the value to pins
+ * @details Converts the value to pins using bitwise operations
+*/
 void My4040::convertToPins()
 {
     std::array<std::shared_ptr<nts::Pin>, 12> _outputPins = {
