@@ -67,8 +67,9 @@ void nts::Parser::parseFile(const std::string &filename)
     while (std::getline(file, line)) {
         lineCount++;
         line = line.substr(0, line.find('#'));
-        if (line.empty())
+        if (line.empty() || std::all_of(line.begin(), line.end(), [](char c){ return std::isspace(c); })) {
             continue;
+        }
         if (_states.contains(line)) {
             for (auto &fileState : _fileStates) {
                 if (fileState == _states[line])
