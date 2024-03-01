@@ -41,6 +41,8 @@ std::shared_ptr<IComponent> IComponentFactory::createComponent(
         outputs.push_back(component);
     else if (componentType == "clock")
         clocks.push_back(component);
+    else if (componentType == "logger")
+        outputs.push_back(component);
 
     return component;
 }

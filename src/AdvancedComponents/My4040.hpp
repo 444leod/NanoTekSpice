@@ -2,27 +2,23 @@
 ** EPITECH PROJECT, 2024
 ** NanoTekSpice
 ** File description:
-** Logger
+** My4040
 */
 
 #pragma once
 
 #include "../AComponent.hpp"
 
-/**
- * @brief Logger class
- * @details The Logger class is used to log the output of a circuit to a file
-*/
-class Logger : public nts::AComponent {
+class My4040 : public nts::AComponent {
     public:
-        Logger(std::string name);
+        My4040(std::string name);
         void subSimulate(std::string currentName) override;
 
     protected:
     private:
-        char getCharFromBits(const std::array<int, 8>& bits);
-        std::array<int, 8>getBitsFromPins();
-        void writeChar(char c);
+        void convertToPins();
         nts::Tristate _lastState = nts::Tristate::Undefined;
         nts::Tristate _currentState = nts::Tristate::Undefined;
+        std::array<nts::Tristate, 12> _counter;
+        std::uint16_t _value = 0;
 };
