@@ -11,6 +11,12 @@ using nts::Tristate::False;
 using nts::Tristate::True;
 using nts::Tristate::Undefined;
 
+/**
+ * @brief My4094 class constructor
+ * @details Has 16 pins: 4 input pins, 10 output pins, 2 ignored (VSS & VDD)
+ * 1 input pin for the clock, 1 input pin for the data,
+ * 1 input pin for the strobe, 1 input pin for the enable
+*/
 My4094::My4094(std::string name) : AComponent(name)
 {
     _pins = {
@@ -33,6 +39,10 @@ My4094::My4094(std::string name) : AComponent(name)
     };
 }
 
+/**
+ * @brief Links the subcomponents of the current component
+ * @details Initialize the list of outputs.
+*/
 void My4094::linkSubComponents()
 {
     _qPins = {
@@ -47,6 +57,11 @@ void My4094::linkSubComponents()
     };
 }
 
+/**
+ * @brief Simulates the component starting from the subcomponents
+ * @details Handles the low to high and high to low transitions
+ * @param currentName The name of the current component
+*/
 void My4094::subSimulate(std::string currentName)
 {
     (void)currentName;

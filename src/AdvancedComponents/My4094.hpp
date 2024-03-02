@@ -9,6 +9,10 @@
 
 #include "../AComponent.hpp"
 
+/**
+ * @brief My4094 class
+ * @details The 4094 is an 8-bit shift register with Tri-State outputs
+*/
 class My4094 : public nts::AComponent {
     public:
         My4094(std::string name);
