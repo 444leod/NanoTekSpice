@@ -7,9 +7,13 @@
 
 #pragma once
 
-#include "./GatesComponent.hpp"
+#include "./AGatesComponent.hpp"
 
-class My4011 : public GatesComponent {
+/**
+ * @brief My4011 class
+ * @details The 4011 component is a quad 2-input NAND gate
+*/
+class My4011 : public AGatesComponent {
     public:
         My4011(std::string name);
         void linkSubComponents() override;

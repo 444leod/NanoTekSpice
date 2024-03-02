@@ -11,6 +11,11 @@ using nts::Tristate::False;
 using nts::Tristate::True;
 using nts::Tristate::Undefined;
 
+/**
+ * @brief My4013 class
+ * @details Has 13 pins: 2Q, 2Q', 2Data, 2Set, 2Reset, 2Clock and 1VSS
+ * (VSS is not added as it is not used in the project and is at the end of the circuit)
+*/
 My4013::My4013(std::string name) : AComponent(name)
 {
     _pins = {
@@ -30,6 +35,10 @@ My4013::My4013(std::string name) : AComponent(name)
     };
 }
 
+/**
+ * @brief Simulates the component starting from the subcomponents
+ * @param currentName The name of the current component
+*/
 void My4013::subSimulate(std::string currentName)
 {
     (void)currentName;

@@ -2,12 +2,17 @@
 ** EPITECH PROJECT, 2024
 ** NanoTekSpice
 ** File description:
-** GatesComponent
+** AGatesComponent
 */
 
-#include "GatesComponent.hpp"
+#include "AGatesComponent.hpp"
 
-GatesComponent::GatesComponent(std::string name) : AComponent(name)
+/**
+ * @brief Constructor of AGatesComponent
+ * @details Used to initialize the pins of the component 
+ * as most of the gates have the same pins
+*/
+AGatesComponent::AGatesComponent(std::string name) : AComponent(name)
 {
     _pins = {
         {1, CREATE_INPUT},
@@ -23,11 +28,15 @@ GatesComponent::GatesComponent(std::string name) : AComponent(name)
         {11, CREATE_OUTPUT},
         {12, CREATE_INPUT},
         {13, CREATE_INPUT},
-        {14,  CREATE_IGNORED}
+        {14, CREATE_IGNORED}
     };
 }
 
-void GatesComponent::subSimulate(std::string currentName)
+/**
+ * @brief Simulates the component starting from the subcomponents
+ * @param currentName The name of the current component
+*/
+void AGatesComponent::subSimulate(std::string currentName)
 {
     for (auto &subComponent : _subComponents) {
         subComponent.second->subSimulate(currentName);

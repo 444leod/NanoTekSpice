@@ -14,7 +14,10 @@
 #include "IComponentFactory.hpp"
 
 namespace nts {
-
+    /**
+     * @brief NanoTekSpice class
+     * @details This class is the main class of the program
+    */
     class NanoTekSpice {
         public:
             int run(int argc, const char *argv[]);
@@ -30,6 +33,7 @@ namespace nts {
             std::vector<std::shared_ptr<nts::IComponent>> _inputs = {};
             std::vector<std::shared_ptr<nts::IComponent>> _outputs = {};
             std::vector<std::shared_ptr<nts::IComponent>> _clocks = {};
+            std::vector<std::shared_ptr<nts::IComponent>> _loggers = {};
 
         };
 }

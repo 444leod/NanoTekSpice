@@ -67,8 +67,9 @@ void nts::Parser::parseFile(const std::string &filename)
     while (std::getline(file, line)) {
         lineCount++;
         line = line.substr(0, line.find('#'));
-        if (line.empty())
+        if (line.empty() || std::all_of(line.begin(), line.end(), [](char c){ return std::isspace(c); })) {
             continue;
+        }
         if (_states.contains(line)) {
             for (auto &fileState : _fileStates) {
                 if (fileState == _states[line])
@@ -148,11 +149,23 @@ void nts::Parser::handleNone(std::string &line, int lineCount)
     throw nts::Parser::ParsingError("Invalid line: line " + std::to_string(lineCount));
 }
 
+/**
+ * @brief Get the links
+ * @details This function return the links
+ *
+ * @return the links
+*/
 std::vector<std::pair<std::string, std::string>> nts::Parser::getLinks() const
 {
     return _links;
 }
 
+/**
+ * @brief Get the chipsets
+ * @details This function return the chipsets
+ *
+ * @return the chipsets
+*/
 std::vector<std::pair<std::string, std::string>> nts::Parser::getChipsets() const
 {
     return _chipsets;

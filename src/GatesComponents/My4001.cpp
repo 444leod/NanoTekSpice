@@ -9,8 +9,11 @@
 #include "../ElementatyComponents/Or.hpp"
 #include "../ElementatyComponents/Not.hpp"
 
-
-My4001::My4001(std::string name) : GatesComponent(name)
+/**
+ * @brief My4001 class constructor
+ * @details Implements the subcomponents of the 4001 component
+*/
+My4001::My4001(std::string name) : AGatesComponent(name)
 {
     _subComponents = {
         {"Or1", std::make_shared<Or>("Or1")},
@@ -24,6 +27,11 @@ My4001::My4001(std::string name) : GatesComponent(name)
     };
 }
 
+/**
+ * @brief Links the subcomponents of the 4001 component
+ * @details as 4001 is composed of already working subcomponents,
+ * redirect pins to subcomponents.
+*/
 void My4001::linkSubComponents()
 {
     _subComponents["Or1"]->setLink(3, _subComponents["Not1"], 1);

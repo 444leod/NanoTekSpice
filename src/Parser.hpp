@@ -11,10 +11,19 @@
 #include "IComponent.hpp"
 
 namespace nts {
+    /**
+     * @brief Parser class
+     * @details This class is used to parse the arguments and the file
+     * It also store the components, links and chipsets
+    */
     class Parser {
         public:
             Parser() = default;
             ~Parser() = default;
+            /**
+             * @brief Exception class for parsing error
+             * @details This class is used to throw an exception when a parsing error occured
+            */
             class ParsingError : public std::exception {
                 public:
                     ParsingError(const std::string &message) : _message(message) {}
@@ -22,6 +31,10 @@ namespace nts {
                 private:
                     std::string _message;
             };
+            /**
+             * @brief Exception class for help flag
+             * @details This class is used to throw an exception when the help flag is used
+            */
             class HelpFlag : public std::exception {
             };
             void parseArgs(int argc, const char *argv[]);

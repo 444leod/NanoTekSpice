@@ -9,7 +9,11 @@
 
 using nts::components::True;
 
-True::True(std::string name) : SpecialComponent(name)
+/**
+ * @brief True class constructor
+ * @details Defines the pin as an output pin
+*/
+True::True(std::string name) : ASpecialComponent(name)
 {
     _pins = {
             {1, std::make_shared<nts::Pin>(this, nts::PinType::OUTPUT, nts::Tristate::True, true)}

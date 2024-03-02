@@ -17,6 +17,7 @@
  *
  * @param argc - number of arguments
  * @param argv - arguments
+ * @return 84 if an error occured, 0 otherwise
 */
 int nts::NanoTekSpice::run(int argc, const char *argv[])
 {
@@ -26,7 +27,12 @@ int nts::NanoTekSpice::run(int argc, const char *argv[])
         _links = parser->getLinks();
         _chipsets = parser->getChipsets();
         this->bindChipsets();
-        std::unique_ptr<nts::Shell> shell = std::make_unique<nts::Shell>(_components, _inputs, _outputs, _clocks);
+        std::unique_ptr<nts::Shell> shell = std::make_unique<nts::Shell>(
+            _components,
+            _inputs,
+            _outputs,
+            _clocks,
+            _loggers);
         return shell->run();
     } catch (const nts::Parser::ParsingError &e) {
         std::cerr << "Parsing error: " << std::endl;
@@ -46,11 +52,22 @@ int nts::NanoTekSpice::run(int argc, const char *argv[])
     return 0;
 }
 
+/**
+ * @brief bind the chipsets
+ * @details This function bind the chipsets and the links
+ * It creates the components and bind them together
+*/
 void nts::NanoTekSpice::bindChipsets()
 {
     std::unique_ptr<nts::IComponentFactory> factory = std::make_unique<nts::IComponentFactory>();
     for (auto &chipset : _chipsets) {
-        _components.push_back(factory->createComponent(chipset.first, chipset.second, _inputs, _outputs, _clocks));
+        _components.push_back(factory->createComponent(chipset.first,
+            chipset.second,
+            _inputs,
+            _outputs,
+            _clocks,
+            _loggers)
+        );
     }
     for (auto &link : _links) {
         std::shared_ptr<IComponent> component1;

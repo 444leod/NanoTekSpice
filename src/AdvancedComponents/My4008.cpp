@@ -7,6 +7,10 @@
 
 #include "My4008.hpp"
 
+/**
+ * @brief My4008 class constructor
+ * @details Has 16 pins: 8 inputs, 4 outputs, 1 carry in and 1 carry out
+*/
 My4008::My4008(std::string name) : AComponent(name)
 {
     _pins = {
@@ -17,7 +21,7 @@ My4008::My4008(std::string name) : AComponent(name)
         {5, CREATE_INPUT},
         {6, CREATE_INPUT},
         {7, CREATE_INPUT},
-        {8, std::make_shared<nts::Pin>(this, nts::PinType::INPUT, nts::Tristate::Undefined, false, true)},
+        {8, CREATE_IGNORED},
         {9, CREATE_INPUT},
         {10, CREATE_OUTPUT},
         {11, CREATE_OUTPUT},
@@ -25,10 +29,14 @@ My4008::My4008(std::string name) : AComponent(name)
         {13, CREATE_OUTPUT},
         {14, CREATE_OUTPUT},
         {15, CREATE_INPUT},
-        {16, std::make_shared<nts::Pin>(this, nts::PinType::INPUT, nts::Tristate::Undefined, false, true)}
+        {16, CREATE_IGNORED}
     };
 }
 
+/**
+ * @brief Simulates the component starting from the subcomponents
+ * @param currentName The name of the current component
+*/
 void My4008::subSimulate(std::string currentName)
 {
     (void)currentName;

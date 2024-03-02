@@ -8,8 +8,11 @@
 #include "My4030.hpp"
 #include "../ElementatyComponents/Xor.hpp"
 
-
-My4030::My4030(std::string name) : GatesComponent(name)
+/**
+ * @brief My4030 class constructor
+ * @details Implements the subcomponents of the 4030 component
+*/
+My4030::My4030(std::string name) : AGatesComponent(name)
 {
     _subComponents = {
         {"Xor1", std::make_shared<Xor>("Xor1")},
@@ -19,6 +22,9 @@ My4030::My4030(std::string name) : GatesComponent(name)
     };
 }
 
+/**
+ * @brief Links the subcomponents of the 4030 component
+*/
 void My4030::linkSubComponents()
 {
     _subComponents["Xor1"]->getPin(1)->setLink(_pins[1]);

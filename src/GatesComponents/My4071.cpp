@@ -8,7 +8,11 @@
 #include "My4071.hpp"
 #include "../ElementatyComponents/Or.hpp"
 
-My4071::My4071(std::string name) : GatesComponent(name)
+/**
+ * @brief My4071 class constructor
+ * @details Implements the subcomponents of the 4071 component
+*/
+My4071::My4071(std::string name) : AGatesComponent(name)
 {
     _subComponents = {
         {"Or1", std::make_shared<Or>("Or1")},
@@ -18,6 +22,9 @@ My4071::My4071(std::string name) : GatesComponent(name)
     };
 }
 
+/**
+ * @brief Links the subcomponents of the 4071 component
+*/
 void My4071::linkSubComponents()
 {
     _subComponents["Or1"]->getPin(1)->setLink(_pins[1]);

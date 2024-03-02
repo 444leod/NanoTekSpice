@@ -8,7 +8,12 @@
 #include "My4069.hpp"
 #include "../ElementatyComponents/Not.hpp"
 
-My4069::My4069(std::string name) : GatesComponent(name)
+/**
+ * @brief My4069 class constructor
+ * @details Implements the subcomponents of the 4069 component while also overriding the _pins
+ * Has 14 pins: 6 inputs & 6 outputs, 2 ignored (VSS & VDD). Composed of 6 not gates
+*/
+My4069::My4069(std::string name) : AGatesComponent(name)
 {
     _pins = {
         {1, CREATE_INPUT},
@@ -36,6 +41,9 @@ My4069::My4069(std::string name) : GatesComponent(name)
     };
 }
 
+/**
+ * @brief Links the subcomponents of the 4069 component
+*/
 void My4069::linkSubComponents()
 {
     _subComponents["Not1"]->getPin(1)->setLink(_pins[1]);
