@@ -29,10 +29,17 @@
 #include "./AdvancedComponents/Logger.hpp"
 #include "./AdvancedComponents/My4008.hpp"
 #include "./AdvancedComponents/My4013.hpp"
+#include "./AdvancedComponents/My4040.hpp"
+
 #include "./AdvancedComponents/My4512.hpp"
 #include "./AdvancedComponents/My4094.hpp"
+#include "./AdvancedComponents/My4017.hpp"
 
 namespace nts {
+    /**
+     * @brief IComponentFactory class
+     * @details This class is used to create components
+    */
     class IComponentFactory {
         public:
             std::shared_ptr<IComponent> createComponent(
@@ -40,29 +47,32 @@ namespace nts {
                 const std::string &name,
                 std::vector<std::shared_ptr<nts::IComponent>> &inputs,
                 std::vector<std::shared_ptr<nts::IComponent>> &outputs,
-                std::vector<std::shared_ptr<nts::IComponent>> &clocks);
+                std::vector<std::shared_ptr<nts::IComponent>> &clocks,
+                std::vector<std::shared_ptr<nts::IComponent>> &loggers);
         private:
             std::map<std::string, std::function<std::shared_ptr<IComponent>(std::string)>> _componentFactory = {
-                {"input", [](std::string name) { return std::make_shared<Input>(name); }},
-                {"output", [](std::string name) { return std::make_shared<Output>(name); }},
-                {"clock", [](std::string name) { return std::make_shared<Clock>(name); }},
-                {"true", [](std::string name) { return std::make_shared<nts::components::True>(name); }},
-                {"false", [](std::string name) { return std::make_shared<nts::components::False>(name); }},
-                {"and", [](std::string name) { return std::make_shared<And>(name); }},
-                {"or", [](std::string name) { return std::make_shared<Or>(name); }},
-                {"xor", [](std::string name) { return std::make_shared<Xor>(name); }},
-                {"not", [](std::string name) { return std::make_shared<Not>(name); }},
-                {"4001", [](std::string name) { return std::make_shared<My4001>(name); }},
-                {"4011", [](std::string name) { return std::make_shared<My4011>(name); }},
-                {"4030", [](std::string name) { return std::make_shared<My4030>(name); }},
-                {"4069", [](std::string name) { return std::make_shared<My4069>(name); }},
-                {"4071", [](std::string name) { return std::make_shared<My4071>(name); }},
-                {"4081", [](std::string name) { return std::make_shared<My4081>(name); }},
-                {"logger", [](std::string name) { return std::make_shared<Logger>(name); }},
-                {"4008", [](std::string name) { return std::make_shared<My4008>(name); }},
+                {"input",   [](std::string name) { return std::make_shared<Input>(name); }},
+                {"output",  [](std::string name) { return std::make_shared<Output>(name); }},
+                {"clock",   [](std::string name) { return std::make_shared<Clock>(name); }},
+                {"true",    [](std::string name) { return std::make_shared<nts::components::True>(name); }},
+                {"false",   [](std::string name) { return std::make_shared<nts::components::False>(name); }},
+                {"and",     [](std::string name) { return std::make_shared<And>(name); }},
+                {"or",      [](std::string name) { return std::make_shared<Or>(name); }},
+                {"xor",     [](std::string name) { return std::make_shared<Xor>(name); }},
+                {"not",     [](std::string name) { return std::make_shared<Not>(name); }},
+                {"4001",    [](std::string name) { return std::make_shared<My4001>(name); }},
+                {"4011",    [](std::string name) { return std::make_shared<My4011>(name); }},
+                {"4030",    [](std::string name) { return std::make_shared<My4030>(name); }},
+                {"4069",    [](std::string name) { return std::make_shared<My4069>(name); }},
+                {"4071",    [](std::string name) { return std::make_shared<My4071>(name); }},
+                {"4081",    [](std::string name) { return std::make_shared<My4081>(name); }},
+                {"logger",  [](std::string name) { return std::make_shared<Logger>(name); }},
+                {"4008",    [](std::string name) { return std::make_shared<My4008>(name); }},
+                {"4017",    [](std::string name) { return std::make_shared<My4017>(name); }},
                 {"4512", [](std::string name) { return std::make_shared<My4512>(name); }},
                 {"4013", [](std::string name) { return std::make_shared<My4013>(name); }},
-                {"4094", [](std::string name) { return std::make_shared<My4094>(name); }}
+                {"4094", [](std::string name) { return std::make_shared<My4094>(name); }},
+                {"4040", [](std::string name) { return std::make_shared<My4040>(name); }}
             };
     };
 }

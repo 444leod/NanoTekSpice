@@ -1,0 +1,22 @@
+.chipsets:
+input reset
+clock clock
+false inhibit
+logger logger
+4040 counter
+not not
+
+.links:
+reset:1 counter:11
+clock:1 counter:10
+counter:9 logger:1
+counter:7 logger:2
+counter:6 logger:3
+counter:5 logger:4
+counter:3 logger:5
+counter:2 logger:6
+counter:4 logger:7
+counter:13 logger:8
+logger:9 clock:1
+logger:10 inhibit:1
+

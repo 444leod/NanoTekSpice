@@ -17,7 +17,7 @@ SRC_MAIN =  ./src/main.cpp \
 
 SRC_COMPONENTS = ./src/GatesComponents/My4011.cpp \
 	./src/GatesComponents/My4030.cpp \
-	./src/GatesComponents/GatesComponent.cpp \
+	./src/GatesComponents/AGatesComponent.cpp \
 	./src/GatesComponents/My4001.cpp \
 	./src/GatesComponents/My4071.cpp \
 	./src/GatesComponents/My4081.cpp \
@@ -25,19 +25,21 @@ SRC_COMPONENTS = ./src/GatesComponents/My4011.cpp \
 	./src/SpecialComponents/True.cpp \
 	./src/SpecialComponents/False.cpp \
 	./src/SpecialComponents/Output.cpp \
-	./src/SpecialComponents/SpecialComponent.cpp \
+	./src/SpecialComponents/ASpecialComponent.cpp \
 	./src/SpecialComponents/Clock.cpp \
 	./src/SpecialComponents/Input.cpp \
 	./src/ElementatyComponents/And.cpp \
 	./src/ElementatyComponents/Xor.cpp \
 	./src/ElementatyComponents/Not.cpp \
 	./src/ElementatyComponents/Or.cpp \
-	./src/ElementatyComponents/ElementaryComponent.cpp \
+	./src/ElementatyComponents/AElementaryComponent.cpp \
 	./src/AdvancedComponents/Logger.cpp \
 	./src/AdvancedComponents/My4008.cpp \
+	./src/AdvancedComponents/My4017.cpp \
 	./src/AdvancedComponents/My4013.cpp \
 	./src/AdvancedComponents/My4512.cpp	\
 	./src/AdvancedComponents/My4094.cpp	\
+	./src/AdvancedComponents/My4040.cpp	\
 
 SRC			=	${SRC_MAIN} ${SRC_COMPONENTS} ${SRC_COMMANDS}
 
@@ -75,7 +77,6 @@ run:	all
 tests_run:	fclean $(TESTS_OBJ)
 	$(CC) $(TESTS_OBJ) $(CPPFLAGS) -o $(TESTS_NAME)
 	./$(TESTS_NAME)
-	make re
 	$(PYTHON_TESTER)
 
 

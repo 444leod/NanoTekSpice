@@ -11,10 +11,24 @@
 #include "IComponent.hpp"
 
 namespace nts {
+    /**
+     * @brief Shell class
+     * @details This class is used to handle the shell
+     * It's used to parse the input and execute the commands
+    */
     class Shell {
         public:
-            Shell(std::vector<std::shared_ptr<nts::IComponent>> components, std::vector<std::shared_ptr<nts::IComponent>> inputs, std::vector<std::shared_ptr<nts::IComponent>> outputs, std::vector<std::shared_ptr<nts::IComponent>> clocks);
+            Shell(std::vector<
+                std::shared_ptr<nts::IComponent>> components,
+                std::vector<std::shared_ptr<nts::IComponent>> inputs,
+                std::vector<std::shared_ptr<nts::IComponent>> outputs,
+                std::vector<std::shared_ptr<nts::IComponent>> clocks,
+                std::vector<std::shared_ptr<nts::IComponent>> loggers);
             ~Shell() = default;
+            /**
+             * @brief Exception class for parsing error
+             * @details This class is used to throw an exception when a parsing error occured
+            */
             class ParsingError : public std::exception {
                 public:
                     ParsingError(const std::string &message) : _message(message) {}
@@ -43,6 +57,7 @@ namespace nts {
             std::vector<std::shared_ptr<nts::IComponent>> _inputs = {};
             std::vector<std::shared_ptr<nts::IComponent>> _outputs = {};
             std::vector<std::shared_ptr<nts::IComponent>> _clocks = {};
+            std::vector<std::shared_ptr<nts::IComponent>> _loggers = {};
 
             std::map<nts::Tristate, std::string> _statesToString = {
                 {nts::Tristate::Undefined, "U"},

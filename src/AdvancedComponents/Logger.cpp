@@ -6,7 +6,12 @@
 */
 
 #include "Logger.hpp"
+#include <cmath>
 
+/**
+ * @brief Logger class constructor
+ * @details Has 10 input pins: 8 for the char, 1 for the clock and 1 for the inhibit
+*/
 Logger::Logger(std::string name) : AComponent(name)
 {
     _pins = {
@@ -23,64 +28,57 @@ Logger::Logger(std::string name) : AComponent(name)
     };
 }
 
-char Logger::getCharFromBits(const std::array<int, 8>& bits) {
+/**
+ * @brief Gets the char from the input pins
+ * @return The char
+*/
+char Logger::getCharFromPins() {
     char result = 0;
+    nts::Tristate state;
+
     for (int i = 0; i < 8; ++i) {
-        result |= bits[i] << (7 - i);
+        state = _pins[i + 1]->getState();
+        if (state == nts::Tristate::Undefined)
+            return -1;
+        if (state == nts::Tristate::True)
+            result += std::pow(2, i);
     }
     return result;
 }
 
-std::array<int, 8> Logger::getBitsFromPins() {
-    std::array<int, 8> bits = {0, 0, 0, 0, 0, 0, 0, 0};
-    bool isEmptyChar = false;
-
-    for (int i = 0; i < 8; i++) {
-        if (!_pins[i + 1] || _pins[i + 1]->getState() == nts::Tristate::Undefined) {
-            isEmptyChar = true;
-            break;
-        }
-        bits[i] = _pins[i + 1]->getState() == nts::Tristate::True ? 1 : 0;
-    }
-    if (isEmptyChar)
-        return {0, 0, 0, 0, 0, 0, 0, 0};
-    return bits;
-}
-
+/**
+ * @brief Writes a char to a log.bin file
+ * @param c The char to write
+*/
 void Logger::writeChar(char c) {
     std::ofstream file;
 
-    file.open("log.bin", std::ios::app);
+    if (c == -1)
+        return;
+    file.open("log.bin", std::ios::in | std::ios::app);
+    if (!file.is_open())
+        return;
     file << c;
+    file.close();
 }
 
-bool Logger::isInhibitFalse() {
-    if (!_pins[10]) {
-        _isCorrectlySetUp = false;
-        return false;
-    }
-    return _pins[10]->getState() == nts::Tristate::False;
-}
-
+/**
+ * @brief Simulates the component starting from the subcomponents
+ * @details If the component is not correctly set up, returns
+ * @param currentName The name of the current component
+*/
 void Logger::subSimulate(std::string currentName)
 {
     (void)currentName;
-    if (!_isCorrectlySetUp) return;
-    if (!_pins[9] || !_pins[10]) {
-        _isCorrectlySetUp = false;
-        return;
-    }
-    if (_pins[10]->getState() != nts::Tristate::False) {
-        _lastState = _pins[9]->getState();
-        return;
-    }
 
-    if (_lastState != nts::Tristate::False || _pins[9]->getState() != nts::Tristate::True) {
-        _lastState = _pins[9]->getState();
+    _lastState = _currentState;
+    _currentState = _pins[9]->getState();
+
+    nts::Tristate inhibit = _pins[10]->getState();
+
+    if (inhibit != nts::Tristate::False)
         return;
-    }
 
-    writeChar(getCharFromBits(getBitsFromPins()));
-
-    _lastState = _pins[9]->getState();
+    if (_lastState == nts::Tristate::False && _currentState == nts::Tristate::True)
+        writeChar(getCharFromPins());
 }

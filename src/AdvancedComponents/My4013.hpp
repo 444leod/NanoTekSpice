@@ -9,6 +9,11 @@
 
 #include "../AComponent.hpp"
 
+/**
+ * @brief My4013 class
+ * @details The 4013 is a dual D-type flip-flop
+ * It is used to store state, each flip-flop has a data, set, reset, clock, q and qb pin
+*/
 class My4013 : public nts::AComponent {
     public:
         My4013(std::string name);

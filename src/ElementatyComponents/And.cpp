@@ -7,10 +7,14 @@
 
 #include "And.hpp"
 
-And::And(std::string name) : ElementaryComponent(name)
+And::And(std::string name) : AElementaryComponent(name)
 {
 }
 
+/**
+ * @brief Simulate the And gate
+ * @details Handles the UNDEFINED state
+*/
 void And::subSimulate(std::string currentName)
 {
     (void)currentName;
