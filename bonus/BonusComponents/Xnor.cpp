@@ -9,6 +9,12 @@
 #include "../ElementatyComponents/Xor.hpp"
 #include "../ElementatyComponents/Not.hpp"
 
+/**
+ * @brief Xnor class
+ * @details The Xnor class is used to process a Xnor gate
+ * A Xnor gate is a gate that gives the opposite of the output of a Xor gate
+ * It has 2 inputs and 1 output
+*/
 Xnor::Xnor(std::string name) : ABonusComponent(name)
 {
     _subComponents = {
@@ -22,6 +28,10 @@ Xnor::Xnor(std::string name) : ABonusComponent(name)
     };
 }
 
+/**
+ * @brief Link the subcomponents of the Xnor
+ * @details Link the subcomponents of the Xnor
+*/
 void Xnor::linkSubComponents()
 {
     _subComponents["A"]->getPin(1)->setLink(_pins[1]);

@@ -30,6 +30,10 @@ SRLatch::SRLatch(std::string name) : ABonusComponent(name)
     };
 }
 
+/**
+ * @brief Link the subcomponents of the SRLatch
+ * @details Link the subcomponents of the SRLatch
+*/
 void SRLatch::linkSubComponents()
 {
     _subComponents["Nor1"]->getPin(1)->setLink(_pins[1]);
