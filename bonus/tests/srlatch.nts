@@ -1,0 +1,12 @@
+.chipsets:
+input S
+input R
+srlatch sr1
+output Q
+output Q_bar
+
+.links:
+S:1 sr1:1
+R:1 sr1:2
+sr1:3 Q:1
+sr1:4 Q_bar:1

@@ -1,0 +1,17 @@
+
+.chipsets:
+input set
+input reset
+input data
+input clock
+output Q
+output Q_bar
+dflipflop ff
+
+.links:
+ff:1 set:1
+ff:2 clock:1
+ff:3 data:1
+ff:4 reset:1
+ff:5 Q:1
+ff:6 Q_bar:1
