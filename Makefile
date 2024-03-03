@@ -38,6 +38,7 @@ SRC_COMPONENTS = ./src/GatesComponents/My4011.cpp \
 	./src/AdvancedComponents/My4017.cpp \
 	./src/AdvancedComponents/My4013.cpp \
 	./src/AdvancedComponents/My4512.cpp	\
+	./src/AdvancedComponents/My4094.cpp	\
 	./src/AdvancedComponents/My4040.cpp	\
 
 SRC			=	${SRC_MAIN} ${SRC_COMPONENTS} ${SRC_COMMANDS}

@@ -32,6 +32,7 @@
 #include "./AdvancedComponents/My4040.hpp"
 
 #include "./AdvancedComponents/My4512.hpp"
+#include "./AdvancedComponents/My4094.hpp"
 #include "./AdvancedComponents/My4017.hpp"
 
 namespace nts {
@@ -70,6 +71,7 @@ namespace nts {
                 {"4017",    [](std::string name) { return std::make_shared<My4017>(name); }},
                 {"4512", [](std::string name) { return std::make_shared<My4512>(name); }},
                 {"4013", [](std::string name) { return std::make_shared<My4013>(name); }},
+                {"4094", [](std::string name) { return std::make_shared<My4094>(name); }},
                 {"4040", [](std::string name) { return std::make_shared<My4040>(name); }}
             };
     };
