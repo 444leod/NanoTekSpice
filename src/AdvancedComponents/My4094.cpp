@@ -79,6 +79,13 @@ void My4094::subSimulate(std::string currentName)
     }
 }
 
+/**
+ * @brief Simulates the low to high transition of the component
+ * @details Handles the low to high transition following the 4094 truth table
+ * @param strobe The state of the strobe pin
+ * @param data The state of the data pin
+ * @param enable The state of the enable pin
+*/
 void My4094::lowToHigh(nts::Tristate strobe, nts::Tristate data, nts::Tristate enable)
 {
     if (data == True && strobe == True && enable == True) {
@@ -104,6 +111,13 @@ void My4094::lowToHigh(nts::Tristate strobe, nts::Tristate data, nts::Tristate e
     }
 }
 
+/**
+ * @brief Simulates the high to low transition of the component
+ * @details Handles the high to low transition following the 4094 truth table
+ * @param strobe The state of the strobe pin
+ * @param data The state of the data pin
+ * @param enable The state of the enable pin
+*/
 void My4094::highToLow(nts::Tristate strobe, nts::Tristate data, nts::Tristate enable)
 {
     if (data == True && strobe == True && enable == True) {
